@@ -1,32 +1,2942 @@
-<!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Academia Corpo Ativo</title>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academia Corpo Ativo | Sistema de Gestão</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#f4f6f9;color:#222}.app{display:flex;min-height:100vh}
-aside{width:260px;background:#121212;color:#fff;position:fixed;inset:0 auto 0 0;padding:24px 16px;overflow:auto}.brand{text-align:center;border-bottom:1px solid #333;padding-bottom:20px}.brand b{font-size:25px}.brand span{color:#d30815}.brand small{display:block;color:#aaa;margin-top:6px}
-nav button{width:100%;border:0;background:transparent;color:#ddd;text-align:left;padding:14px 12px;margin:4px 0;border-radius:10px;font-size:15px;cursor:pointer}nav button:hover,nav button.active{background:#d30815;color:#fff}
-main{margin-left:260px;width:calc(100% - 260px);padding:28px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.top h1{margin:0}.admin{background:#fff;padding:10px 15px;border-radius:12px;box-shadow:0 2px 10px #0001}
-section{display:none}section.active{display:block}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card,.panel{background:#fff;border-radius:14px;padding:20px;box-shadow:0 3px 15px #0000000c}.card b{font-size:30px;display:block;margin:8px 0}.red{color:#d30815}.green{color:#28a745}.yellow{color:#c58f00}
-.panel{margin-top:18px}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.btn{border:0;border-radius:9px;background:#d30815;color:white;padding:11px 16px;font-weight:700;cursor:pointer}.btn.dark{background:#121212}.btn.green{background:#28a745}.search,input,select{padding:11px;border:1px solid #d7dbe0;border-radius:8px;font-size:15px;background:white}table{width:100%;border-collapse:collapse;margin-top:14px}th,td{text-align:left;padding:12px;border-bottom:1px solid #eee}th{color:#666;font-size:13px}.badge{padding:5px 9px;border-radius:20px;font-size:12px;font-weight:700}.ok{background:#dff4e5;color:#19833a}.bad{background:#fde1e3;color:#b8202a}.warn{background:#fff1c2;color:#8a6500}.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.formgrid label{display:flex;flex-direction:column;gap:6px;font-weight:600}.access{max-width:760px;margin:auto;text-align:center}.access input{font-size:22px;width:100%;padding:18px}.person{display:flex;align-items:center;gap:20px;text-align:left;margin:20px 0}.avatar{width:80px;height:80px;border-radius:50%;background:#121212;color:#fff;display:grid;place-items:center;font-size:28px}.big{font-size:22px;width:100%;padding:18px}.bar{height:12px;background:#eee;border-radius:8px;overflow:hidden}.bar i{display:block;height:100%;background:#d30815}.muted{color:#777}
-@media(max-width:900px){aside{width:78px}.brand b,.brand small,nav button span{display:none}main{margin-left:78px;width:calc(100% - 78px)}.cards{grid-template-columns:1fr 1fr}.formgrid{grid-template-columns:1fr}}@media(max-width:600px){main{padding:16px}.cards{grid-template-columns:1fr}.panel{overflow:auto}.top{align-items:flex-start;gap:10px}}
-</style></head><body><div class="app"><aside><div class="brand"><b>CORPO <span>ATIVO</span></b><small>Gestão de Academia</small></div><nav>
-<button class="active" data-page="dashboard">🏠 <span>Dashboard</span></button><button data-page="alunos">👥 <span>Gestão de Alunos</span></button><button data-page="experimental">🧪 <span>Aulas Experimentais</span></button><button data-page="financeiro">💳 <span>Planos e Financeiro</span></button><button data-page="inadimplentes">⚠️ <span>Inadimplentes</span></button><button data-page="acesso">🚪 <span>Controle de Acesso</span></button><button data-page="historico">🕘 <span>Histórico de Acessos</span></button><button data-page="treinos">🏋️ <span>Treinos</span></button><button data-page="avaliacoes">📋 <span>Avaliações Físicas</span></button><button data-page="equipamentos">🔧 <span>Equipamentos</span></button><button data-page="relatorios">📊 <span>Relatórios</span></button>
-</nav></aside><main><header class="top"><div><h1 id="title">Dashboard</h1><span class="muted">Academia Corpo Ativo</span></div><div class="admin">👤 Administrador</div></header>
-<section id="dashboard" class="active"><div class="cards"><div class="card">Alunos ativos<b>248</b><span class="green">+12 este mês</span></div><div class="card">Planos a vencer<b class="yellow">18</b><span>Próximos 7 dias</span></div><div class="card">Inadimplentes<b class="red">9</b><span>Requer atenção</span></div><div class="card">Acessos hoje<b>126</b><span class="green">Movimento normal</span></div></div><div class="panel"><h2>Frequência semanal</h2><p>Segunda — 184 acessos</p><div class="bar"><i style="width:88%"></i></div><p>Terça — 162 acessos</p><div class="bar"><i style="width:78%"></i></div><p>Quarta — 197 acessos</p><div class="bar"><i style="width:95%"></i></div><p>Quinta — 151 acessos</p><div class="bar"><i style="width:72%"></i></div></div></section>
-<section id="alunos"><div class="panel"><div class="panel-head"><input class="search" id="studentSearch" placeholder="Pesquisar aluno..."><button class="btn" onclick="showForm()">+ Cadastrar Novo Aluno</button></div><div id="studentList"><table><thead><tr><th>Aluno</th><th>CPF</th><th>Plano</th><th>Status</th></tr></thead><tbody id="students"></tbody></table></div><div id="studentForm" style="display:none"><h2>Cadastro / Edição de Aluno</h2><div class="formgrid"><label>Nome<input value="Gabriela Santos"></label><label>CPF<input value="123.456.789-10"></label><label>Telefone<input value="(19) 99876-5432"></label><label>E-mail<input value="gabriela.santos@email.com"></label><label>Plano<select><option>Mensal - R$ 120,00</option><option>Integral - R$ 180,00</option></select></label><label>Vencimento<input type="date" value="2026-10-15"></label></div><p><button class="btn" onclick="saveStudent()">Salvar Aluno</button> <button class="btn dark" onclick="hideForm()">Cancelar</button></p></div></div></section>
-<section id="experimental"><div class="panel"><h2>Controle de Aulas Experimentais</h2><table><tr><th>Visitante</th><th>Modalidade</th><th>Data</th><th>Status</th></tr><tr><td>Ana Beatriz Lima</td><td>Musculação</td><td>01/10/2026</td><td><span class="badge ok">Realizada</span></td></tr><tr><td>Rafael Mendes</td><td>Funcional</td><td>02/10/2026</td><td><span class="badge warn">Agendada</span></td></tr><tr><td>Carla Souza</td><td>Musculação</td><td>03/10/2026</td><td><span class="badge warn">Agendada</span></td></tr></table></div></section>
-<section id="financeiro"><div class="panel"><h2>Contratos e Pagamentos</h2><table><tr><th>Aluno</th><th>Plano</th><th>Valor</th><th>Vencimento</th><th>Status</th><th>Ação</th></tr><tr><td>Lucas Ferreira</td><td>Integral</td><td>R$ 180,00</td><td>10/10/2026</td><td><span class="badge ok">Pago</span></td><td><button class="btn">Registrar Pagamento</button></td></tr><tr><td>Mariana Alves</td><td>Mensal</td><td>R$ 120,00</td><td>05/10/2026</td><td><span class="badge warn">Pendente</span></td><td><button class="btn" onclick="paid(this)">Registrar Pagamento</button></td></tr><tr><td>João Pedro</td><td>Integral Assistido</td><td>R$ 220,00</td><td>28/09/2026</td><td><span class="badge bad">Vencido</span></td><td><button class="btn" onclick="paid(this)">Registrar Pagamento</button></td></tr></table></div></section>
-<section id="inadimplentes"><div class="panel" style="border-left:5px solid #dc3545"><h2 class="red">Alunos Inadimplentes</h2><table><tr><th>Aluno</th><th>Plano</th><th>Vencido desde</th><th>Valor</th></tr><tr><td>João Pedro</td><td>Integral Assistido</td><td>28/09/2026</td><td>R$ 220,00</td></tr><tr><td>Camila Rocha</td><td>Mensal</td><td>25/09/2026</td><td>R$ 120,00</td></tr><tr><td>Bruno Lima</td><td>Integral</td><td>20/09/2026</td><td>R$ 180,00</td></tr></table></div></section>
-<section id="acesso"><div class="panel access"><h2>Validação de Entrada</h2><p>Digite CPF ou código da carteirinha</p><input id="accessInput" value="123.456.789-10"><div class="person"><div class="avatar">GS</div><div><h2>Gabriela Santos</h2><p>Plano Integral • <span class="badge ok">LIBERADO</span></p><p class="muted">Mensalidade paga • Válido até 15/10/2026</p></div></div><button class="btn green big" onclick="release()">✓ LIBERAR ACESSO</button><p id="accessMsg"></p></div></section>
-<section id="historico"><div class="panel"><h2>Acessos de Hoje</h2><table><tr><th>Horário</th><th>Aluno</th><th>Plano</th><th>Resultado</th></tr><tr><td>15:42</td><td>Lucas Ferreira</td><td>Integral</td><td><span class="badge ok">Liberado</span></td></tr><tr><td>15:36</td><td>Amanda Reis</td><td>Mensal</td><td><span class="badge ok">Liberado</span></td></tr><tr><td>15:28</td><td>João Pedro</td><td>Assistido</td><td><span class="badge bad">Bloqueado</span></td></tr></table></div></section>
-<section id="treinos"><div class="panel"><div class="panel-head"><h2>Fichas de Treino</h2><button class="btn" onclick="alert('Nova ficha iniciada!')">+ Criar Ficha</button></div><table><tr><th>Aluno</th><th>Ficha</th><th>Professor</th><th>Atualização</th></tr><tr><td>Gabriela Santos</td><td>Hipertrofia A/B/C</td><td>Marcos Silva</td><td>28/09/2026</td></tr><tr><td>Lucas Ferreira</td><td>Condicionamento A/B</td><td>Paula Martins</td><td>25/09/2026</td></tr><tr><td>Amanda Reis</td><td>Força A/B/C</td><td>Marcos Silva</td><td>21/09/2026</td></tr></table></div></section>
-<section id="avaliacoes"><div class="panel"><h2>Avaliações Físicas</h2><table><tr><th>Aluno</th><th>Data</th><th>Peso</th><th>Altura</th><th>Status</th></tr><tr><td>Gabriela Santos</td><td>04/10/2026</td><td>62 kg</td><td>1,67 m</td><td><span class="badge warn">Agendada</span></td></tr><tr><td>Lucas Ferreira</td><td>29/09/2026</td><td>81 kg</td><td>1,79 m</td><td><span class="badge ok">Concluída</span></td></tr><tr><td>Amanda Reis</td><td>26/09/2026</td><td>58 kg</td><td>1,64 m</td><td><span class="badge ok">Concluída</span></td></tr></table></div></section>
-<section id="equipamentos"><div class="panel"><h2>Equipamentos e Manutenção</h2><table><tr><th>Equipamento</th><th>Local</th><th>Status</th></tr><tr><td>Esteira Movement 01</td><td>Cardio</td><td><span class="badge ok">Ativo</span></td></tr><tr><td>Leg Press 45°</td><td>Musculação</td><td><span class="badge warn">Em manutenção</span></td></tr><tr><td>Bicicleta Spinning 03</td><td>Cardio</td><td><span class="badge ok">Ativo</span></td></tr></table><h3>Abrir ordem de manutenção</h3><div class="formgrid"><label>Equipamento<input value="Leg Press 45°"></label><label>Problema<input value="Ruído anormal durante o movimento"></label></div><p><button class="btn" onclick="alert('Ordem de manutenção aberta!')">Abrir Ordem</button></p></div></section>
-<section id="relatorios"><div class="panel"><div class="panel-head"><h2>Relatórios Gerenciais</h2><div><input type="date" value="2026-09-01"> <input type="date" value="2026-09-30"> <button class="btn">Filtrar</button></div></div><div class="cards" style="margin-top:18px"><div class="card">Faturamento<b>R$ 31.480</b><span class="green">+8,4%</span></div><div class="card">Frequência<b>3.842</b><span>Acessos no período</span></div><div class="card">Novas matrículas<b>27</b><span>Setembro/2026</span></div><div class="card">Ticket médio<b>R$ 146</b><span>Por aluno</span></div></div></div></section>
-</main></div><script>
-const names={dashboard:'Dashboard',alunos:'Gestão de Alunos',experimental:'Aulas Experimentais',financeiro:'Planos e Financeiro',inadimplentes:'Inadimplentes',acesso:'Controle de Acesso',historico:'Histórico de Acessos',treinos:'Fichas de Treino',avaliacoes:'Avaliações Físicas',equipamentos:'Equipamentos e Manutenção',relatorios:'Relatórios Gerenciais'};
-document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button,section').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.page).classList.add('active');document.getElementById('title').textContent=names[b.dataset.page]});
-let data=[['Gabriela Santos','123.456.789-10','Integral','Ativo'],['Lucas Ferreira','234.567.890-11','Integral','Ativo'],['Mariana Alves','345.678.901-22','Mensal','Ativo'],['João Pedro','456.789.012-33','Assistido','Bloqueado'],['Amanda Reis','567.890.123-44','Mensal','Ativo']];
-function render(q=''){students.innerHTML=data.filter(x=>x[0].toLowerCase().includes(q.toLowerCase())).map(x=>'<tr><td>'+x[0]+'</td><td>'+x[1]+'</td><td>'+x[2]+'</td><td><span class="badge '+(x[3]=='Ativo'?'ok':'bad')+'">'+x[3]+'</span></td></tr>').join('')}render();
-studentSearch.oninput=e=>render(e.target.value);function showForm(){studentList.style.display='none';studentForm.style.display='block'}function hideForm(){studentForm.style.display='none';studentList.style.display='block'}function saveStudent(){alert('Aluno salvo com sucesso!');hideForm()}function paid(b){b.closest('tr').querySelector('.badge').className='badge ok';b.closest('tr').querySelector('.badge').textContent='Pago';alert('Pagamento registrado!')}function release(){accessMsg.innerHTML='<span class="badge ok">Acesso liberado às '+new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})+'</span>'}
-</script></body></html>
+:root{
+    --red:#D30815;
+    --red-dark:#a90912;
+    --black:#121212;
+    --black-2:#1d1d1f;
+    --bg:#F4F6F9;
+    --white:#ffffff;
+    --text:#252525;
+    --muted:#747b86;
+    --border:#e2e5ea;
+    --green:#28A745;
+    --yellow:#FFC107;
+    --danger:#DC3545;
+    --blue:#3478f6;
+    --shadow:0 8px 25px rgba(0,0,0,.07);
+    --radius:16px;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Inter,Roboto,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    font-size:16px;
+}
+
+button,input,select,textarea{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.d-none{
+    display:none!important;
+}
+
+/* LOGIN */
+.login-page{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+    background:
+        radial-gradient(circle at 85% 15%,rgba(211,8,21,.18),transparent 26%),
+        linear-gradient(135deg,#0b0b0c,#1a1a1d);
+}
+
+.login-box{
+    width:min(1050px,100%);
+    min-height:610px;
+    background:#fff;
+    border-radius:28px;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    box-shadow:0 30px 70px rgba(0,0,0,.35);
+}
+
+.login-brand{
+    background:linear-gradient(150deg,#101010,#222);
+    padding:55px;
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.login-brand:after{
+    content:"";
+    position:absolute;
+    width:320px;
+    height:320px;
+    border:55px solid var(--red);
+    border-radius:50%;
+    right:-170px;
+    top:-130px;
+    opacity:.65;
+}
+
+.logo-login{
+    width:250px;
+    max-width:90%;
+    background:#fff;
+    padding:12px;
+    border-radius:20px;
+    margin-bottom:35px;
+    position:relative;
+    z-index:2;
+}
+
+.login-brand h1{
+    font-size:42px;
+    line-height:1.05;
+    margin-bottom:18px;
+    position:relative;
+    z-index:2;
+}
+
+.login-brand h1 span{
+    color:#ff2432;
+}
+
+.login-brand p{
+    color:#d1d1d1;
+    max-width:420px;
+    font-size:18px;
+    line-height:1.7;
+    position:relative;
+    z-index:2;
+}
+
+.login-form-area{
+    padding:70px 65px;
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+}
+
+.login-form-area h2{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.login-form-area>p{
+    color:var(--muted);
+    margin-bottom:35px;
+}
+
+.field{
+    margin-bottom:18px;
+}
+
+.field label{
+    display:block;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.input{
+    width:100%;
+    border:1px solid #d9dde4;
+    background:#fff;
+    border-radius:10px;
+    padding:14px 15px;
+    outline:none;
+    font-size:16px;
+}
+
+.input:focus{
+    border-color:var(--red);
+    box-shadow:0 0 0 3px rgba(211,8,21,.09);
+}
+
+textarea.input{
+    min-height:95px;
+    resize:vertical;
+}
+
+.login-options{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin:5px 0 25px;
+    color:#626875;
+}
+
+.login-options a{
+    color:var(--red);
+    font-weight:700;
+    text-decoration:none;
+}
+
+.btn{
+    border:none;
+    border-radius:10px;
+    padding:12px 17px;
+    font-weight:800;
+    font-size:15px;
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    justify-content:center;
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-1px);
+}
+
+.btn-primary{
+    background:var(--red);
+    color:#fff;
+}
+
+.btn-primary:hover{
+    background:var(--red-dark);
+}
+
+.btn-dark{
+    background:var(--black);
+    color:#fff;
+}
+
+.btn-light{
+    background:#f1f2f4;
+    color:#30343b;
+}
+
+.btn-outline{
+    background:#fff;
+    border:1px solid #d9dde4;
+    color:#333;
+}
+
+.btn-success{
+    background:var(--green);
+    color:#fff;
+}
+
+.btn-danger{
+    background:var(--danger);
+    color:#fff;
+}
+
+.btn-lg{
+    padding:17px 25px;
+    font-size:18px;
+}
+
+.w-100{width:100%}
+
+/* APP */
+.app{
+    min-height:100vh;
+}
+
+.sidebar{
+    width:270px;
+    height:100vh;
+    background:var(--black);
+    position:fixed;
+    left:0;
+    top:0;
+    color:#fff;
+    z-index:100;
+    overflow-y:auto;
+    transition:.25s;
+}
+
+.sidebar-brand{
+    padding:20px 18px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    text-align:center;
+}
+
+.sidebar-brand img{
+    width:150px;
+    background:#fff;
+    border-radius:10px;
+    padding:6px;
+}
+
+.sidebar-brand small{
+    display:block;
+    color:#aaa;
+    margin-top:8px;
+}
+
+.nav{
+    padding:15px 10px 30px;
+}
+
+.nav-title{
+    color:#777;
+    text-transform:uppercase;
+    font-size:11px;
+    letter-spacing:1.5px;
+    font-weight:800;
+    padding:15px 13px 8px;
+}
+
+.nav-item{
+    width:100%;
+    border:0;
+    color:#c8c8c8;
+    background:transparent;
+    text-align:left;
+    padding:13px 14px;
+    border-radius:9px;
+    margin:2px 0;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:650;
+    font-size:14px;
+}
+
+.nav-item:hover,
+.nav-item.active{
+    background:var(--red);
+    color:#fff;
+}
+
+.nav-icon{
+    width:25px;
+    text-align:center;
+    font-size:18px;
+}
+
+.main{
+    margin-left:270px;
+    min-height:100vh;
+}
+
+.topbar{
+    height:75px;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:50;
+}
+
+.top-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.mobile-menu{
+    display:none;
+    border:0;
+    background:#f3f3f3;
+    width:42px;
+    height:42px;
+    border-radius:9px;
+    font-size:21px;
+}
+
+.top-search{
+    width:320px;
+    background:#f5f6f8;
+    border:0;
+    padding:12px 15px;
+    border-radius:10px;
+    outline:none;
+}
+
+.user-box{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.avatar{
+    width:43px;
+    height:43px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--red),#ff5360);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-weight:900;
+}
+
+.user-info strong{
+    display:block;
+    font-size:14px;
+}
+
+.user-info small{
+    color:var(--muted);
+}
+
+.content{
+    padding:28px;
+}
+
+.section{
+    display:none;
+    animation:fade .25s ease;
+}
+
+.section.active{
+    display:block;
+}
+
+@keyframes fade{
+    from{opacity:.3;transform:translateY(4px)}
+    to{opacity:1;transform:none}
+}
+
+.page-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.page-head h1{
+    font-size:29px;
+    margin-bottom:7px;
+}
+
+.page-head p{
+    color:var(--muted);
+}
+
+.page-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+}
+
+.card{
+    background:#fff;
+    border:1px solid #e8eaee;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+}
+
+.card-pad{
+    padding:22px;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:17px;
+    margin-bottom:22px;
+}
+
+.stat-card{
+    background:#fff;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:var(--shadow);
+    border:1px solid #ebedf1;
+    position:relative;
+    overflow:hidden;
+}
+
+.stat-card:before{
+    content:"";
+    width:5px;
+    height:100%;
+    background:var(--red);
+    position:absolute;
+    left:0;
+    top:0;
+}
+
+.stat-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:15px;
+}
+
+.stat-label{
+    color:#656b75;
+    font-weight:700;
+    font-size:14px;
+}
+
+.stat-icon{
+    width:42px;
+    height:42px;
+    border-radius:10px;
+    background:#fff1f2;
+    color:var(--red);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+}
+
+.stat-value{
+    font-size:32px;
+    font-weight:900;
+}
+
+.stat-foot{
+    color:#858b95;
+    margin-top:5px;
+    font-size:13px;
+}
+
+.grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.grid-3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.card-title h3{
+    font-size:18px;
+}
+
+.muted{
+    color:var(--muted);
+}
+
+.alert-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.alert-item{
+    border:1px solid #eee;
+    padding:13px;
+    border-radius:10px;
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+}
+
+.alert-dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:var(--red);
+    margin-top:5px;
+    flex:none;
+}
+
+.progress-row{
+    margin-bottom:17px;
+}
+
+.progress-head{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:7px;
+    font-size:14px;
+}
+
+.progress{
+    height:8px;
+    background:#eceef1;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress span{
+    display:block;
+    height:100%;
+    background:var(--red);
+    border-radius:20px;
+}
+
+.filters{
+    background:#fff;
+    padding:16px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+}
+
+.filters .input{
+    width:auto;
+    min-width:180px;
+    flex:1;
+}
+
+.table-card{
+    background:#fff;
+    border-radius:14px;
+    border:1px solid var(--border);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+}
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:760px;
+}
+
+th{
+    text-align:left;
+    background:#fafafa;
+    color:#686f7a;
+    padding:14px 16px;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.4px;
+    border-bottom:1px solid var(--border);
+}
+
+td{
+    padding:15px 16px;
+    border-bottom:1px solid #eef0f3;
+    vertical-align:middle;
+    font-size:14px;
+}
+
+tbody tr:hover{
+    background:#fffafa;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:850;
+}
+
+.badge-success{
+    background:#e8f7ed;
+    color:#21853a;
+}
+
+.badge-danger{
+    background:#fde9eb;
+    color:#c92535;
+}
+
+.badge-warning{
+    background:#fff6d9;
+    color:#9b7400;
+}
+
+.badge-dark{
+    background:#ececec;
+    color:#333;
+}
+
+.badge-blue{
+    background:#e8f0ff;
+    color:#2464cf;
+}
+
+.person{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.person-avatar{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#f1d8da;
+    color:var(--red);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+}
+
+.action-btn{
+    border:0;
+    padding:7px 10px;
+    border-radius:7px;
+    background:#f0f1f3;
+    font-weight:700;
+    margin:2px;
+}
+
+.action-btn.red{
+    background:#ffebed;
+    color:var(--red);
+}
+
+.form-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:25px;
+    box-shadow:var(--shadow);
+    margin-bottom:20px;
+}
+
+.form-card h3{
+    margin-bottom:20px;
+    padding-bottom:12px;
+    border-bottom:1px solid #eee;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:17px;
+}
+
+.form-grid.two{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.form-group label{
+    display:block;
+    font-weight:750;
+    font-size:14px;
+    margin-bottom:7px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+.form-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:22px;
+}
+
+.profile-header{
+    background:linear-gradient(125deg,#161616,#2a2a2a);
+    color:#fff;
+    border-radius:17px;
+    padding:25px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin-bottom:18px;
+}
+
+.profile-avatar{
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    background:#fff;
+    color:var(--red);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    font-weight:900;
+    border:4px solid var(--red);
+}
+
+.profile-info{
+    flex:1;
+}
+
+.profile-info h2{
+    margin-bottom:7px;
+}
+
+.profile-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    color:#d1d1d1;
+    margin-top:9px;
+    font-size:14px;
+}
+
+.tabs{
+    display:flex;
+    gap:5px;
+    background:#fff;
+    border-radius:12px;
+    padding:7px;
+    margin-bottom:18px;
+    overflow-x:auto;
+    border:1px solid var(--border);
+}
+
+.tab{
+    border:0;
+    background:transparent;
+    padding:10px 15px;
+    border-radius:8px;
+    white-space:nowrap;
+    font-weight:750;
+}
+
+.tab.active{
+    background:var(--red);
+    color:#fff;
+}
+
+.access-panel{
+    max-width:900px;
+    margin:auto;
+}
+
+.access-search{
+    background:#161616;
+    color:#fff;
+    border-radius:18px;
+    padding:28px;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.access-search h2{
+    margin-bottom:8px;
+}
+
+.access-search .input{
+    max-width:600px;
+    margin:20px auto 10px;
+    font-size:22px;
+    padding:18px;
+    text-align:center;
+}
+
+.access-student{
+    padding:25px;
+    background:#fff;
+    border-radius:17px;
+    box-shadow:var(--shadow);
+    border:1px solid var(--border);
+}
+
+.student-main{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.student-photo{
+    width:105px;
+    height:105px;
+    border-radius:16px;
+    background:linear-gradient(135deg,#efeff1,#dadce1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:38px;
+    font-weight:900;
+    color:#555;
+}
+
+.access-status{
+    padding:17px;
+    border-radius:12px;
+    text-align:center;
+    font-size:22px;
+    font-weight:900;
+    background:#e8f7ed;
+    color:#21853a;
+    margin:20px 0;
+}
+
+.access-status.blocked{
+    background:#fde9eb;
+    color:#c92535;
+}
+
+.access-button{
+    width:100%;
+    padding:20px;
+    border:0;
+    border-radius:12px;
+    background:var(--green);
+    color:#fff;
+    font-weight:900;
+    font-size:22px;
+}
+
+.access-button.blocked{
+    background:var(--danger);
+}
+
+.danger-table{
+    border-top:4px solid var(--danger);
+}
+
+.quick-maintenance{
+    border-left:4px solid var(--yellow);
+}
+
+.report-chart{
+    height:260px;
+    display:flex;
+    align-items:flex-end;
+    gap:18px;
+    padding:30px 15px 10px;
+    border-bottom:1px solid #ddd;
+}
+
+.bar-group{
+    flex:1;
+    text-align:center;
+}
+
+.bar{
+    width:65%;
+    max-width:55px;
+    margin:auto;
+    background:linear-gradient(var(--red),#f04b55);
+    border-radius:8px 8px 0 0;
+    min-height:20px;
+    position:relative;
+}
+
+.bar span{
+    position:absolute;
+    top:-24px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:11px;
+    font-weight:800;
+}
+
+.bar-label{
+    font-size:12px;
+    margin-top:8px;
+    color:#777;
+}
+
+.calendar{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+}
+
+.day{
+    background:#fff;
+    border:1px solid var(--border);
+    min-height:210px;
+    border-radius:12px;
+    padding:12px;
+}
+
+.day h4{
+    border-bottom:1px solid #eee;
+    padding-bottom:9px;
+    margin-bottom:9px;
+}
+
+.event{
+    background:#fff0f1;
+    border-left:3px solid var(--red);
+    padding:8px;
+    border-radius:6px;
+    font-size:12px;
+    margin-bottom:7px;
+}
+
+.toast{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    background:#161616;
+    color:#fff;
+    padding:15px 20px;
+    border-radius:10px;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+    z-index:999;
+    display:none;
+}
+
+.toast.show{
+    display:block;
+    animation:fade .25s;
+}
+
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:500;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal-overlay.show{
+    display:flex;
+}
+
+.modal{
+    width:min(650px,100%);
+    max-height:90vh;
+    overflow:auto;
+    background:#fff;
+    border-radius:18px;
+    padding:25px;
+}
+
+.modal-head{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.modal-close{
+    border:0;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    font-size:20px;
+}
+
+@media(max-width:1100px){
+    .stats-grid{grid-template-columns:repeat(2,1fr)}
+    .form-grid{grid-template-columns:repeat(2,1fr)}
+    .grid-3{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:850px){
+    .sidebar{
+        transform:translateX(-100%);
+        box-shadow:10px 0 30px rgba(0,0,0,.2);
+    }
+
+    .sidebar.open{
+        transform:translateX(0);
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .top-search{
+        display:none;
+    }
+
+    .grid-2,.grid-3{
+        grid-template-columns:1fr;
+    }
+
+    .calendar{
+        grid-template-columns:1fr;
+    }
+
+    .login-box{
+        grid-template-columns:1fr;
+    }
+
+    .login-brand{
+        display:none;
+    }
+}
+
+@media(max-width:600px){
+    .content{
+        padding:18px 12px;
+    }
+
+    .topbar{
+        padding:0 14px;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-grid,.form-grid.two{
+        grid-template-columns:1fr;
+    }
+
+    .page-head{
+        flex-direction:column;
+    }
+
+    .user-info{
+        display:none;
+    }
+
+    .student-main{
+        flex-direction:column;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= LOGIN ================= -->
+<div id="loginPage" class="login-page">
+    <div class="login-box">
+        <div class="login-brand">
+            <img src="image(1).png" class="logo-login" alt="Academia Corpo Ativo">
+            <h1>Gestão inteligente para uma academia <span>mais ativa.</span></h1>
+            <p>
+                Alunos, planos, pagamentos, treinos, avaliações,
+                acessos e equipamentos integrados em um único sistema.
+            </p>
+        </div>
+
+        <div class="login-form-area">
+            <h2>Bem-vindo!</h2>
+            <p>Acesse o Sistema de Gestão da Academia Corpo Ativo.</p>
+
+            <div class="field">
+                <label>Usuário / E-mail</label>
+                <input id="loginEmail" class="input" value="admin@corpoativo.com.br">
+            </div>
+
+            <div class="field">
+                <label>Senha</label>
+                <input id="loginPassword" type="password" class="input" value="123456">
+            </div>
+
+            <div class="login-options">
+                <label><input type="checkbox" checked> Lembrar-me</label>
+                <a href="#" onclick="toast('Link de recuperação simulado.')">Esqueci minha senha</a>
+            </div>
+
+            <button class="btn btn-primary btn-lg w-100" onclick="login()">
+                Entrar no Sistema
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= APP ================= -->
+<div id="app" class="app d-none">
+
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+        <img src="image(1).png" alt="Corpo Ativo">
+        <small>Sistema de Gestão</small>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-title">Visão geral</div>
+
+        <button class="nav-item active" data-section="dashboard">
+            <span class="nav-icon">⌂</span> Dashboard
+        </button>
+
+        <div class="nav-title">Gestão</div>
+
+        <button class="nav-item" data-section="alunos">
+            <span class="nav-icon">♟</span> Alunos
+        </button>
+
+        <button class="nav-item" data-section="experimentais">
+            <span class="nav-icon">★</span> Aulas Experimentais
+        </button>
+
+        <button class="nav-item" data-section="planos">
+            <span class="nav-icon">▣</span> Planos
+        </button>
+
+        <button class="nav-item" data-section="pagamentos">
+            <span class="nav-icon">$</span> Pagamentos
+        </button>
+
+        <button class="nav-item" data-section="inadimplentes">
+            <span class="nav-icon">!</span> Inadimplentes
+        </button>
+
+        <div class="nav-title">Operação</div>
+
+        <button class="nav-item" data-section="acesso">
+            <span class="nav-icon">✓</span> Controle de Acesso
+        </button>
+
+        <button class="nav-item" data-section="historico-acesso">
+            <span class="nav-icon">◷</span> Histórico de Acessos
+        </button>
+
+        <button class="nav-item" data-section="treinos">
+            <span class="nav-icon">🏋</span> Treinos
+        </button>
+
+        <button class="nav-item" data-section="avaliacoes">
+            <span class="nav-icon">▤</span> Avaliações Físicas
+        </button>
+
+        <button class="nav-item" data-section="equipamentos">
+            <span class="nav-icon">⚙</span> Equipamentos
+        </button>
+
+        <div class="nav-title">Administração</div>
+
+        <button class="nav-item" data-section="relatorios">
+            <span class="nav-icon">▥</span> Relatórios
+        </button>
+    </nav>
+</aside>
+
+<main class="main">
+
+<header class="topbar">
+    <div class="top-left">
+        <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
+        <input class="top-search" value="" placeholder="Pesquisar no sistema...">
+    </div>
+
+    <div class="user-box">
+        <div class="avatar">AD</div>
+        <div class="user-info">
+            <strong>Administrador</strong>
+            <small>Acesso total</small>
+        </div>
+    </div>
+</header>
+
+<div class="content">
+
+<!-- ================= DASHBOARD ================= -->
+<section id="dashboard" class="section active">
+    <div class="page-head">
+        <div>
+            <h1>Dashboard</h1>
+            <p>Olá, Administrador. Confira o resumo da Academia Corpo Ativo.</p>
+        </div>
+
+        <div class="page-actions">
+            <button class="btn btn-outline" onclick="showSection('relatorios')">Ver Relatórios</button>
+            <button class="btn btn-primary" onclick="showSection('aluno-form')">+ Novo Aluno</button>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-top">
+                <span class="stat-label">ALUNOS ATIVOS</span>
+                <span class="stat-icon">♟</span>
+            </div>
+            <div class="stat-value">147</div>
+            <div class="stat-foot">+8 neste mês</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-top">
+                <span class="stat-label">PLANOS A VENCER</span>
+                <span class="stat-icon">◷</span>
+            </div>
+            <div class="stat-value">12</div>
+            <div class="stat-foot">Próximos 15 dias</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-top">
+                <span class="stat-label">INADIMPLENTES</span>
+                <span class="stat-icon">!</span>
+            </div>
+            <div class="stat-value">8</div>
+            <div class="stat-foot">5 com acesso bloqueado</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-top">
+                <span class="stat-label">ACESSOS HOJE</span>
+                <span class="stat-icon">✓</span>
+            </div>
+            <div class="stat-value">63</div>
+            <div class="stat-foot">Pico: 18h às 20h</div>
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <div class="card card-pad">
+            <div class="card-title">
+                <h3>Alertas importantes</h3>
+                <span class="badge badge-danger">7 alertas</span>
+            </div>
+
+            <div class="alert-list">
+                <div class="alert-item">
+                    <span class="alert-dot"></span>
+                    <div>
+                        <strong>12 planos próximos do vencimento</strong>
+                        <div class="muted">Contratos vencem nos próximos 15 dias.</div>
+                    </div>
+                </div>
+
+                <div class="alert-item">
+                    <span class="alert-dot"></span>
+                    <div>
+                        <strong>8 alunos com pagamentos pendentes</strong>
+                        <div class="muted">Verifique a situação financeira.</div>
+                    </div>
+                </div>
+
+                <div class="alert-item">
+                    <span class="alert-dot"></span>
+                    <div>
+                        <strong>3 equipamentos em manutenção</strong>
+                        <div class="muted">Esteira 03, Leg Press 02 e Bike 05.</div>
+                    </div>
+                </div>
+
+                <div class="alert-item">
+                    <span class="alert-dot"></span>
+                    <div>
+                        <strong>4 avaliações agendadas hoje</strong>
+                        <div class="muted">Próxima avaliação às 16:30.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-pad">
+            <div class="card-title">
+                <h3>Distribuição dos planos</h3>
+                <span class="muted">147 contratos</span>
+            </div>
+
+            <div class="progress-row">
+                <div class="progress-head"><span>Mensal</span><strong>63</strong></div>
+                <div class="progress"><span style="width:74%"></span></div>
+            </div>
+
+            <div class="progress-row">
+                <div class="progress-head"><span>Trimestral</span><strong>39</strong></div>
+                <div class="progress"><span style="width:51%"></span></div>
+            </div>
+
+            <div class="progress-row">
+                <div class="progress-head"><span>Semestral</span><strong>28</strong></div>
+                <div class="progress"><span style="width:37%"></span></div>
+            </div>
+
+            <div class="progress-row">
+                <div class="progress-head"><span>Anual</span><strong>17</strong></div>
+                <div class="progress"><span style="width:25%"></span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= ALUNOS ================= -->
+<section id="alunos" class="section">
+    <div class="page-head">
+        <div>
+            <h1>Gestão de Alunos</h1>
+            <p>Cadastro e acompanhamento dos alunos da academia.</p>
+        </div>
+        <button class="btn btn-primary" onclick="showSection('aluno-form')">+ Cadastrar Novo Aluno</button>
+    </div>
+
+    <div class="filters">
+        <input id="studentSearch" class="input" value="" placeholder="Pesquisar por nome, CPF ou matrícula" onkeyup="filterStudents()">
+
+        <select id="studentFilter" class="input" onchange="filterStudents()">
+            <option value="Todos" selected>Todos</option>
+            <option value="Ativo">Ativos</option>
+            <option value="Inativo">Inativos</option>
+            <option value="Vencido">Plano vencido</option>
+        </select>
+    </div>
+
+    <div class="table-card">
+        <div class="table-wrap">
+            <table id="studentTable">
+                <thead>
+                    <tr>
+                        <th>Aluno</th>
+                        <th>CPF</th>
+                        <th>Telefone</th>
+                        <th>Plano</th>
+                        <th>Vencimento</th>
+                        <th>Situação</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-status="Ativo">
+                        <td><div class="person"><span class="person-avatar">GS</span><strong>Gabriela Santos</strong></div></td>
+                        <td>453.281.968-10</td>
+                        <td>(19) 99182-3045</td>
+                        <td>Mensal</td>
+                        <td>31/10/2026</td>
+                        <td><span class="badge badge-success">Ativo</span></td>
+                        <td><button class="action-btn red" onclick="showSection('perfil-aluno')">Ver</button><button class="action-btn" onclick="showSection('aluno-form')">Editar</button></td>
+                    </tr>
+
+                    <tr data-status="Ativo">
+                        <td><div class="person"><span class="person-avatar">LA</span><strong>Lucas Almeida</strong></div></td>
+                        <td>184.729.650-42</td>
+                        <td>(19) 99741-8852</td>
+                        <td>Trimestral</td>
+                        <td>15/12/2026</td>
+                        <td><span class="badge badge-success">Ativo</span></td>
+                        <td><button class="action-btn red" onclick="showSection('perfil-aluno')">Ver</button><button class="action-btn" onclick="showSection('aluno-form')">Editar</button></td>
+                    </tr>
+
+                    <tr data-status="Vencido">
+                        <td><div class="person"><span class="person-avatar">JM</span><strong>João Martins</strong></div></td>
+                        <td>593.810.427-30</td>
+                        <td>(19) 98853-4071</td>
+                        <td>Mensal</td>
+                        <td>30/09/2026</td>
+                        <td><span class="badge badge-danger">Vencido</span></td>
+                        <td><button class="action-btn red" onclick="showSection('perfil-aluno')">Ver</button><button class="action-btn" onclick="showSection('pagamentos')">Regularizar</button></td>
+                    </tr>
+
+                    <tr data-status="Ativo">
+                        <td><div class="person"><span class="person-avatar">AC</span><strong>Ana Carolina</strong></div></td>
+                        <td>718.205.943-61</td>
+                        <td>(19) 99650-1138</td>
+                        <td>Semestral</td>
+                        <td>20/02/2027</td>
+                        <td><span class="badge badge-success">Ativo</span></td>
+                        <td><button class="action-btn red" onclick="showSection('perfil-aluno')">Ver</button><button class="action-btn" onclick="showSection('aluno-form')">Editar</button></td>
+                    </tr>
+
+                    <tr data-status="Inativo">
+                        <td><div class="person"><span class="person-avatar">RM</span><strong>Rafael Mendes</strong></div></td>
+                        <td>362.904.815-55</td>
+                        <td>(19) 98441-2650</td>
+                        <td>Anual</td>
+                        <td>12/08/2026</td>
+                        <td><span class="badge badge-dark">Inativo</span></td>
+                        <td><button class="action-btn red" onclick="showSection('perfil-aluno')">Ver</button><button class="action-btn" onclick="showSection('aluno-form')">Editar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ================= CADASTRO ALUNO ================= -->
+<section id="aluno-form" class="section">
+    <div class="page-head">
+        <div>
+            <h1>Cadastro de Aluno</h1>
+            <p>Preencha os dados pessoais, endereço e informações da matrícula.</p>
+        </div>
+        <button class="btn btn-outline" onclick="showSection('alunos')">← Voltar</button>
+    </div>
+
+    <div class="form-card">
+        <h3>Dados Pessoais</h3>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Nome completo</label>
+                <input class="input" value="Gabriela Santos">
+            </div>
+
+            <div class="form-group">
+                <label>CPF</label>
+                <input class="input" value="453.281.968-10">
+            </div>
+
+            <div class="form-group">
+                <label>RG</label>
+                <input class="input" value="48.502.913-7">
+            </div>
+
+            <div class="form-group">
+                <label>Data de nascimento</label>
+                <input type="date" class="input" value="2002-05-18">
+            </div>
+
+            <div class="form-group">
+                <label>E-mail</label>
+                <input class="input" value="gabriela.santos@email.com">
+            </div>
+
+            <div class="form-group">
+                <label>Telefone</label>
+                <input class="input" value="(19) 99182-3045">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-card">
+        <h3>Endereço</h3>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label>CEP</label>
+                <input class="input" value="13170-120">
+            </div>
+
+            <div class="form-group">
+                <label>Rua</label>
+                <input class="input" value="Rua das Palmeiras">
+            </div>
+
+            <div class="form-group">
+                <label>Número</label>
+                <input class="input" value="245">
+            </div>
+
+            <div class="form-group">
+                <label>Bairro</label>
+                <input class="input" value="Jardim Primavera">
+            </div>
+
+            <div class="form-group">
+                <label>Cidade</label>
+                <input class="input" value="Sumaré">
+            </div>
+
+            <div class="form-group">
+                <label>Estado</label>
+                <select class="input">
+                    <option value="SP" selected>São Paulo</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PR">Paraná</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-card">
+        <h3>Matrícula</h3>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Data da matrícula</label>
+                <input type="date" class="input" value="2026-10-01">
+            </div>
+
+            <div class="form-group">
+                <label>Plano contratado</label>
+                <select class="input">
+                    <option value="Mensal" selected>Mensal - R$ 120,00</option>
+                    <option value="Trimestral">Trimestral - R$ 330,00</option>
+                    <option value="Semestral">Semestral - R$ 600,00</option>
+                    <option value="Anual">Anual - R$ 1.080,00</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Situação</label>
+                <select class="input">
+                    <option value="Ativo" selected>Ativo</option>
+                    <option value="Inativo">Inativo</option>
+                </select>
+            </div>
+
+            <div class="form-group full">
+                <label>Observações</label>
+                <textarea class="input">Aluno cadastrado presencialmente na recepção. Objetivo principal: condicionamento físico e ganho de resistência.</textarea>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-outline" onclick="showSection('alunos')">Cancelar</button>
+            <button class="btn btn-primary" onclick="saveStudent()">Salvar e Vincular Plano</button>
+        </div>
+    </div>
+</section>
+
+<!-- ================= PERFIL ================= -->
+<section id="perfil-aluno" class="section">
+    <div class="page-head">
+        <div>
+            <h1>Perfil do Aluno</h1>
+            <p>Visão integrada das informações do aluno.</p>
+        </div>
+        <button class="btn btn-outline" onclick="showSection('alunos')">← Lista de Alunos</button>
+    </div>
+
+    <div class="profile-header">
+        <div class="profile-avatar">GS</div>
+        <div class="profile-info">
+            <h2>Gabriela Santos</h2>
+            <span class="badge badge-success">Cadastro Ativo</span>
+
+            <div class="profile-meta">
+                <span>CPF: 453.281.968-10</span>
+                <span>Telefone: (19) 99182-3045</span>
+                <span>Matrícula: CA-2026-0147</span>
+                <span>gabriela.santos@email.com</span>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="showSection('aluno-form')">Editar Cadastro</button>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" onclick="profileTab(this,'profileDados')">Dados</button>
+        <button class="tab" onclick="profileTab(this,'profilePlano')">Plano</button>
+        <button class="tab" onclick="profileTab(this,'profilePagamentos')">Pagamentos</button>
+        <button class="tab" onclick="profileTab(this,'profileTreino')">Treino</button>
+        <button class="tab" onclick="profileTab(this,'profileAvaliacoes')">Avaliações</button>
+        <button class="tab" onclick="profileTab(this,'profileAcessos')">Acessos</button>
+    </div>
+
+    <div id="profileDados" class="profile-content card card-pad">
+        <h3>Dados pessoais</h3><br>
+        <div class="grid-3">
+            <div><span class="muted">Nascimento</span><br><strong>18/05/2002</strong></div>
+            <div><span class="muted">RG</span><br><strong>48.502.913-7</strong></div>
+            <div><span class="muted">Matrícula desde</span><br><strong>01/10/2026</strong></div>
+            <div><span class="muted">Cidade</span><br><strong>Sumaré - SP</strong></div>
+            <div><span class="muted">Situação</span><br><strong>Ativa</strong></div>
+            <div><span class="muted">Objetivo</span><br><strong>Condicionamento físico</strong></div>
+        </div>
+    </div>
+
+    <div id="profilePlano" class="profile-content card card-pad d-none">
+        <div class="card-title">
+            <h3>Plano Atual</h3>
+            <button class="btn btn-primary" onclick="openModal('renewModal')">Renovar Plano</button>
+        </div>
+
+        <div class="grid-3">
+            <div><span class="muted">Modalidade</span><br><strong>Mensal</strong></div>
+            <div><span class="muted">Início</span><br><strong>01/10/2026</strong></div>
+            <div><span class="muted">Vencimento</span><br><strong>31/10/2026</strong></div>
+            <div><span class="muted">Valor</span><br><strong>R$ 120,00</strong></div>
+            <div><span class="muted">Status</span><br><span class="badge badge-success">Ativo</span></div>
+            <div><span class="muted">Pagamento</span><br><span class="badge badge-success">Pago</span></div>
+        </div>
+    </div>
+
+    <div id="profilePagamentos" class="profile-content table-card d-none">
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Período</th><th>Valor</th><th>Pagamento</th><th>Forma</th><th>Status</th></tr></thead>
+                <tbody>
+                    <tr><td>Outubro/2026</td><td>R$ 120,00</td><td>01/10/2026</td><td>PIX</td><td><span class="badge badge-success">Pago</span></td></tr>
+                    <tr><td>Setembro/2026</td><td>R$ 120,00</td><td>02/09/2026</td><td>Crédito</td><td><span class="badge badge-success">Pago</span></td></tr>
+                    <tr><td>Agosto/2026</td><td>R$ 120,00</td><td>01/08/2026</td><td>PIX</td><td><span class="badge badge-success">Pago</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="profileTreino" class="profile-content card card-pad d-none">
+        <h3>Treino atual — Treino A</h3><br>
+        <p><strong>Objetivo:</strong> Hipertrofia e condicionamento</p>
+        <p><strong>Professor:</strong> Ricardo Lima</p><br>
+        <button class="btn btn-primary" onclick="showSection('treinos')">Visualizar Ficha Completa</button>
+    </div>
+
+    <div id="profileAvaliacoes" class="profile-content card card-pad d-none">
+        <h3>Última avaliação física</h3><br>
+        <div class="grid-3">
+            <div><span class="muted">Peso</span><br><strong>62,4 kg</strong></div>
+            <div><span class="muted">IMC</span><br><strong>22,9</strong></div>
+            <div><span class="muted">Gordura corporal</span><br><strong>24,1%</strong></div>
+        </div>
+    </div>
+
+    <div id="profileAcessos" class="profile-content table-card d-none">
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Data</th><th>Horário</th><th>Resultado</th></tr></thead>
+                <tbody>
+                    <tr><td>01/10/2026</td><td>07:12</td><td><span class="badge badge-success">Liberado</span></td></tr>
+                    <tr><td>30/09/2026</td><td>18:34</td><td><span class="badge badge-success">Liberado</span></td></tr>
+                    <tr><td>29/09/2026</td><td>07:20</td><td><span class="badge badge-success">Liberado</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ================= EXPERIMENTAIS ================= -->
+<section id="experimentais" class="section">
+    <div class="page-head">
+        <div>
+            <h1>Aulas Experimentais</h1>
+            <p>Controle de visitantes e possíveis novos alunos.</p>
+        </div>
+        <button class="btn btn-primary" onclick="toast('Visitante cadastrado com sucesso!')">+ Novo Visitante</button>
+    </div>
+
+    <div class="table-card">
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Visitante</th><th>Telefone</th><th>Modalidade</th><th>Data</th><th>Horário</th><th>Status</th><th>Ação</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Mariana Lopes</td><td>(19) 99120-4487</td><td>Musculação</td><td>01/10/2026</td><td>18:00</td><td><span class="badge badge-warning">Agendada</span></td><td><button class="action-btn red" onclick="toast('Presença confirmada.')">Confirmar</button></td></tr>
+                    <tr><td>Felipe Costa</td><td>(19) 98821-7720</td><td>Funcional</td><td>01/10/2026</td><td>19:30</td><td><span class="badge badge-warning">Agendada</span></td><td><button class="action-btn red" onclick="toast('Presença confirmada.')">Confirmar</button></td></tr>
+                    <tr><td>Camila Rocha</td><td>(19) 99702-1158</td><td>Musculação</td><td>30/09/2026</td><td>17:00</td><td><span class="badge badge-success">Realizada</span></td><td><button class="action-btn" onclick="showSection('aluno-form')">Converter em Aluno</button></td></tr>
+                    <tr><td>Pedro Henrique</td><td>(19) 99418-6203</td><td>Musculação</td><td>29/09/2026</td><td>08:30</td><td><span class="badge badge-danger">Não compareceu</span></td><td><button class="action-btn">Reagendar</button></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ================= PLANOS ================= -->
+<section id="planos" class="section">
+    <div class="page-head">
+        <div>
+            <h1>Planos e Contratos</h1>
+            <p>Modalidades oferecidas e contratos vinculados aos alunos.</p>
+        </div>
+        <button class="btn btn-primary" onclick="openModal('planModal')">+ Novo Plano</button>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card"><div class="stat-label">PLANOS ATIVOS</div><div class="stat-value">4</div><div class="stat-foot">Modalidades disponíveis</div></div>
+        <div class="stat-card"><div class="stat-label">CONTRATOS ATIVOS</div><div class="stat-value">147</div><div class="stat-foot">Alunos vinculados</div></div>
+        <div class="stat-card"><div class="stat-label">A VENCER</div><div class="stat-value">12</div><div class="stat-foot">Próximos 15 dias</div></div>
+        <div class="stat-card"><div class="stat-label">VENCIDOS</div><div class="stat-value">8</div><div class="stat-foot">Necessitam regularização</div></div>
+    </div>
+
+    <div class="card-title">
+        <h3>Tipos de Planos</h3>
+    </div>
+
+    <div class="table-card" style="margin-bottom:25px">
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Plano</th><th>Vigência</th><th>Valor</th><th>Benefícios</th><th>Situação</th><th>Ações</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Mensal</strong></td><td>1 mês</td><td>R$ 120,00</td><td>Acesso à musculação</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn">Editar</button></td></tr>
+                    <tr><td><strong>Trimestral</strong></td><td>3 meses</td><td>R$ 330,00</td><td>Musculação + avaliação</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn">Editar</button></td></tr>
+                    <tr><td><strong>Semestral</strong></td><td>6 meses</td><td>R$ 600,00</td><td>Musculação + avaliação</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn">Editar</button></td></tr>
+                    <tr><td><strong>Anual</strong></td><td>12 meses</td><td>R$ 1.080,00</td><td>Plano completo</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn">Editar</button></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card-title"><h3>Contratos dos Alunos</h3></div>
+
+    <div class="table-card">
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Aluno</th><th>Plano</th><th>Início</th><th>Vencimento</th><th>Situação</th><th>Ação</th></tr></thead>
+                <tbody>
+                    <tr><td>Gabriela Santos</td><td>Mensal</td><td>01/10/2026</td><td>31/10/2026</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn red" onclick="openModal('renewModal')">Renovar</button></td></tr>
+                    <tr><td>Lucas Almeida</td><td>Trimestral</td><td>15/09/2026</td><td>15/12/2026</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn red" onclick="openModal('renewModal')">Renovar</button></td></tr>
+                    <tr><td>Ana Carolina</td><td>Semestral</td><td>20/08/2026</td><td>20/02/2027</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn red" onclick="openModal('renewModal')">Renovar</button></td></tr>
+                    <tr><td>João Martins</td><td>Mensal</td><td>01/09/2026</td><td>30/09/2026</td><td><span class="badge badge-danger">Vencido</span></td><td><button class="action-btn red" onclick="openModal('renewModal')">Regularizar</button></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ================= PAGAMENTOS ================= -->
+<section id="pagamentos" class="section">
+    <div class="page-head">
+        <div>
+            <h1>Pagamentos</h1>
+            <p>Controle financeiro dos contratos da academia.</p>
+        </div>
+        <button class="btn btn-primary" onclick="openModal('paymentModal')">+ Registrar Pagamento</button>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card"><div class="stat-label">RECEBIMENTOS DO MÊS</div><div class="stat-value">R$ 18,4 mil</div><div class="stat-foot">Outubro/2026</div></div>
+        <div class="stat-card"><div class="stat-label">PAGAMENTOS PENDENTES</div><div class="stat-value">11</div><div class="stat-foot">R$ 1.640,00</div></div>
+        <div class="stat-card"><div class="stat-label">INADIMPLENTES</div><div class="stat-value">8</div><div class="stat-foot">5 acessos bloqueados</div></div>
+        <div class="stat-card"><div class="stat-label">PAGOS HOJE</div><div class="stat-value">9</div><div class="stat-foot">R$ 1.280,00</div></div>
+    </div>
+
+    <div class="filters">
+        <input class="input" value="" placeholder="Pesquisar aluno">
+        <select class="input"><option selected>Todos os status</option><option>Pago</option><option>Pendente</option><option>Vencido</option></select>
+        <input type="month" class="input" value="2026-10">
+    </div>
+
+    <div class="table-card">
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Aluno</th><th>Plano</th><th>Vencimento</th><th>Valor</th><th>Pagamento</th><th>Status</th><th>Ação</th></tr></thead>
+                <tbody>
+                    <tr><td>Gabriela Santos</td><td>Mensal</td><td>31/10/2026</td><td>R$ 120,00</td><td>01/10/2026</td><td><span class="badge badge-success">Pago</span></td><td><button class="action-btn">Recibo</button></td></tr>
+                    <tr><td>Lucas Almeida</td><td>Trimestral</td><td>15/12/2026</td><td>R$ 330,00</td><td>15/09/2026</td><td><span class="badge badge-success">Pago</span></td><td><button class="action-btn">Recibo</button></td></tr>
+                    <tr><td>João Martins</td><td>Mensal</td><td>30/09/2026</td><td>R$ 120,00</td><td>—</td><td><span class="badge badge-danger">Vencido</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Registrar</button></td></tr>
+                    <tr><td>Marcos Silva</td><td>Mensal</td><td>05/10/2026</td><td>R$ 120,00</td><td>—</td><td><span class="badge badge-warning">Pendente</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Registrar</button></td></tr>
+                    <tr><td>Fernanda Alves</td><td>Anual</td><td>17/08/2027</td><td>R$ 1.080,00</td><td>17/08/2026</td><td><span class="badge badge-success">Pago</span></td><td><button class="action-btn">Recibo</button></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ================= INADIMPLENTES ================= -->
+<section id="inadimplentes" class="section">
+    <div class="page-head">
+        <div>
+            <h1>Alunos Inadimplentes</h1>
+            <p>Acompanhe vencimentos, tolerância e bloqueios de acesso.</p>
+        </div>
+        <button class="btn btn-primary" onclick="openModal('paymentModal')">Registrar Pagamento</button>
+    </div>
+
+    <div class="table-card danger-table">
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Aluno</th><th>Telefone</th><th>Plano</th><th>Vencimento</th><th>Atraso</th><th>Situação</th><th>Ação</th></tr></thead>
+                <tbody>
+                    <tr><td>João Martins</td><td>(19) 98853-4071</td><td>Mensal</td><td>30/09/2026</td><td>1 dia</td><td><span class="badge badge-warning">Tolerância</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Regularizar</button></td></tr>
+                    <tr><td>Renata Souza</td><td>(19) 99781-2206</td><td>Mensal</td><td>18/09/2026</td><td>13 dias</td><td><span class="badge badge-danger">Acesso bloqueado</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Regularizar</button></td></tr>
+                    <tr><td>Carlos Eduardo</td><td>(19) 98442-6185</td><td>Trimestral</td><td>15/09/2026</td><td>16 dias</td><td><span class="badge badge-danger">Acesso bloqueado</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Regularizar</button></td></tr>
+                    <tr><td>Patrícia Lima</td><td>(19) 99314-6080</td><td>Mensal</td><td>25/09/2026</td><td>6 dias</td><td><span class="badge badge-warning">Tolerância</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Regularizar</button></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ================= ACESSO ================= -->
+<section id="acesso" class="section">
+    <div class="page-head">
+        <div>
+            <h1>Controle de Acesso</h1>
+            <p>Validação automática do cadastro e situação do plano.</p>
+        </div>
+        <button class="btn btn-outline" onclick="showSection('historico-acesso')">Histórico de Acessos</button>
+    </div>
+
+    <div class="access-panel">
+        <div class="access-search">
+            <h2>Validar Entrada</h2>
+            <p>Digite ou leia o CPF, matrícula ou carteirinha do aluno.</p>
+            <input id="accessInput" class="input" value="45328196810">
+            <button class="btn btn-primary btn-lg" onclick="validateAccess()">Consultar Aluno</button>
+        </div>
+
+        <div class="access-student" id="accessStudent">
+            <div class="student-main">
+                <div class="student-photo">GS</div>
+                <div>
+                    <h2>Gabriela Santos</h2>
+                    <p class="muted">Matrícula CA-2026-0147</p><br>
+                    <span class="badge badge-success">PLANO ATIVO</span>
+                </div>
+            </div>
+
+            <div class="grid-3">
+                <div><span class="muted">Plano</span><br><strong>Mensal</strong></div>
+                <div><span class="muted">Vencimento</span><br><strong>31/10/2026</strong></div>
+                <div><span class="muted">Financeiro</span><br><strong>Regular</strong></div>
+            </div>
+
+            <div class="access-status">✓ ACESSO LIBERADO</div>
+
+            <button class="access-button" onclick="registerAccess()">
+                REGISTRAR ENTRADA
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- ================= HISTÓRICO ACESSO ================= -->
+<section id="historico-acesso" class="section">
+    <div class="page-head">
+        <div>
+            <h1>Histórico de Acessos</h1>
+            <p>Entradas e tentativas de acesso registradas hoje.</p>
+        </div>
+        <button class="btn btn-primary" onclick="showSection('acesso')">+ Registrar Entrada</button>
+    </div>
+
+    <div class="filters">
+        <input type="date" class="input" value="2026-10-01">
+        <input class="input" value="" placeholder="Pesquisar aluno">
+        <select class="input"><option selected>Todos</option><option>Liberado</option><option>Bloqueado</option></select>
+    </div>
+
+    <div class="table-card">
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Data</th><th>Hora</th><th>Aluno</th><th>Plano</th><th>Resultado</th></tr></thead>
+                <tbody id="accessHistory">
+                    <tr><td>01/10/2026</td><td>12:16</td><td>Gabriela Santos</td><td>Mensal</td><td><span class="badge badge-success">Liberado</span></td></tr>
+                    <tr><td>01/10/2026</td><td>11:52</td><td>Lucas Almeida</td><td>Trimestral</td><td><span class="badge badge-success">Liberado</span></td></tr>
+                    <tr><td>01/10/2026</td><td>10:34</td><td>João Martins</td><td>Mensal</td><td><span class="badge badge-danger">Bloqueado</span></td></tr>
+                    <tr><td>01/10/2026</td><td>09:21</td><td>Ana Carolina</td><td>Semestral</td><td><span class="badge badge-success">Liberado</span></td></tr>
+                    <tr><td>01/10/2026</td><td>08:05</td><td>Fernanda Alves</td><td>Anual</td><td><span class="badge badge-success">Liberado</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ================= TREINOS ================= -->
+<section id="treinos" class="section">
+    <div class="page-head">
+        <div>
+            <h1>Treinos</h1>
+            <p>Fichas personalizadas e acompanhamento dos alunos.</p>
+        </div>
+        <button class="btn btn-primary" onclick="showSection('treino-form')">+ Criar Ficha de Treino</button>
+    </div>
+
+    <div class="filters">
+        <input class="input" value="" placeholder="Pesquisar aluno">
+        <select class="input"><option selected>Todos os professores</option><option>Ricardo Lima</option><option>Juliana Prado</option><option>Bruno Alves</option></select>
+    </div>
+
+    <div class="table-card">
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Aluno</th><th>Objetivo</th><th>Professor</th><th>Treino</th><th>Atualização</th><th>Ação</th></tr></thead>
+                <tbody>
+                    <tr><td>Gabriela Santos</td><td>Hipertrofia</td><td>Ricardo Lima</td><td>A/B/C</td><td>20/09/2026</td><td><button class="action-btn red" onclick="showSection('treino-form')">Ver treino</button></td></tr>
+                    <tr><td>Lucas Almeida</td><td>Condicionamento</td><td>Juliana Prado</td><td>A/B</td><td>15/09/2026</td><td><button class="action-btn red" onclick="showSection('treino-form')">Ver treino</button></td></tr>
+                    <tr><td>Ana Carolina</td><td>Emagrecimento</td><td>Bruno Alves</td><td>A/B/C</td><td>25/09/2026</td><td><button class="action-btn red" onclick="showSection('treino-form')">Ver treino</button></td></tr>
+                    <tr><td>Fernanda Alves</td><td>Hipertrofia</td><td>Ricardo Lima</td><td>A/B/C/D</td><td>10/09/2026</td><td><button class="action-btn red" onclick="showSection('treino-form')">Ver treino</button></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ================= TREINO FORM ================= -->
+<section id="treino-form" class="section">
+    <div class="page-head">
+        <div>
+            <h1>Ficha de Treino</h1>
+            <p>Criação e edição do treino individual do aluno.</p>
+        </div>
+        <button class="btn btn-outline" onclick="showSection('treinos')">← Voltar</button>
+    </div>
+
+    <div class="form-card">
+        <h3>Identificação</h3>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Aluno</label>
+                <select class="input"><option selected>Gabriela Santos</option><option>Lucas Almeida</option><option>Ana Carolina</option></select>
+            </div>
+
+            <div class="form-group">
+                <label>Professor</label>
+                <select class="input"><option selected>Ricardo Lima</option><option>Juliana Prado</option><option>Bruno Alves</option></select>
+            </div>
+
+            <div class="form-group">
+                <label>Objetivo</label>
+                <input class="input" value="Hipertrofia e condicionamento">
+            </div>
+
+            <div class="form-group">
+                <label>Data de elaboração</label>
+                <input type="date" class="input" value="2026-09-20">
+            </div>
+
+            <div class="form-group">
+                <label>Divisão</label>
+                <select class="input"><option selected>Treino A</option><option>Treino B</option><option>Treino C</option></select>
+            </div>
+
+            <div class="form-group">
+                <label>Modelo</label>
+                <select class="input"><option selected>Hipertrofia - Intermediário</option><option>Condicionamento</option><option>Emagrecimento</option></select>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-card">
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Exercício</th><th>Séries</th><th>Repetições</th><th>Carga</th><th>Descanso</th><th>Ação</th></tr></thead>
+                <tbody>
+                    <tr><td>Supino reto</td><td>4</td><td>10</td><td>30 kg</td><td>60 s</td><td><button class="action-btn">Editar</button></td></tr>
+                    <tr><td>Crucifixo inclinado</td><td>3</td><td>12</td><td>10 kg</td><td>45 s</td><td><button class="action-btn">Editar</button></td></tr>
+                    <tr><td>Desenvolvimento</td><td>4</td><td>10</td><td>16 kg</td><td>60 s</td><td><button class="action-btn">Editar</button></td></tr>
+                    <tr><td>Elevação lateral</td><td>3</td><td>12</td><td>7 kg</td><td>45 s</td><td><button class="action-btn">Editar</button></td></tr>
+                    <tr><td>Tríceps corda</td><td>3</td><td>12</td><td>20 kg</td><td>45 s</td><td><button class="action-btn">Editar</button></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="form-card" style="margin-top:20px">
+        <div class="form-group">
+            <label>Observações do professor</label>
+            <textarea class="input">Manter execução controlada, priorizando amplitude completa. Aumentar a carga apenas quando completar todas as repetições com técnica adequada.</textarea>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-outline" onclick="toast('Novo exercício adicionado à ficha.')">+ Adicionar Exercício</button>
+            <button class="btn btn-primary" onclick="toast('Treino salvo com sucesso!')">Salvar Treino</button>
+        </div>
+    </div>
+</section>
+
+<!-- ================= AVALIAÇÕES ================= -->
+<section id="avaliacoes" class="section">
+    <div class="page-head">
+        <div>
+            <h1>Avaliações Físicas</h1>
+            <p>Agenda, registros corporais e acompanhamento da evolução.</p>
+        </div>
+        <div class="page-actions">
+            <button class="btn btn-outline" onclick="openModal('evaluationModal')">Registrar Avaliação</button>
+            <button class="btn btn-primary" onclick="openModal('scheduleModal')">+ Agendar Avaliação</button>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card"><div class="stat-label">AVALIAÇÕES HOJE</div><div class="stat-value">4</div><div class="stat-foot">2 realizadas</div></div>
+        <div class="stat-card"><div class="stat-label">ESTA SEMANA</div><div class="stat-value">18</div><div class="stat-foot">Agendamentos</div></div>
+        <div class="stat-card"><div class="stat-label">PRÓXIMA</div><div class="stat-value">16:30</div><div class="stat-foot">Mariana Costa</div></div>
+        <div class="stat-card"><div class="stat-label">SALAS LIVRES</div><div class="stat-value">1</div><div class="stat-foot">Sala de Avaliação 02</div></div>
+    </div>
+
+    <div class="card card-pad" style="margin-bottom:20px">
+        <div class="card-title">
+            <h3>Agenda da Semana</h3>
+            <div>
+                <button class="action-btn">Hoje</button>
+                <button class="action-btn red">Semana</button>
+                <button class="action-btn">Mês</button>
+            </div>
+        </div>
+
+        <div class="calendar">
+            <div class="day">
+                <h4>Segunda 28/09</h4>
+                <div class="event"><strong>09:00</strong><br>Lucas Almeida<br>Ricardo • Sala 1</div>
+                <div class="event"><strong>15:00</strong><br>Ana Carolina<br>Juliana • Sala 1</div>
+            </div>
+
+            <div class="day">
+                <h4>Terça 29/09</h4>
+                <div class="event"><strong>10:30</strong><br>Fernanda Alves<br>Bruno • Sala 2</div>
+                <div class="event"><strong>18:00</strong><br>Paulo César<br>Ricardo • Sala 1</div>
+            </div>
+
+            <div class="day">
+                <h4>Quarta 30/09</h4>
+                <div class="event"><strong>08:30</strong><br>Marcos Silva<br>Juliana • Sala 2</div>
+                <div class="event"><strong>17:30</strong><br>Renata Souza<br>Bruno • Sala 1</div>
+            </div>
+
+            <div class="day">
+                <h4>Hoje 01/10</h4>
+                <div class="event"><strong>09:00</strong><br>Gabriela Santos<br>Ricardo • Sala 1</div>
+                <div class="event"><strong>16:30</strong><br>Mariana Costa<br>Juliana • Sala 2</div>
+            </div>
+
+            <div class="day">
+                <h4>Sexta 02/10</h4>
+                <div class="event"><strong>10:00</strong><br>Felipe Gomes<br>Bruno • Sala 1</div>
+                <div class="event"><strong>14:30</strong><br>Carla Lima<br>Ricardo • Sala 2</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <div class="card card-pad">
+            <div class="card-title">
+                <h3>Evolução — Gabriela Santos</h3>
+                <button class="action-btn red">Comparar Avaliações</button>
+            </div>
+
+            <div class="report-chart">
+                <div class="bar-group"><div class="bar" style="height:82%"><span>65,2</span></div><div class="bar-label">Mai</div></div>
+                <div class="bar-group"><div class="bar" style="height:75%"><span>64,1</span></div><div class="bar-label">Jun</div></div>
+                <div class="bar-group"><div class="bar" style="height:69%"><span>63,5</span></div><div class="bar-label">Jul</div></div>
+                <div class="bar-group"><div class="bar" style="height:63%"><span>62,9</span></div><div class="bar-label">Ago</div></div>
+                <div class="bar-group"><div class="bar" style="height:58%"><span>62,4</span></div><div class="bar-label">Set</div></div>
+            </div>
+
+            <p class="muted" style="margin-top:12px;text-align:center">Evolução do peso corporal (kg)</p>
+        </div>
+
+        <div class="card card-pad">
+            <h3>Última Avaliação</h3><br>
+
+            <div class="grid-2">
+                <div><span class="muted">Peso</span><h2>62,4 kg</h2></div>
+                <div><span class="muted">Altura</span><h2>1,65 m</h2></div>
+                <div><span class="muted">IMC</span><h2>22,9</h2></div>
+                <div><span class="muted">Gordura</span><h2>24,1%</h2></div>
+            </div><br>
+
+            <span class="badge badge-success">↓ 2,8 kg desde maio</span>
+        </div>
+    </div>
+</section>
+
+<!-- ================= EQUIPAMENTOS ================= -->
+<section id="equipamentos" class="section">
+    <div class="page-head">
+        <div>
+            <h1>Equipamentos e Manutenção</h1>
+            <p>Controle de disponibilidade, conservação e reparos.</p>
+        </div>
+        <button class="btn btn-primary" onclick="openModal('equipmentModal')">+ Cadastrar Equipamento</button>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card"><div class="stat-label">TOTAL</div><div class="stat-value">84</div><div class="stat-foot">Equipamentos cadastrados</div></div>
+        <div class="stat-card"><div class="stat-label">DISPONÍVEIS</div><div class="stat-value">78</div><div class="stat-foot">Funcionamento normal</div></div>
+        <div class="stat-card"><div class="stat-label">EM MANUTENÇÃO</div><div class="stat-value">3</div><div class="stat-foot">Temporariamente indisponíveis</div></div>
+        <div class="stat-card"><div class="stat-label">ATENÇÃO</div><div class="stat-value">3</div><div class="stat-foot">Necessitam inspeção</div></div>
+    </div>
+
+    <div class="table-card" style="margin-bottom:20px">
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Equipamento</th><th>Categoria</th><th>Localização</th><th>Estado</th><th>Situação</th><th>Ações</th></tr></thead>
+                <tbody>
+                    <tr><td>Esteira 01</td><td>Cardio</td><td>Sala Cardio</td><td>Excelente</td><td><span class="badge badge-success">Disponível</span></td><td><button class="action-btn">Ver</button><button class="action-btn red" onclick="fillMaintenance('Esteira 01')">Problema</button></td></tr>
+                    <tr><td>Esteira 03</td><td>Cardio</td><td>Sala Cardio</td><td>Regular</td><td><span class="badge badge-warning">Em manutenção</span></td><td><button class="action-btn">Histórico</button></td></tr>
+                    <tr><td>Leg Press 02</td><td>Musculação</td><td>Sala Principal</td><td>Regular</td><td><span class="badge badge-warning">Em manutenção</span></td><td><button class="action-btn">Histórico</button></td></tr>
+                    <tr><td>Supino Reto 01</td><td>Musculação</td><td>Sala Principal</td><td>Bom</td><td><span class="badge badge-success">Disponível</span></td><td><button class="action-btn">Ver</button><button class="action-btn red" onclick="fillMaintenance('Supino Reto 01')">Problema</button></td></tr>
+                    <tr><td>Bike 05</td><td>Cardio</td><td>Sala Cardio</td><td>Ruim</td><td><span class="badge badge-danger">Em manutenção</span></td><td><button class="action-btn">Histórico</button></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="form-card quick-maintenance">
+        <h3>Abrir Ordem de Manutenção</h3>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Equipamento</label>
+                <select id="maintenanceEquipment" class="input">
+                    <option selected>Esteira 01</option>
+                    <option>Supino Reto 01</option>
+                    <option>Crossover 02</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Data da ocorrência</label>
+                <input type="date" class="input" value="2026-10-01">
+            </div>
+
+            <div class="form-group">
+                <label>Responsável pela identificação</label>
+                <input class="input" value="Carlos - Recepção">
+            </div>
+
+            <div class="form-group">
+                <label>Componente afetado</label>
+                <input class="input" value="Correia / sistema de tração">
+            </div>
+
+            <div class="form-group">
+                <label>Tipo</label>
+                <select class="input"><option selected>Corretiva</option><option>Preventiva</option></select>
+            </div>
+
+            <div class="form-group">
+                <label>Prioridade</label>
+                <select class="input"><option selected>Alta</option><option>Média</option><option>Baixa</option></select>
+            </div>
+
+            <div class="form-group full">
+                <label>Problema identificado</label>
+                <textarea class="input">Equipamento apresenta ruído durante o funcionamento e oscilação na velocidade da correia.</textarea>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-primary" onclick="maintenance()">Abrir Ordem de Manutenção</button>
+        </div>
+    </div>
+</section>
+
+<!-- ================= RELATÓRIOS ================= -->
+<section id="relatorios" class="section">
+    <div class="page-head">
+        <div>
+            <h1>Relatórios Gerenciais</h1>
+            <p>Indicadores consolidados para apoio à gestão da academia.</p>
+        </div>
+        <div class="page-actions">
+            <button class="btn btn-outline" onclick="toast('Visualização preparada para impressão.')">Imprimir</button>
+            <button class="btn btn-primary" onclick="toast('Exportação para PDF simulada com sucesso!')">Exportar PDF</button>
+        </div>
+    </div>
+
+    <div class="filters">
+        <div class="form-group">
+            <label>Data inicial</label>
+            <input type="date" class="input" value="2026-09-01">
+        </div>
+
+        <div class="form-group">
+            <label>Data final</label>
+            <input type="date" class="input" value="2026-10-01">
+        </div>
+
+        <div class="form-group">
+            <label>Relatório</label>
+            <select class="input">
+                <option selected>Visão Geral</option>
+                <option>Alunos Ativos</option>
+                <option>Planos a Vencer</option>
+                <option>Inadimplentes</option>
+                <option>Evolução Física</option>
+                <option>Manutenções</option>
+            </select>
+        </div>
+
+        <button class="btn btn-primary" onclick="toast('Relatório atualizado.')">Gerar Relatório</button>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card"><div class="stat-label">FATURAMENTO</div><div class="stat-value">R$ 18.420</div><div class="stat-foot">Período selecionado</div></div>
+        <div class="stat-card"><div class="stat-label">NOVOS ALUNOS</div><div class="stat-value">18</div><div class="stat-foot">+12% vs. período anterior</div></div>
+        <div class="stat-card"><div class="stat-label">FREQUÊNCIA</div><div class="stat-value">1.624</div><div class="stat-foot">Entradas registradas</div></div>
+        <div class="stat-card"><div class="stat-label">TICKET MÉDIO</div><div class="stat-value">R$ 125,30</div><div class="stat-foot">Por aluno ativo</div></div>
+    </div>
+
+    <div class="grid-2">
+        <div class="card card-pad">
+            <div class="card-title"><h3>Faturamento Mensal</h3><span class="badge badge-success">+9,8%</span></div>
+
+            <div class="report-chart">
+                <div class="bar-group"><div class="bar" style="height:52%"><span>13,2k</span></div><div class="bar-label">Mai</div></div>
+                <div class="bar-group"><div class="bar" style="height:60%"><span>14,5k</span></div><div class="bar-label">Jun</div></div>
+                <div class="bar-group"><div class="bar" style="height:68%"><span>15,7k</span></div><div class="bar-label">Jul</div></div>
+                <div class="bar-group"><div class="bar" style="height:76%"><span>16,9k</span></div><div class="bar-label">Ago</div></div>
+                <div class="bar-group"><div class="bar" style="height:83%"><span>17,8k</span></div><div class="bar-label">Set</div></div>
+                <div class="bar-group"><div class="bar" style="height:90%"><span>18,4k</span></div><div class="bar-label">Out</div></div>
+            </div>
+        </div>
+
+        <div class="card card-pad">
+            <div class="card-title"><h3>Frequência por Horário</h3><span class="muted">Últimos 30 dias</span></div>
+
+            <div class="progress-row"><div class="progress-head"><span>06h - 09h</span><strong>68%</strong></div><div class="progress"><span style="width:68%"></span></div></div>
+            <div class="progress-row"><div class="progress-head"><span>09h - 12h</span><strong>42%</strong></div><div class="progress"><span style="width:42%"></span></div></div>
+            <div class="progress-row"><div class="progress-head"><span>12h - 15h</span><strong>31%</strong></div><div class="progress"><span style="width:31%"></span></div></div>
+            <div class="progress-row"><div class="progress-head"><span>15h - 18h</span><strong>57%</strong></div><div class="progress"><span style="width:57%"></span></div></div>
+            <div class="progress-row"><div class="progress-head"><span>18h - 21h</span><strong>91%</strong></div><div class="progress"><span style="width:91%"></span></div></div>
+        </div>
+    </div>
+</section>
+
+</div>
+</main>
+</div>
+
+<!-- ================= MODAIS ================= -->
+
+<div id="paymentModal" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-head">
+            <div>
+                <h2>Registrar Pagamento</h2>
+                <p class="muted">Vinculado ao contrato do aluno.</p>
+            </div>
+            <button class="modal-close" onclick="closeModal('paymentModal')">×</button>
+        </div>
+
+        <div class="form-grid two">
+            <div class="form-group full">
+                <label>Aluno</label>
+                <select class="input">
+                    <option selected>João Martins</option>
+                    <option>Gabriela Santos</option>
+                    <option>Lucas Almeida</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Plano</label>
+                <input class="input" value="Mensal">
+            </div>
+
+            <div class="form-group">
+                <label>Vencimento</label>
+                <input class="input" value="30/09/2026">
+            </div>
+
+            <div class="form-group">
+                <label>Valor pago</label>
+                <input class="input" value="R$ 120,00">
+            </div>
+
+            <div class="form-group">
+                <label>Data do pagamento</label>
+                <input type="date" class="input" value="2026-10-01">
+            </div>
+
+            <div class="form-group">
+                <label>Forma de pagamento</label>
+                <select class="input">
+                    <option selected>PIX</option>
+                    <option>Dinheiro</option>
+                    <option>Débito</option>
+                    <option>Crédito</option>
+                    <option>Transferência</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Período referente</label>
+                <input class="input" value="Outubro/2026">
+            </div>
+
+            <div class="form-group full">
+                <label>Observações</label>
+                <textarea class="input">Pagamento recebido na recepção para regularização do plano.</textarea>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-outline" onclick="closeModal('paymentModal')">Cancelar</button>
+            <button class="btn btn-primary" onclick="registerPayment()">Registrar Pagamento</button>
+        </div>
+    </div>
+</div>
+
+<div id="renewModal" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-head">
+            <div>
+                <h2>Renovação de Plano</h2>
+                <p class="muted">Gabriela Santos • Mensal</p>
+            </div>
+            <button class="modal-close" onclick="closeModal('renewModal')">×</button>
+        </div>
+
+        <div class="form-grid two">
+            <div class="form-group">
+                <label>Plano atual</label>
+                <input class="input" value="Mensal">
+            </div>
+
+            <div class="form-group">
+                <label>Vencimento atual</label>
+                <input class="input" value="31/10/2026">
+            </div>
+
+            <div class="form-group">
+                <label>Novo plano</label>
+                <select class="input">
+                    <option selected>Mensal - R$ 120,00</option>
+                    <option>Trimestral - R$ 330,00</option>
+                    <option>Semestral - R$ 600,00</option>
+                    <option>Anual - R$ 1.080,00</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Nova data de início</label>
+                <input type="date" class="input" value="2026-11-01">
+            </div>
+
+            <div class="form-group">
+                <label>Novo vencimento</label>
+                <input class="input" value="30/11/2026">
+            </div>
+
+            <div class="form-group">
+                <label>Valor</label>
+                <input class="input" value="R$ 120,00">
+            </div>
+
+            <div class="form-group full">
+                <label>Forma de pagamento</label>
+                <select class="input">
+                    <option selected>PIX</option>
+                    <option>Dinheiro</option>
+                    <option>Débito</option>
+                    <option>Crédito</option>
+                    <option>Transferência</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-outline" onclick="closeModal('renewModal')">Cancelar</button>
+            <button class="btn btn-primary" onclick="renewPlan()">Confirmar Renovação</button>
+        </div>
+    </div>
+</div>
+
+<div id="planModal" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-head">
+            <h2>Cadastrar Plano</h2>
+            <button class="modal-close" onclick="closeModal('planModal')">×</button>
+        </div>
+
+        <div class="form-grid two">
+            <div class="form-group">
+                <label>Nome do plano</label>
+                <input class="input" value="Mensal Premium">
+            </div>
+
+            <div class="form-group">
+                <label>Valor</label>
+                <input class="input" value="R$ 160,00">
+            </div>
+
+            <div class="form-group">
+                <label>Vigência</label>
+                <select class="input"><option selected>1 mês</option><option>3 meses</option><option>6 meses</option><option>12 meses</option></select>
+            </div>
+
+            <div class="form-group">
+                <label>Situação</label>
+                <select class="input"><option selected>Ativo</option><option>Inativo</option></select>
+            </div>
+
+            <div class="form-group full">
+                <label>Descrição / Benefícios</label>
+                <textarea class="input">Acesso completo à musculação, avaliação física e acompanhamento mensal.</textarea>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-outline" onclick="closeModal('planModal')">Cancelar</button>
+            <button class="btn btn-primary" onclick="genericSave('planModal','Plano salvo com sucesso!')">Salvar Plano</button>
+        </div>
+    </div>
+</div>
+
+<div id="scheduleModal" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-head">
+            <h2>Agendar Avaliação</h2>
+            <button class="modal-close" onclick="closeModal('scheduleModal')">×</button>
+        </div>
+
+        <div class="form-grid two">
+            <div class="form-group full">
+                <label>Aluno</label>
+                <select class="input"><option selected>Gabriela Santos</option><option>Lucas Almeida</option><option>Ana Carolina</option></select>
+            </div>
+
+            <div class="form-group">
+                <label>Professor</label>
+                <select class="input"><option selected>Ricardo Lima</option><option>Juliana Prado</option></select>
+            </div>
+
+            <div class="form-group">
+                <label>Sala</label>
+                <select class="input"><option selected>Sala de Avaliação 01</option><option>Sala de Avaliação 02</option></select>
+            </div>
+
+            <div class="form-group">
+                <label>Data</label>
+                <input type="date" class="input" value="2026-10-05">
+            </div>
+
+            <div class="form-group">
+                <label>Horário</label>
+                <input type="time" class="input" value="15:30">
+            </div>
+        </div>
+
+        <p style="margin-top:15px"><span class="badge badge-success">✓ Professor e sala disponíveis</span></p>
+
+        <div class="form-actions">
+            <button class="btn btn-outline" onclick="closeModal('scheduleModal')">Cancelar</button>
+            <button class="btn btn-primary" onclick="genericSave('scheduleModal','Avaliação agendada sem conflitos!')">Confirmar Agendamento</button>
+        </div>
+    </div>
+</div>
+
+<div id="evaluationModal" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-head">
+            <h2>Registrar Avaliação Física</h2>
+            <button class="modal-close" onclick="closeModal('evaluationModal')">×</button>
+        </div>
+
+        <div class="form-grid two">
+            <div class="form-group">
+                <label>Aluno</label>
+                <select class="input"><option selected>Gabriela Santos</option><option>Lucas Almeida</option></select>
+            </div>
+
+            <div class="form-group">
+                <label>Professor</label>
+                <select class="input"><option selected>Ricardo Lima</option><option>Juliana Prado</option></select>
+            </div>
+
+            <div class="form-group">
+                <label>Peso</label>
+                <input id="weight" class="input" value="62.4" oninput="calculateBMI()">
+            </div>
+
+            <div class="form-group">
+                <label>Altura</label>
+                <input id="height" class="input" value="1.65" oninput="calculateBMI()">
+            </div>
+
+            <div class="form-group">
+                <label>IMC calculado</label>
+                <input id="bmi" class="input" value="22.9">
+            </div>
+
+            <div class="form-group">
+                <label>Gordura corporal</label>
+                <input class="input" value="24.1%">
+            </div>
+
+            <div class="form-group">
+                <label>Cintura</label>
+                <input class="input" value="72 cm">
+            </div>
+
+            <div class="form-group">
+                <label>Quadril</label>
+                <input class="input" value="96 cm">
+            </div>
+
+            <div class="form-group">
+                <label>Coxa</label>
+                <input class="input" value="56 cm">
+            </div>
+
+            <div class="form-group">
+                <label>Braço</label>
+                <input class="input" value="29 cm">
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-outline" onclick="closeModal('evaluationModal')">Cancelar</button>
+            <button class="btn btn-primary" onclick="genericSave('evaluationModal','Avaliação física registrada!')">Salvar Avaliação</button>
+        </div>
+    </div>
+</div>
+
+<div id="equipmentModal" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-head">
+            <h2>Cadastrar Equipamento</h2>
+            <button class="modal-close" onclick="closeModal('equipmentModal')">×</button>
+        </div>
+
+        <div class="form-grid two">
+            <div class="form-group">
+                <label>Equipamento</label>
+                <input class="input" value="Cadeira Extensora 04">
+            </div>
+
+            <div class="form-group">
+                <label>Categoria</label>
+                <select class="input"><option selected>Musculação</option><option>Cardio</option><option>Funcional</option></select>
+            </div>
+
+            <div class="form-group">
+                <label>Localização</label>
+                <input class="input" value="Sala Principal">
+            </div>
+
+            <div class="form-group">
+                <label>Data de aquisição</label>
+                <input type="date" class="input" value="2026-08-15">
+            </div>
+
+            <div class="form-group">
+                <label>Estado de conservação</label>
+                <select class="input"><option selected>Excelente</option><option>Bom</option><option>Regular</option><option>Ruim</option></select>
+            </div>
+
+            <div class="form-group">
+                <label>Situação</label>
+                <select class="input"><option selected>Disponível</option><option>Atenção</option><option>Em manutenção</option></select>
+            </div>
+
+            <div class="form-group full">
+                <label>Observações</label>
+                <textarea class="input">Equipamento novo, instalado e testado pela equipe técnica.</textarea>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-outline" onclick="closeModal('equipmentModal')">Cancelar</button>
+            <button class="btn btn-primary" onclick="genericSave('equipmentModal','Equipamento cadastrado!')">Salvar Equipamento</button>
+        </div>
+    </div>
+</div>
+
+<div id="toast" class="toast">Operação realizada.</div>
+
+<script>
+/* =========================================================
+   BANCO DE DADOS FICTÍCIO DO PROTÓTIPO
+========================================================= */
+
+const database = {
+    usuario:{
+        nome:"Administrador",
+        perfil:"Administrador",
+        email:"admin@corpoativo.com.br"
+    },
+
+    alunos:[
+        {
+            id:1,
+            matricula:"CA-2026-0147",
+            nome:"Gabriela Santos",
+            cpf:"453.281.968-10",
+            telefone:"(19) 99182-3045",
+            plano:"Mensal",
+            vencimento:"31/10/2026",
+            status:"Ativo"
+        },
+        {
+            id:2,
+            matricula:"CA-2026-0108",
+            nome:"Lucas Almeida",
+            cpf:"184.729.650-42",
+            telefone:"(19) 99741-8852",
+            plano:"Trimestral",
+            vencimento:"15/12/2026",
+            status:"Ativo"
+        },
+        {
+            id:3,
+            matricula:"CA-2026-0089",
+            nome:"João Martins",
+            cpf:"593.810.427-30",
+            telefone:"(19) 98853-4071",
+            plano:"Mensal",
+            vencimento:"30/09/2026",
+            status:"Vencido"
+        }
+    ],
+
+    planos:[
+        {nome:"Mensal",vigencia:1,valor:120},
+        {nome:"Trimestral",vigencia:3,valor:330},
+        {nome:"Semestral",vigencia:6,valor:600},
+        {nome:"Anual",vigencia:12,valor:1080}
+    ],
+
+    equipamentos:[
+        {nome:"Esteira 01",status:"Disponível"},
+        {nome:"Esteira 03",status:"Em manutenção"},
+        {nome:"Leg Press 02",status:"Em manutenção"},
+        {nome:"Supino Reto 01",status:"Disponível"},
+        {nome:"Bike 05",status:"Em manutenção"}
+    ]
+};
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function login(){
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    if(email.trim() === "" || password.trim() === ""){
+        toast("Informe usuário e senha.");
+        return;
+    }
+
+    document.getElementById("loginPage").classList.add("d-none");
+    document.getElementById("app").classList.remove("d-none");
+
+    toast("Bem-vindo ao Sistema Corpo Ativo!");
+}
+
+/* =========================================================
+   NAVEGAÇÃO SPA
+========================================================= */
+
+const navItems = document.querySelectorAll(".nav-item");
+
+navItems.forEach(item=>{
+    item.addEventListener("click",()=>{
+        const section = item.dataset.section;
+        showSection(section);
+
+        navItems.forEach(n=>n.classList.remove("active"));
+        item.classList.add("active");
+
+        if(window.innerWidth <= 850){
+            document.getElementById("sidebar").classList.remove("open");
+        }
+    });
+});
+
+function showSection(sectionId){
+    document.querySelectorAll(".section").forEach(section=>{
+        section.classList.remove("active");
+    });
+
+    const target = document.getElementById(sectionId);
+
+    if(target){
+        target.classList.add("active");
+        window.scrollTo({top:0,behavior:"smooth"});
+    }
+
+    navItems.forEach(item=>{
+        item.classList.toggle("active",item.dataset.section === sectionId);
+    });
+}
+
+function toggleSidebar(){
+    document.getElementById("sidebar").classList.toggle("open");
+}
+
+/* =========================================================
+   ALUNOS
+========================================================= */
+
+function filterStudents(){
+    const search = document.getElementById("studentSearch").value.toLowerCase();
+    const status = document.getElementById("studentFilter").value;
+
+    document.querySelectorAll("#studentTable tbody tr").forEach(row=>{
+        const text = row.innerText.toLowerCase();
+        const rowStatus = row.dataset.status;
+
+        const searchMatch = text.includes(search);
+        const statusMatch = status === "Todos" || rowStatus === status;
+
+        row.style.display = searchMatch && statusMatch ? "" : "none";
+    });
+}
+
+function saveStudent(){
+    toast("Aluno salvo com sucesso. Plano vinculado ao cadastro.");
+    setTimeout(()=>showSection("perfil-aluno"),500);
+}
+
+/* =========================================================
+   PERFIL
+========================================================= */
+
+function profileTab(button,id){
+    document.querySelectorAll(".tab").forEach(tab=>tab.classList.remove("active"));
+    button.classList.add("active");
+
+    document.querySelectorAll(".profile-content").forEach(content=>{
+        content.classList.add("d-none");
+    });
+
+    document.getElementById(id).classList.remove("d-none");
+}
+
+/* =========================================================
+   ACESSO
+========================================================= */
+
+function validateAccess(){
+    const value = document.getElementById("accessInput").value.replace(/\D/g,"");
+    const panel = document.getElementById("accessStudent");
+
+    if(value === "59381042730"){
+        panel.innerHTML = `
+            <div class="student-main">
+                <div class="student-photo">JM</div>
+                <div>
+                    <h2>João Martins</h2>
+                    <p class="muted">Matrícula CA-2026-0089</p><br>
+                    <span class="badge badge-danger">PLANO VENCIDO</span>
+                </div>
+            </div>
+
+            <div class="grid-3">
+                <div><span class="muted">Plano</span><br><strong>Mensal</strong></div>
+                <div><span class="muted">Vencimento</span><br><strong>30/09/2026</strong></div>
+                <div><span class="muted">Financeiro</span><br><strong>Pendente</strong></div>
+            </div>
+
+            <div class="access-status blocked">✕ ACESSO BLOQUEADO</div>
+
+            <div class="grid-2">
+                <button class="btn btn-outline btn-lg" onclick="showSection('planos')">Ver Plano</button>
+                <button class="btn btn-danger btn-lg" onclick="openModal('paymentModal')">Registrar Pagamento</button>
+            </div>
+        `;
+
+        toast("Plano irregular. Acesso bloqueado.");
+    }else{
+        panel.innerHTML = `
+            <div class="student-main">
+                <div class="student-photo">GS</div>
+                <div>
+                    <h2>Gabriela Santos</h2>
+                    <p class="muted">Matrícula CA-2026-0147</p><br>
+                    <span class="badge badge-success">PLANO ATIVO</span>
+                </div>
+            </div>
+
+            <div class="grid-3">
+                <div><span class="muted">Plano</span><br><strong>Mensal</strong></div>
+                <div><span class="muted">Vencimento</span><br><strong>31/10/2026</strong></div>
+                <div><span class="muted">Financeiro</span><br><strong>Regular</strong></div>
+            </div>
+
+            <div class="access-status">✓ ACESSO LIBERADO</div>
+
+            <button class="access-button" onclick="registerAccess()">
+                REGISTRAR ENTRADA
+            </button>
+        `;
+
+        toast("Aluno localizado. Acesso liberado.");
+    }
+}
+
+function registerAccess(){
+    const now = new Date();
+
+    const hour =
+        String(now.getHours()).padStart(2,"0") + ":" +
+        String(now.getMinutes()).padStart(2,"0");
+
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td>01/10/2026</td>
+        <td>${hour}</td>
+        <td>Gabriela Santos</td>
+        <td>Mensal</td>
+        <td><span class="badge badge-success">Liberado</span></td>
+    `;
+
+    document.getElementById("accessHistory").prepend(row);
+
+    toast("Entrada registrada no histórico com sucesso!");
+}
+
+/* =========================================================
+   FINANCEIRO
+========================================================= */
+
+function registerPayment(){
+    closeModal("paymentModal");
+    toast("Pagamento registrado. Situação financeira regularizada!");
+}
+
+function renewPlan(){
+    closeModal("renewModal");
+    toast("Plano renovado e pagamento registrado automaticamente!");
+}
+
+/* =========================================================
+   AVALIAÇÃO
+========================================================= */
+
+function calculateBMI(){
+    const weight = parseFloat(document.getElementById("weight").value);
+    const height = parseFloat(document.getElementById("height").value);
+
+    if(weight && height){
+        const bmi = weight / (height * height);
+        document.getElementById("bmi").value = bmi.toFixed(1);
+    }
+}
+
+/* =========================================================
+   MANUTENÇÃO
+========================================================= */
+
+function fillMaintenance(equipment){
+    document.getElementById("maintenanceEquipment").value = equipment;
+    document.getElementById("maintenanceEquipment").scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+    toast(equipment + " selecionado para manutenção.");
+}
+
+function maintenance(){
+    toast("Ordem aberta. Equipamento alterado para Em manutenção.");
+}
+
+/* =========================================================
+   MODAIS
+========================================================= */
+
+function openModal(id){
+    document.getElementById(id).classList.add("show");
+}
+
+function closeModal(id){
+    document.getElementById(id).classList.remove("show");
+}
+
+function genericSave(id,message){
+    closeModal(id);
+    toast(message);
+}
+
+document.querySelectorAll(".modal-overlay").forEach(modal=>{
+    modal.addEventListener("click",event=>{
+        if(event.target === modal){
+            modal.classList.remove("show");
+        }
+    });
+});
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function toast(message){
+    const element = document.getElementById("toast");
+
+    element.textContent = message;
+    element.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(()=>{
+        element.classList.remove("show");
+    },2800);
+}
+</script>
+
+</body>
+</html>
