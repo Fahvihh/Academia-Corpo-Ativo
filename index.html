@@ -1,10 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Academia Corpo Ativo | Sistema de Gestão</title>
-
 <style>
 :root{
     --red:#D30815;
@@ -1112,1497 +1112,1299 @@ tbody tr:hover{
     }
 }
 </style>
-</head>
-
+<style>.membership-card{display:flex;gap:22px;align-items:center;max-width:650px;padding:24px;border:2px solid var(--red);border-radius:16px;background:#fff}.membership-card img{width:120px;height:120px;object-fit:contain}.membership-card h3{color:var(--red);font-size:14px}.membership-card p{margin:8px 0}.membership-card small{color:#666}#exerciseRows .input{min-width:80px}#exerciseRows td:first-child .input{min-width:160px}@media(max-width:600px){.membership-card{flex-direction:column;align-items:flex-start}}@media print{body.print-card *{visibility:hidden}body.print-card #cardPreview,body.print-card #cardPreview *{visibility:visible}body.print-card #cardPreview{position:absolute;left:0;top:0;width:100%;margin:0!important}body.print-card .sidebar,body.print-card .topbar{display:none}}</style>
+<style>
+/* AJUSTES DE LEGIBILIDADE E NAVEGAÇÃO — REVISÃO DO PROFESSOR */
+html{font-size:18px} body{font-size:18px;line-height:1.5}
+.input,select,textarea,.top-search{font-size:18px;min-height:49px}
+.btn,.action-btn,.tab,.nav-item{font-size:18px;min-height:45px}
+.nav-title{font-size:14px}.nav-item{font-weight:750;padding:13px 14px}
+.sidebar{width:295px}.main{margin-left:295px}
+.page-head h1{font-size:34px}.card-title h3,.form-card h3{font-size:23px}
+.form-group label,.field label{font-size:18px}
+th{font-size:16px}td{font-size:17px}.badge{font-size:15px}
+.stat-label{font-size:16px}.stat-foot{font-size:15px}.stat-value{font-size:34px}
+.user-info strong,.profile-meta,.progress-head,.bar-label,.bar span,.event{font-size:16px}
+.tab{padding:13px 19px}.custom-tab-panel{min-height:200px;animation:fade .2s}
+#studentExerciseRows .input{min-width:90px}#studentExerciseRows td:first-child .input{min-width:180px}
+@media(max-width:850px){.main{margin-left:0}}
+@media(max-width:600px){html,body{font-size:17px}.btn,.tab,.nav-item{font-size:17px}.page-head h1{font-size:29px}}
+</style></head>
 <body>
-
 <!-- ================= LOGIN ================= -->
-<div id="loginPage" class="login-page">
-    <div class="login-box">
-        <div class="login-brand">
-            <img src="image(1).png" class="logo-login" alt="Academia Corpo Ativo">
-            <h1>Gestão inteligente para uma academia <span>mais ativa.</span></h1>
-            <p>
+<div class="login-page" id="loginPage">
+<div class="login-box">
+<div class="login-brand">
+<img alt="Academia Corpo Ativo" class="logo-login" src="image(1).png"/>
+<h1>Gestão inteligente para uma academia <span>mais ativa.</span></h1>
+<p>
                 Alunos, planos, pagamentos, treinos, avaliações,
                 acessos e equipamentos integrados em um único sistema.
             </p>
-        </div>
-
-        <div class="login-form-area">
-            <h2>Bem-vindo!</h2>
-            <p>Acesse o Sistema de Gestão da Academia Corpo Ativo.</p>
-
-            <div class="field">
-                <label>Usuário / E-mail</label>
-                <input id="loginEmail" class="input" value="admin@corpoativo.com.br">
-            </div>
-
-            <div class="field">
-                <label>Senha</label>
-                <input id="loginPassword" type="password" class="input" value="123456">
-            </div>
-
-            <div class="login-options">
-                <label><input type="checkbox" checked> Lembrar-me</label>
-                <a href="#" onclick="toast('Link de recuperação simulado.')">Esqueci minha senha</a>
-            </div>
-
-            <button class="btn btn-primary btn-lg w-100" onclick="login()">
+</div>
+<div class="login-form-area">
+<h2>Bem-vindo!</h2>
+<p>Acesse o Sistema de Gestão da Academia Corpo Ativo.</p>
+<div class="field">
+<label>Usuário / E-mail</label>
+<input class="input" id="loginEmail" value="admin@corpoativo.com.br"/>
+</div>
+<div class="field">
+<label>Senha</label>
+<input class="input" id="loginPassword" type="password" value="123456"/>
+</div>
+<div class="login-options">
+<label><input checked="" type="checkbox"/> Lembrar-me</label>
+<a href="#" onclick="openModal('recoveryModal'); return false">Esqueci minha senha</a>
+</div>
+<button class="btn btn-primary btn-lg w-100" onclick="login()">
                 Entrar no Sistema
             </button>
-        </div>
-    </div>
 </div>
-
+</div>
+</div>
 <!-- ================= APP ================= -->
-<div id="app" class="app d-none">
-
+<div class="app d-none" id="app">
 <aside class="sidebar" id="sidebar">
-    <div class="sidebar-brand">
-        <img src="image(1).png" alt="Corpo Ativo">
-        <small>Sistema de Gestão</small>
-    </div>
-
-    <nav class="nav">
-        <div class="nav-title">Visão geral</div>
-
-        <button class="nav-item active" data-section="dashboard">
-            <span class="nav-icon">⌂</span> Dashboard
+<div class="sidebar-brand">
+<img alt="Corpo Ativo" src="image(1).png"/>
+<small>Sistema de Gestão</small>
+</div>
+<nav class="nav">
+<div class="nav-title">Visão geral</div>
+<button class="nav-item active" data-section="dashboard">
+<span class="nav-icon">⌂</span> Dashboard
         </button>
-
-        <div class="nav-title">Gestão</div>
-
-        <button class="nav-item" data-section="alunos">
-            <span class="nav-icon">♟</span> Alunos
+<div class="nav-title">Gestão</div>
+<button class="nav-item" data-section="alunos">
+<span class="nav-icon">♟</span> Alunos
         </button>
-
-        <button class="nav-item" data-section="experimentais">
-            <span class="nav-icon">★</span> Aulas Experimentais
+<button class="nav-item" data-section="experimentais">
+<span class="nav-icon">★</span> Aulas Experimentais
         </button>
-
-        <button class="nav-item" data-section="planos">
-            <span class="nav-icon">▣</span> Planos
+<button class="nav-item" data-section="planos">
+<span class="nav-icon">▣</span> Planos
         </button>
-
-        <button class="nav-item" data-section="pagamentos">
-            <span class="nav-icon">$</span> Pagamentos
+<button class="nav-item" data-section="pagamentos">
+<span class="nav-icon">$</span> Pagamentos
         </button>
-
-        <button class="nav-item" data-section="inadimplentes">
-            <span class="nav-icon">!</span> Inadimplentes
+<button class="nav-item" data-section="inadimplentes">
+<span class="nav-icon">!</span> Inadimplentes
         </button>
-
-        <div class="nav-title">Operação</div>
-
-        <button class="nav-item" data-section="acesso">
-            <span class="nav-icon">✓</span> Controle de Acesso
+<div class="nav-title">Operação</div>
+<button class="nav-item" data-section="acesso">
+<span class="nav-icon">✓</span> Controle de Acesso
         </button>
-
-        <button class="nav-item" data-section="historico-acesso">
-            <span class="nav-icon">◷</span> Histórico de Acessos
+<button class="nav-item" data-section="historico-acesso">
+<span class="nav-icon">◷</span> Histórico de Acessos
         </button>
-
-        <button class="nav-item" data-section="treinos">
-            <span class="nav-icon">🏋</span> Treinos
+<button class="nav-item" data-section="treinos">
+<span class="nav-icon">🏋</span> Treinos
+        </button><button class="nav-item" data-section="cadastro-exercicios"><span class="nav-icon">▦</span> Cadastro de Exercícios</button>
+<button class="nav-item" data-section="avaliacoes">
+<span class="nav-icon">▤</span> Avaliações Físicas
         </button>
-
-        <button class="nav-item" data-section="avaliacoes">
-            <span class="nav-icon">▤</span> Avaliações Físicas
+<button class="nav-item" data-section="equipamentos">
+<span class="nav-icon">⚙</span> Equipamentos
         </button>
-
-        <button class="nav-item" data-section="equipamentos">
-            <span class="nav-icon">⚙</span> Equipamentos
+<button class="nav-item" data-section="carteirinhas"><span class="nav-icon">▣</span> Carteirinhas</button><button class="nav-item" data-section="aulas-coletivas"><span class="nav-icon">☑</span> Aulas e Presença</button>
+<div class="nav-title">Administração</div>
+<button class="nav-item" data-section="relatorios">
+<span class="nav-icon">▥</span> Relatórios
         </button>
-
-        <div class="nav-title">Administração</div>
-
-        <button class="nav-item" data-section="relatorios">
-            <span class="nav-icon">▥</span> Relatórios
-        </button>
-    </nav>
+</nav>
 </aside>
-
 <main class="main">
-
 <header class="topbar">
-    <div class="top-left">
-        <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
-        <input class="top-search" value="" placeholder="Pesquisar no sistema...">
-    </div>
-
-    <div class="user-box">
-        <div class="avatar">AD</div>
-        <div class="user-info">
-            <strong>Administrador</strong>
-            <small>Acesso total</small>
-        </div>
-    </div>
+<div class="top-left">
+<button class="mobile-menu" onclick="toggleSidebar()">☰</button>
+<input class="top-search" placeholder="Pesquisar no sistema..." value=""/>
+</div>
+<div class="user-box">
+<div class="avatar">AD</div>
+<div class="user-info">
+<strong>Administrador</strong>
+<small>Acesso total</small>
+</div>
+</div>
 </header>
-
 <div class="content">
-
 <!-- ================= DASHBOARD ================= -->
-<section id="dashboard" class="section active">
-    <div class="page-head">
-        <div>
-            <h1>Dashboard</h1>
-            <p>Olá, Administrador. Confira o resumo da Academia Corpo Ativo.</p>
-        </div>
-
-        <div class="page-actions">
-            <button class="btn btn-outline" onclick="showSection('relatorios')">Ver Relatórios</button>
-            <button class="btn btn-primary" onclick="showSection('aluno-form')">+ Novo Aluno</button>
-        </div>
-    </div>
-
-    <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-top">
-                <span class="stat-label">ALUNOS ATIVOS</span>
-                <span class="stat-icon">♟</span>
-            </div>
-            <div class="stat-value">147</div>
-            <div class="stat-foot">+8 neste mês</div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-top">
-                <span class="stat-label">PLANOS A VENCER</span>
-                <span class="stat-icon">◷</span>
-            </div>
-            <div class="stat-value">12</div>
-            <div class="stat-foot">Próximos 15 dias</div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-top">
-                <span class="stat-label">INADIMPLENTES</span>
-                <span class="stat-icon">!</span>
-            </div>
-            <div class="stat-value">8</div>
-            <div class="stat-foot">5 com acesso bloqueado</div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-top">
-                <span class="stat-label">ACESSOS HOJE</span>
-                <span class="stat-icon">✓</span>
-            </div>
-            <div class="stat-value">63</div>
-            <div class="stat-foot">Pico: 18h às 20h</div>
-        </div>
-    </div>
-
-    <div class="grid-2">
-        <div class="card card-pad">
-            <div class="card-title">
-                <h3>Alertas importantes</h3>
-                <span class="badge badge-danger">7 alertas</span>
-            </div>
-
-            <div class="alert-list">
-                <div class="alert-item">
-                    <span class="alert-dot"></span>
-                    <div>
-                        <strong>12 planos próximos do vencimento</strong>
-                        <div class="muted">Contratos vencem nos próximos 15 dias.</div>
-                    </div>
-                </div>
-
-                <div class="alert-item">
-                    <span class="alert-dot"></span>
-                    <div>
-                        <strong>8 alunos com pagamentos pendentes</strong>
-                        <div class="muted">Verifique a situação financeira.</div>
-                    </div>
-                </div>
-
-                <div class="alert-item">
-                    <span class="alert-dot"></span>
-                    <div>
-                        <strong>3 equipamentos em manutenção</strong>
-                        <div class="muted">Esteira 03, Leg Press 02 e Bike 05.</div>
-                    </div>
-                </div>
-
-                <div class="alert-item">
-                    <span class="alert-dot"></span>
-                    <div>
-                        <strong>4 avaliações agendadas hoje</strong>
-                        <div class="muted">Próxima avaliação às 16:30.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card card-pad">
-            <div class="card-title">
-                <h3>Distribuição dos planos</h3>
-                <span class="muted">147 contratos</span>
-            </div>
-
-            <div class="progress-row">
-                <div class="progress-head"><span>Mensal</span><strong>63</strong></div>
-                <div class="progress"><span style="width:74%"></span></div>
-            </div>
-
-            <div class="progress-row">
-                <div class="progress-head"><span>Trimestral</span><strong>39</strong></div>
-                <div class="progress"><span style="width:51%"></span></div>
-            </div>
-
-            <div class="progress-row">
-                <div class="progress-head"><span>Semestral</span><strong>28</strong></div>
-                <div class="progress"><span style="width:37%"></span></div>
-            </div>
-
-            <div class="progress-row">
-                <div class="progress-head"><span>Anual</span><strong>17</strong></div>
-                <div class="progress"><span style="width:25%"></span></div>
-            </div>
-        </div>
-    </div>
+<section class="section active" id="dashboard">
+<div class="page-head">
+<div>
+<h1>Dashboard</h1>
+<p>Olá, Administrador. Confira o resumo da Academia Corpo Ativo.</p>
+</div>
+<div class="page-actions">
+<button class="btn btn-outline" onclick="showSection('relatorios')">Ver Relatórios</button>
+<button class="btn btn-primary" onclick="showSection('aluno-form')">+ Novo Aluno</button>
+</div>
+</div>
+<div class="stats-grid">
+<div class="stat-card">
+<div class="stat-top">
+<span class="stat-label">ALUNOS ATIVOS</span>
+<span class="stat-icon">♟</span>
+</div>
+<div class="stat-value">147</div>
+<div class="stat-foot">+8 neste mês</div>
+</div>
+<div class="stat-card">
+<div class="stat-top">
+<span class="stat-label">PLANOS A VENCER</span>
+<span class="stat-icon">◷</span>
+</div>
+<div class="stat-value">12</div>
+<div class="stat-foot">Próximos 15 dias</div>
+</div>
+<div class="stat-card">
+<div class="stat-top">
+<span class="stat-label">INADIMPLENTES</span>
+<span class="stat-icon">!</span>
+</div>
+<div class="stat-value">8</div>
+<div class="stat-foot">5 com acesso bloqueado</div>
+</div>
+<div class="stat-card">
+<div class="stat-top">
+<span class="stat-label">ACESSOS HOJE</span>
+<span class="stat-icon">✓</span>
+</div>
+<div class="stat-value">63</div>
+<div class="stat-foot">Pico: 18h às 20h</div>
+</div>
+</div>
+<div class="grid-2">
+<div class="card card-pad">
+<div class="card-title">
+<h3>Alertas importantes</h3>
+<span class="badge badge-danger">7 alertas</span>
+</div>
+<div class="alert-list">
+<div class="alert-item">
+<span class="alert-dot"></span>
+<div>
+<strong>12 planos próximos do vencimento</strong>
+<div class="muted">Contratos vencem nos próximos 15 dias.</div>
+</div>
+</div>
+<div class="alert-item">
+<span class="alert-dot"></span>
+<div>
+<strong>8 alunos com pagamentos pendentes</strong>
+<div class="muted">Verifique a situação financeira.</div>
+</div>
+</div>
+<div class="alert-item">
+<span class="alert-dot"></span>
+<div>
+<strong>3 equipamentos em manutenção</strong>
+<div class="muted">Esteira 03, Leg Press 02 e Bike 05.</div>
+</div>
+</div>
+<div class="alert-item">
+<span class="alert-dot"></span>
+<div>
+<strong>4 avaliações agendadas hoje</strong>
+<div class="muted">Próxima avaliação às 16:30.</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card card-pad">
+<div class="card-title">
+<h3>Distribuição dos planos</h3>
+<span class="muted">147 contratos</span>
+</div>
+<div class="progress-row">
+<div class="progress-head"><span>Mensal</span><strong>63</strong></div>
+<div class="progress"><span style="width:74%"></span></div>
+</div>
+<div class="progress-row">
+<div class="progress-head"><span>Trimestral</span><strong>39</strong></div>
+<div class="progress"><span style="width:51%"></span></div>
+</div>
+<div class="progress-row">
+<div class="progress-head"><span>Semestral</span><strong>28</strong></div>
+<div class="progress"><span style="width:37%"></span></div>
+</div>
+<div class="progress-row">
+<div class="progress-head"><span>Anual</span><strong>17</strong></div>
+<div class="progress"><span style="width:25%"></span></div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- ================= ALUNOS ================= -->
-<section id="alunos" class="section">
-    <div class="page-head">
-        <div>
-            <h1>Gestão de Alunos</h1>
-            <p>Cadastro e acompanhamento dos alunos da academia.</p>
-        </div>
-        <button class="btn btn-primary" onclick="showSection('aluno-form')">+ Cadastrar Novo Aluno</button>
-    </div>
-
-    <div class="filters">
-        <input id="studentSearch" class="input" value="" placeholder="Pesquisar por nome, CPF ou matrícula" onkeyup="filterStudents()">
-
-        <select id="studentFilter" class="input" onchange="filterStudents()">
-            <option value="Todos" selected>Todos</option>
-            <option value="Ativo">Ativos</option>
-            <option value="Inativo">Inativos</option>
-            <option value="Vencido">Plano vencido</option>
-        </select>
-    </div>
-
-    <div class="table-card">
-        <div class="table-wrap">
-            <table id="studentTable">
-                <thead>
-                    <tr>
-                        <th>Aluno</th>
-                        <th>CPF</th>
-                        <th>Telefone</th>
-                        <th>Plano</th>
-                        <th>Vencimento</th>
-                        <th>Situação</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr data-status="Ativo">
-                        <td><div class="person"><span class="person-avatar">GS</span><strong>Gabriela Santos</strong></div></td>
-                        <td>453.281.968-10</td>
-                        <td>(19) 99182-3045</td>
-                        <td>Mensal</td>
-                        <td>31/10/2026</td>
-                        <td><span class="badge badge-success">Ativo</span></td>
-                        <td><button class="action-btn red" onclick="showSection('perfil-aluno')">Ver</button><button class="action-btn" onclick="showSection('aluno-form')">Editar</button></td>
-                    </tr>
-
-                    <tr data-status="Ativo">
-                        <td><div class="person"><span class="person-avatar">LA</span><strong>Lucas Almeida</strong></div></td>
-                        <td>184.729.650-42</td>
-                        <td>(19) 99741-8852</td>
-                        <td>Trimestral</td>
-                        <td>15/12/2026</td>
-                        <td><span class="badge badge-success">Ativo</span></td>
-                        <td><button class="action-btn red" onclick="showSection('perfil-aluno')">Ver</button><button class="action-btn" onclick="showSection('aluno-form')">Editar</button></td>
-                    </tr>
-
-                    <tr data-status="Vencido">
-                        <td><div class="person"><span class="person-avatar">JM</span><strong>João Martins</strong></div></td>
-                        <td>593.810.427-30</td>
-                        <td>(19) 98853-4071</td>
-                        <td>Mensal</td>
-                        <td>30/09/2026</td>
-                        <td><span class="badge badge-danger">Vencido</span></td>
-                        <td><button class="action-btn red" onclick="showSection('perfil-aluno')">Ver</button><button class="action-btn" onclick="showSection('pagamentos')">Regularizar</button></td>
-                    </tr>
-
-                    <tr data-status="Ativo">
-                        <td><div class="person"><span class="person-avatar">AC</span><strong>Ana Carolina</strong></div></td>
-                        <td>718.205.943-61</td>
-                        <td>(19) 99650-1138</td>
-                        <td>Semestral</td>
-                        <td>20/02/2027</td>
-                        <td><span class="badge badge-success">Ativo</span></td>
-                        <td><button class="action-btn red" onclick="showSection('perfil-aluno')">Ver</button><button class="action-btn" onclick="showSection('aluno-form')">Editar</button></td>
-                    </tr>
-
-                    <tr data-status="Inativo">
-                        <td><div class="person"><span class="person-avatar">RM</span><strong>Rafael Mendes</strong></div></td>
-                        <td>362.904.815-55</td>
-                        <td>(19) 98441-2650</td>
-                        <td>Anual</td>
-                        <td>12/08/2026</td>
-                        <td><span class="badge badge-dark">Inativo</span></td>
-                        <td><button class="action-btn red" onclick="showSection('perfil-aluno')">Ver</button><button class="action-btn" onclick="showSection('aluno-form')">Editar</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+<section class="section" id="alunos">
+<div class="page-head">
+<div>
+<h1>Gestão de Alunos</h1>
+<p>Cadastro e acompanhamento dos alunos da academia.</p>
+</div>
+<button class="btn btn-primary" onclick="showSection('aluno-form')">+ Cadastrar Novo Aluno</button>
+</div>
+<div class="filters">
+<input class="input" id="studentSearch" onkeyup="filterStudents()" placeholder="Pesquisar por nome, CPF ou matrícula" value=""/>
+<select class="input" id="studentFilter" onchange="filterStudents()">
+<option selected="" value="Todos">Todos</option>
+<option value="Ativo">Ativos</option>
+<option value="Inativo">Inativos</option>
+<option value="Vencido">Plano vencido</option>
+</select>
+</div>
+<div class="table-card">
+<div class="table-wrap">
+<table id="studentTable">
+<thead>
+<tr>
+<th>Aluno</th>
+<th>CPF</th>
+<th>Telefone</th>
+<th>Plano</th>
+<th>Vencimento</th>
+<th>Situação</th>
+<th>Ações</th>
+</tr>
+</thead>
+<tbody>
+<tr data-status="Ativo">
+<td><div class="person"><span class="person-avatar">GS</span><strong>Gabriela Santos</strong></div></td>
+<td>453.281.968-10</td>
+<td>(19) 99182-3045</td>
+<td>Mensal</td>
+<td>31/10/2026</td>
+<td><span class="badge badge-success">Ativo</span></td>
+<td><button class="action-btn red" onclick="showSection('perfil-aluno')">Ver</button><button class="action-btn" onclick="showSection('aluno-form')">Editar</button></td>
+</tr>
+<tr data-status="Ativo">
+<td><div class="person"><span class="person-avatar">LA</span><strong>Lucas Almeida</strong></div></td>
+<td>184.729.650-42</td>
+<td>(19) 99741-8852</td>
+<td>Trimestral</td>
+<td>15/12/2026</td>
+<td><span class="badge badge-success">Ativo</span></td>
+<td><button class="action-btn red" onclick="showSection('perfil-aluno')">Ver</button><button class="action-btn" onclick="showSection('aluno-form')">Editar</button></td>
+</tr>
+<tr data-status="Vencido">
+<td><div class="person"><span class="person-avatar">JM</span><strong>João Martins</strong></div></td>
+<td>593.810.427-30</td>
+<td>(19) 98853-4071</td>
+<td>Mensal</td>
+<td>30/09/2026</td>
+<td><span class="badge badge-danger">Vencido</span></td>
+<td><button class="action-btn red" onclick="showSection('perfil-aluno')">Ver</button><button class="action-btn" onclick="showSection('pagamentos')">Regularizar</button></td>
+</tr>
+<tr data-status="Ativo">
+<td><div class="person"><span class="person-avatar">AC</span><strong>Ana Carolina</strong></div></td>
+<td>718.205.943-61</td>
+<td>(19) 99650-1138</td>
+<td>Semestral</td>
+<td>20/02/2027</td>
+<td><span class="badge badge-success">Ativo</span></td>
+<td><button class="action-btn red" onclick="showSection('perfil-aluno')">Ver</button><button class="action-btn" onclick="showSection('aluno-form')">Editar</button></td>
+</tr>
+<tr data-status="Inativo">
+<td><div class="person"><span class="person-avatar">RM</span><strong>Rafael Mendes</strong></div></td>
+<td>362.904.815-55</td>
+<td>(19) 98441-2650</td>
+<td>Anual</td>
+<td>12/08/2026</td>
+<td><span class="badge badge-dark">Inativo</span></td>
+<td><button class="action-btn red" onclick="showSection('perfil-aluno')">Ver</button><button class="action-btn" onclick="showSection('aluno-form')">Editar</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
-
 <!-- ================= CADASTRO ALUNO ================= -->
-<section id="aluno-form" class="section">
-    <div class="page-head">
-        <div>
-            <h1>Cadastro de Aluno</h1>
-            <p>Preencha os dados pessoais, endereço e informações da matrícula.</p>
-        </div>
-        <button class="btn btn-outline" onclick="showSection('alunos')">← Voltar</button>
-    </div>
+<section class="section" id="aluno-form">
+<div class="page-head">
+<div>
+<h1>Cadastro de Aluno</h1>
+<p>Preencha os dados pessoais, endereço e informações da matrícula.</p>
+</div>
+<button class="btn btn-outline" onclick="showSection('alunos')">← Voltar</button>
+</div>
+<div aria-label="Etapas e visualizações" class="tabs" role="tablist"><button aria-selected="true" class="tab active" onclick="switchCustomTab('aluno-form',0)" role="tab" type="button">1. Dados pessoais</button><button aria-selected="false" class="tab" onclick="switchCustomTab('aluno-form',1)" role="tab" type="button">2. Endereço</button><button aria-selected="false" class="tab" onclick="switchCustomTab('aluno-form',2)" role="tab" type="button">3. Matrícula</button></div><div class="custom-tab-panel" id="aluno-form-pane-0" role="tabpanel"><div class="form-card">
 
-    <div class="form-card">
-        <h3>Dados Pessoais</h3>
+<div class="form-grid">
+<div class="form-group">
+<label>Nome completo</label>
+<input class="input" value="Gabriela Santos"/>
+</div>
+<div class="form-group">
+<label>CPF</label>
+<input class="input" value="453.281.968-10"/>
+</div>
+<div class="form-group">
+<label>RG</label>
+<input class="input" value="48.502.913-7"/>
+</div>
+<div class="form-group">
+<label>Data de nascimento</label>
+<input class="input" type="date" value="2002-05-18"/>
+</div>
+<div class="form-group">
+<label>E-mail</label>
+<input class="input" value="gabriela.santos@email.com"/>
+</div>
+<div class="form-group">
+<label>Telefone</label>
+<input class="input" value="(19) 99182-3045"/>
+</div>
+</div>
+</div><div class="form-actions"><button class="btn btn-primary" onclick="switchCustomTab('aluno-form',1)" type="button">Próxima etapa →</button></div></div><div class="custom-tab-panel d-none" id="aluno-form-pane-1" role="tabpanel"><div class="form-card">
 
-        <div class="form-grid">
-            <div class="form-group">
-                <label>Nome completo</label>
-                <input class="input" value="Gabriela Santos">
-            </div>
+<div class="form-grid">
+<div class="form-group">
+<label>CEP</label>
+<input class="input" value="13170-120"/>
+</div>
+<div class="form-group">
+<label>Rua</label>
+<input class="input" value="Rua das Palmeiras"/>
+</div>
+<div class="form-group">
+<label>Número</label>
+<input class="input" value="245"/>
+</div>
+<div class="form-group">
+<label>Bairro</label>
+<input class="input" value="Jardim Primavera"/>
+</div>
+<div class="form-group">
+<label>Cidade</label>
+<input class="input" value="Sumaré"/>
+</div>
+<div class="form-group">
+<label>Estado</label>
+<select class="input">
+<option selected="" value="SP">São Paulo</option>
+<option value="MG">Minas Gerais</option>
+<option value="PR">Paraná</option>
+</select>
+</div>
+</div>
+</div><div class="form-actions"><button class="btn btn-primary" onclick="switchCustomTab('aluno-form',2)" type="button">Próxima etapa →</button></div><div class="form-actions"><button class="btn btn-outline" onclick="switchCustomTab('aluno-form',0)" type="button">← Etapa anterior</button></div></div><div class="custom-tab-panel d-none" id="aluno-form-pane-2" role="tabpanel"><div class="form-card">
 
-            <div class="form-group">
-                <label>CPF</label>
-                <input class="input" value="453.281.968-10">
-            </div>
+<div class="form-grid">
+<div class="form-group">
+<label>Data da matrícula</label>
+<input class="input" type="date" value="2026-10-01"/>
+</div>
+<div class="form-group">
+<label>Plano contratado</label>
+<select class="input">
+<option selected="" value="Mensal">Mensal - R$ 120,00</option>
+<option value="Trimestral">Trimestral - R$ 330,00</option>
+<option value="Semestral">Semestral - R$ 600,00</option>
+<option value="Anual">Anual - R$ 1.080,00</option>
+</select>
+</div>
+<div class="form-group">
+<label>Situação</label>
+<select class="input">
+<option selected="" value="Ativo">Ativo</option>
+<option value="Inativo">Inativo</option>
+</select>
+</div>
+<div class="form-group full">
+<label>Observações</label>
+<textarea class="input">Aluno cadastrado presencialmente na recepção. Objetivo principal: condicionamento físico e ganho de resistência.</textarea>
+</div>
+</div>
+<div class="form-actions">
+<button class="btn btn-outline" onclick="showSection('alunos')">Cancelar</button>
+<button class="btn btn-primary" onclick="saveStudent()">Salvar e Vincular Plano</button>
+</div>
+</div><div class="form-actions"><button class="btn btn-outline" onclick="switchCustomTab('aluno-form',1)" type="button">← Etapa anterior</button></div></div>
 
-            <div class="form-group">
-                <label>RG</label>
-                <input class="input" value="48.502.913-7">
-            </div>
 
-            <div class="form-group">
-                <label>Data de nascimento</label>
-                <input type="date" class="input" value="2002-05-18">
-            </div>
-
-            <div class="form-group">
-                <label>E-mail</label>
-                <input class="input" value="gabriela.santos@email.com">
-            </div>
-
-            <div class="form-group">
-                <label>Telefone</label>
-                <input class="input" value="(19) 99182-3045">
-            </div>
-        </div>
-    </div>
-
-    <div class="form-card">
-        <h3>Endereço</h3>
-
-        <div class="form-grid">
-            <div class="form-group">
-                <label>CEP</label>
-                <input class="input" value="13170-120">
-            </div>
-
-            <div class="form-group">
-                <label>Rua</label>
-                <input class="input" value="Rua das Palmeiras">
-            </div>
-
-            <div class="form-group">
-                <label>Número</label>
-                <input class="input" value="245">
-            </div>
-
-            <div class="form-group">
-                <label>Bairro</label>
-                <input class="input" value="Jardim Primavera">
-            </div>
-
-            <div class="form-group">
-                <label>Cidade</label>
-                <input class="input" value="Sumaré">
-            </div>
-
-            <div class="form-group">
-                <label>Estado</label>
-                <select class="input">
-                    <option value="SP" selected>São Paulo</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="PR">Paraná</option>
-                </select>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-card">
-        <h3>Matrícula</h3>
-
-        <div class="form-grid">
-            <div class="form-group">
-                <label>Data da matrícula</label>
-                <input type="date" class="input" value="2026-10-01">
-            </div>
-
-            <div class="form-group">
-                <label>Plano contratado</label>
-                <select class="input">
-                    <option value="Mensal" selected>Mensal - R$ 120,00</option>
-                    <option value="Trimestral">Trimestral - R$ 330,00</option>
-                    <option value="Semestral">Semestral - R$ 600,00</option>
-                    <option value="Anual">Anual - R$ 1.080,00</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Situação</label>
-                <select class="input">
-                    <option value="Ativo" selected>Ativo</option>
-                    <option value="Inativo">Inativo</option>
-                </select>
-            </div>
-
-            <div class="form-group full">
-                <label>Observações</label>
-                <textarea class="input">Aluno cadastrado presencialmente na recepção. Objetivo principal: condicionamento físico e ganho de resistência.</textarea>
-            </div>
-        </div>
-
-        <div class="form-actions">
-            <button class="btn btn-outline" onclick="showSection('alunos')">Cancelar</button>
-            <button class="btn btn-primary" onclick="saveStudent()">Salvar e Vincular Plano</button>
-        </div>
-    </div>
 </section>
-
 <!-- ================= PERFIL ================= -->
-<section id="perfil-aluno" class="section">
-    <div class="page-head">
-        <div>
-            <h1>Perfil do Aluno</h1>
-            <p>Visão integrada das informações do aluno.</p>
-        </div>
-        <button class="btn btn-outline" onclick="showSection('alunos')">← Lista de Alunos</button>
-    </div>
-
-    <div class="profile-header">
-        <div class="profile-avatar">GS</div>
-        <div class="profile-info">
-            <h2>Gabriela Santos</h2>
-            <span class="badge badge-success">Cadastro Ativo</span>
-
-            <div class="profile-meta">
-                <span>CPF: 453.281.968-10</span>
-                <span>Telefone: (19) 99182-3045</span>
-                <span>Matrícula: CA-2026-0147</span>
-                <span>gabriela.santos@email.com</span>
-            </div>
-        </div>
-
-        <button class="btn btn-primary" onclick="showSection('aluno-form')">Editar Cadastro</button>
-    </div>
-
-    <div class="tabs">
-        <button class="tab active" onclick="profileTab(this,'profileDados')">Dados</button>
-        <button class="tab" onclick="profileTab(this,'profilePlano')">Plano</button>
-        <button class="tab" onclick="profileTab(this,'profilePagamentos')">Pagamentos</button>
-        <button class="tab" onclick="profileTab(this,'profileTreino')">Treino</button>
-        <button class="tab" onclick="profileTab(this,'profileAvaliacoes')">Avaliações</button>
-        <button class="tab" onclick="profileTab(this,'profileAcessos')">Acessos</button>
-    </div>
-
-    <div id="profileDados" class="profile-content card card-pad">
-        <h3>Dados pessoais</h3><br>
-        <div class="grid-3">
-            <div><span class="muted">Nascimento</span><br><strong>18/05/2002</strong></div>
-            <div><span class="muted">RG</span><br><strong>48.502.913-7</strong></div>
-            <div><span class="muted">Matrícula desde</span><br><strong>01/10/2026</strong></div>
-            <div><span class="muted">Cidade</span><br><strong>Sumaré - SP</strong></div>
-            <div><span class="muted">Situação</span><br><strong>Ativa</strong></div>
-            <div><span class="muted">Objetivo</span><br><strong>Condicionamento físico</strong></div>
-        </div>
-    </div>
-
-    <div id="profilePlano" class="profile-content card card-pad d-none">
-        <div class="card-title">
-            <h3>Plano Atual</h3>
-            <button class="btn btn-primary" onclick="openModal('renewModal')">Renovar Plano</button>
-        </div>
-
-        <div class="grid-3">
-            <div><span class="muted">Modalidade</span><br><strong>Mensal</strong></div>
-            <div><span class="muted">Início</span><br><strong>01/10/2026</strong></div>
-            <div><span class="muted">Vencimento</span><br><strong>31/10/2026</strong></div>
-            <div><span class="muted">Valor</span><br><strong>R$ 120,00</strong></div>
-            <div><span class="muted">Status</span><br><span class="badge badge-success">Ativo</span></div>
-            <div><span class="muted">Pagamento</span><br><span class="badge badge-success">Pago</span></div>
-        </div>
-    </div>
-
-    <div id="profilePagamentos" class="profile-content table-card d-none">
-        <div class="table-wrap">
-            <table>
-                <thead><tr><th>Período</th><th>Valor</th><th>Pagamento</th><th>Forma</th><th>Status</th></tr></thead>
-                <tbody>
-                    <tr><td>Outubro/2026</td><td>R$ 120,00</td><td>01/10/2026</td><td>PIX</td><td><span class="badge badge-success">Pago</span></td></tr>
-                    <tr><td>Setembro/2026</td><td>R$ 120,00</td><td>02/09/2026</td><td>Crédito</td><td><span class="badge badge-success">Pago</span></td></tr>
-                    <tr><td>Agosto/2026</td><td>R$ 120,00</td><td>01/08/2026</td><td>PIX</td><td><span class="badge badge-success">Pago</span></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div id="profileTreino" class="profile-content card card-pad d-none">
-        <h3>Treino atual — Treino A</h3><br>
-        <p><strong>Objetivo:</strong> Hipertrofia e condicionamento</p>
-        <p><strong>Professor:</strong> Ricardo Lima</p><br>
-        <button class="btn btn-primary" onclick="showSection('treinos')">Visualizar Ficha Completa</button>
-    </div>
-
-    <div id="profileAvaliacoes" class="profile-content card card-pad d-none">
-        <h3>Última avaliação física</h3><br>
-        <div class="grid-3">
-            <div><span class="muted">Peso</span><br><strong>62,4 kg</strong></div>
-            <div><span class="muted">IMC</span><br><strong>22,9</strong></div>
-            <div><span class="muted">Gordura corporal</span><br><strong>24,1%</strong></div>
-        </div>
-    </div>
-
-    <div id="profileAcessos" class="profile-content table-card d-none">
-        <div class="table-wrap">
-            <table>
-                <thead><tr><th>Data</th><th>Horário</th><th>Resultado</th></tr></thead>
-                <tbody>
-                    <tr><td>01/10/2026</td><td>07:12</td><td><span class="badge badge-success">Liberado</span></td></tr>
-                    <tr><td>30/09/2026</td><td>18:34</td><td><span class="badge badge-success">Liberado</span></td></tr>
-                    <tr><td>29/09/2026</td><td>07:20</td><td><span class="badge badge-success">Liberado</span></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+<section class="section" id="perfil-aluno">
+<div class="page-head">
+<div>
+<h1>Perfil do Aluno</h1>
+<p>Visão integrada das informações do aluno.</p>
+</div>
+<button class="btn btn-outline" onclick="showSection('alunos')">← Lista de Alunos</button>
+</div>
+<div class="profile-header">
+<div class="profile-avatar">GS</div>
+<div class="profile-info">
+<h2>Gabriela Santos</h2>
+<span class="badge badge-success">Cadastro Ativo</span>
+<div class="profile-meta">
+<span>CPF: 453.281.968-10</span>
+<span>Telefone: (19) 99182-3045</span>
+<span>Matrícula: CA-2026-0147</span>
+<span>gabriela.santos@email.com</span>
+</div>
+</div>
+<button class="btn btn-primary" onclick="showSection('aluno-form')">Editar Cadastro</button>
+</div>
+<div class="tabs">
+<button class="tab active" onclick="profileTab(this,'profileDados')">Dados</button>
+<button class="tab" onclick="profileTab(this,'profilePlano')">Plano</button>
+<button class="tab" onclick="profileTab(this,'profilePagamentos')">Pagamentos</button>
+<button class="tab" onclick="profileTab(this,'profileTreino')">Treino</button>
+<button class="tab" onclick="profileTab(this,'profileAvaliacoes')">Avaliações</button>
+<button class="tab" onclick="profileTab(this,'profileAcessos')">Acessos</button>
+</div>
+<div class="profile-content card card-pad" id="profileDados">
+<h3>Dados pessoais</h3><br/>
+<div class="grid-3">
+<div><span class="muted">Nascimento</span><br/><strong>18/05/2002</strong></div>
+<div><span class="muted">RG</span><br/><strong>48.502.913-7</strong></div>
+<div><span class="muted">Matrícula desde</span><br/><strong>01/10/2026</strong></div>
+<div><span class="muted">Cidade</span><br/><strong>Sumaré - SP</strong></div>
+<div><span class="muted">Situação</span><br/><strong>Ativa</strong></div>
+<div><span class="muted">Objetivo</span><br/><strong>Condicionamento físico</strong></div>
+</div>
+</div>
+<div class="profile-content card card-pad d-none" id="profilePlano">
+<div class="card-title">
+<h3>Plano Atual</h3>
+<button class="btn btn-primary" onclick="openModal('renewModal')">Renovar Plano</button>
+</div>
+<div class="grid-3">
+<div><span class="muted">Modalidade</span><br/><strong>Mensal</strong></div>
+<div><span class="muted">Início</span><br/><strong>01/10/2026</strong></div>
+<div><span class="muted">Vencimento</span><br/><strong>31/10/2026</strong></div>
+<div><span class="muted">Valor</span><br/><strong>R$ 120,00</strong></div>
+<div><span class="muted">Status</span><br/><span class="badge badge-success">Ativo</span></div>
+<div><span class="muted">Pagamento</span><br/><span class="badge badge-success">Pago</span></div>
+</div>
+</div>
+<div class="profile-content table-card d-none" id="profilePagamentos">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Período</th><th>Valor</th><th>Pagamento</th><th>Forma</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Outubro/2026</td><td>R$ 120,00</td><td>01/10/2026</td><td>PIX</td><td><span class="badge badge-success">Pago</span></td></tr>
+<tr><td>Setembro/2026</td><td>R$ 120,00</td><td>02/09/2026</td><td>Crédito</td><td><span class="badge badge-success">Pago</span></td></tr>
+<tr><td>Agosto/2026</td><td>R$ 120,00</td><td>01/08/2026</td><td>PIX</td><td><span class="badge badge-success">Pago</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="profile-content card card-pad d-none" id="profileTreino">
+<h3>Treino atual — Treino A</h3><br/>
+<p><strong>Objetivo:</strong> Hipertrofia e condicionamento</p>
+<p><strong>Professor:</strong> Ricardo Lima</p><br/>
+<button class="btn btn-primary" onclick="showSection('treinos')">Visualizar Ficha Completa</button>
+</div>
+<div class="profile-content card card-pad d-none" id="profileAvaliacoes">
+<h3>Última avaliação física</h3><br/>
+<div class="grid-3">
+<div><span class="muted">Peso</span><br/><strong>62,4 kg</strong></div>
+<div><span class="muted">IMC</span><br/><strong>22,9</strong></div>
+<div><span class="muted">Gordura corporal</span><br/><strong>24,1%</strong></div>
+</div>
+</div>
+<div class="profile-content table-card d-none" id="profileAcessos">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Data</th><th>Horário</th><th>Resultado</th></tr></thead>
+<tbody>
+<tr><td>01/10/2026</td><td>07:12</td><td><span class="badge badge-success">Liberado</span></td></tr>
+<tr><td>30/09/2026</td><td>18:34</td><td><span class="badge badge-success">Liberado</span></td></tr>
+<tr><td>29/09/2026</td><td>07:20</td><td><span class="badge badge-success">Liberado</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
-
 <!-- ================= EXPERIMENTAIS ================= -->
-<section id="experimentais" class="section">
-    <div class="page-head">
-        <div>
-            <h1>Aulas Experimentais</h1>
-            <p>Controle de visitantes e possíveis novos alunos.</p>
-        </div>
-        <button class="btn btn-primary" onclick="toast('Visitante cadastrado com sucesso!')">+ Novo Visitante</button>
-    </div>
-
-    <div class="table-card">
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr><th>Visitante</th><th>Telefone</th><th>Modalidade</th><th>Data</th><th>Horário</th><th>Status</th><th>Ação</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Mariana Lopes</td><td>(19) 99120-4487</td><td>Musculação</td><td>01/10/2026</td><td>18:00</td><td><span class="badge badge-warning">Agendada</span></td><td><button class="action-btn red" onclick="toast('Presença confirmada.')">Confirmar</button></td></tr>
-                    <tr><td>Felipe Costa</td><td>(19) 98821-7720</td><td>Funcional</td><td>01/10/2026</td><td>19:30</td><td><span class="badge badge-warning">Agendada</span></td><td><button class="action-btn red" onclick="toast('Presença confirmada.')">Confirmar</button></td></tr>
-                    <tr><td>Camila Rocha</td><td>(19) 99702-1158</td><td>Musculação</td><td>30/09/2026</td><td>17:00</td><td><span class="badge badge-success">Realizada</span></td><td><button class="action-btn" onclick="showSection('aluno-form')">Converter em Aluno</button></td></tr>
-                    <tr><td>Pedro Henrique</td><td>(19) 99418-6203</td><td>Musculação</td><td>29/09/2026</td><td>08:30</td><td><span class="badge badge-danger">Não compareceu</span></td><td><button class="action-btn">Reagendar</button></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+<section class="section" id="experimentais">
+<div class="page-head">
+<div>
+<h1>Aulas Experimentais</h1>
+<p>Controle de visitantes e possíveis novos alunos.</p>
+</div>
+<button class="btn btn-primary" onclick="toast('Visitante cadastrado com sucesso!')">+ Novo Visitante</button>
+</div>
+<div class="table-card">
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Visitante</th><th>Telefone</th><th>Modalidade</th><th>Data</th><th>Horário</th><th>Status</th><th>Ação</th></tr>
+</thead>
+<tbody>
+<tr><td>Mariana Lopes</td><td>(19) 99120-4487</td><td>Musculação</td><td>01/10/2026</td><td>18:00</td><td><span class="badge badge-warning">Agendada</span></td><td><button class="action-btn red" onclick="toast('Presença confirmada.')">Confirmar</button></td></tr>
+<tr><td>Felipe Costa</td><td>(19) 98821-7720</td><td>Funcional</td><td>01/10/2026</td><td>19:30</td><td><span class="badge badge-warning">Agendada</span></td><td><button class="action-btn red" onclick="toast('Presença confirmada.')">Confirmar</button></td></tr>
+<tr><td>Camila Rocha</td><td>(19) 99702-1158</td><td>Musculação</td><td>30/09/2026</td><td>17:00</td><td><span class="badge badge-success">Realizada</span></td><td><button class="action-btn" onclick="showSection('aluno-form')">Converter em Aluno</button></td></tr>
+<tr><td>Pedro Henrique</td><td>(19) 99418-6203</td><td>Musculação</td><td>29/09/2026</td><td>08:30</td><td><span class="badge badge-danger">Não compareceu</span></td><td><button class="action-btn">Reagendar</button></td></tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
-
 <!-- ================= PLANOS ================= -->
-<section id="planos" class="section">
-    <div class="page-head">
-        <div>
-            <h1>Planos e Contratos</h1>
-            <p>Modalidades oferecidas e contratos vinculados aos alunos.</p>
-        </div>
-        <button class="btn btn-primary" onclick="openModal('planModal')">+ Novo Plano</button>
-    </div>
+<section class="section" id="planos">
+<div class="page-head">
+<div>
+<h1>Planos e Contratos</h1>
+<p>Modalidades oferecidas e contratos vinculados aos alunos.</p>
+</div>
+<button class="btn btn-primary" onclick="openModal('planModal')">+ Novo Plano</button>
+</div>
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-label">PLANOS ATIVOS</div><div class="stat-value">4</div><div class="stat-foot">Modalidades disponíveis</div></div>
+<div class="stat-card"><div class="stat-label">CONTRATOS ATIVOS</div><div class="stat-value">147</div><div class="stat-foot">Alunos vinculados</div></div>
+<div class="stat-card"><div class="stat-label">A VENCER</div><div class="stat-value">12</div><div class="stat-foot">Próximos 15 dias</div></div>
+<div class="stat-card"><div class="stat-label">VENCIDOS</div><div class="stat-value">8</div><div class="stat-foot">Necessitam regularização</div></div>
+</div>
+<div aria-label="Etapas e visualizações" class="tabs" role="tablist"><button aria-selected="true" class="tab active" onclick="switchCustomTab('planos',0)" role="tab" type="button">Tipos de planos</button><button aria-selected="false" class="tab" onclick="switchCustomTab('planos',1)" role="tab" type="button">Contratos dos alunos</button></div><div class="custom-tab-panel" id="planos-pane-0" role="tabpanel"><div class="card-title">
+<h3>Tipos de Planos</h3>
+</div><div class="table-card" style="margin-bottom:25px">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Plano</th><th>Vigência</th><th>Valor</th><th>Benefícios</th><th>Situação</th><th>Ações</th></tr></thead>
+<tbody>
+<tr><td><strong>Mensal</strong></td><td>1 mês</td><td>R$ 120,00</td><td>Acesso à musculação</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn">Editar</button></td></tr>
+<tr><td><strong>Trimestral</strong></td><td>3 meses</td><td>R$ 330,00</td><td>Musculação + avaliação</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn">Editar</button></td></tr>
+<tr><td><strong>Semestral</strong></td><td>6 meses</td><td>R$ 600,00</td><td>Musculação + avaliação</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn">Editar</button></td></tr>
+<tr><td><strong>Anual</strong></td><td>12 meses</td><td>R$ 1.080,00</td><td>Plano completo</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn">Editar</button></td></tr>
+</tbody>
+</table>
+</div>
+</div></div><div class="custom-tab-panel d-none" id="planos-pane-1" role="tabpanel"><div class="card-title"><h3>Contratos dos Alunos</h3></div><div class="table-card">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Aluno</th><th>Plano</th><th>Início</th><th>Vencimento</th><th>Situação</th><th>Ação</th></tr></thead>
+<tbody>
+<tr><td>Gabriela Santos</td><td>Mensal</td><td>01/10/2026</td><td>31/10/2026</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn red" onclick="openModal('renewModal')">Renovar</button></td></tr>
+<tr><td>Lucas Almeida</td><td>Trimestral</td><td>15/09/2026</td><td>15/12/2026</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn red" onclick="openModal('renewModal')">Renovar</button></td></tr>
+<tr><td>Ana Carolina</td><td>Semestral</td><td>20/08/2026</td><td>20/02/2027</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn red" onclick="openModal('renewModal')">Renovar</button></td></tr>
+<tr><td>João Martins</td><td>Mensal</td><td>01/09/2026</td><td>30/09/2026</td><td><span class="badge badge-danger">Vencido</span></td><td><button class="action-btn red" onclick="openModal('renewModal')">Regularizar</button></td></tr>
+</tbody>
+</table>
+</div>
+</div></div>
 
-    <div class="stats-grid">
-        <div class="stat-card"><div class="stat-label">PLANOS ATIVOS</div><div class="stat-value">4</div><div class="stat-foot">Modalidades disponíveis</div></div>
-        <div class="stat-card"><div class="stat-label">CONTRATOS ATIVOS</div><div class="stat-value">147</div><div class="stat-foot">Alunos vinculados</div></div>
-        <div class="stat-card"><div class="stat-label">A VENCER</div><div class="stat-value">12</div><div class="stat-foot">Próximos 15 dias</div></div>
-        <div class="stat-card"><div class="stat-label">VENCIDOS</div><div class="stat-value">8</div><div class="stat-foot">Necessitam regularização</div></div>
-    </div>
 
-    <div class="card-title">
-        <h3>Tipos de Planos</h3>
-    </div>
 
-    <div class="table-card" style="margin-bottom:25px">
-        <div class="table-wrap">
-            <table>
-                <thead><tr><th>Plano</th><th>Vigência</th><th>Valor</th><th>Benefícios</th><th>Situação</th><th>Ações</th></tr></thead>
-                <tbody>
-                    <tr><td><strong>Mensal</strong></td><td>1 mês</td><td>R$ 120,00</td><td>Acesso à musculação</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn">Editar</button></td></tr>
-                    <tr><td><strong>Trimestral</strong></td><td>3 meses</td><td>R$ 330,00</td><td>Musculação + avaliação</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn">Editar</button></td></tr>
-                    <tr><td><strong>Semestral</strong></td><td>6 meses</td><td>R$ 600,00</td><td>Musculação + avaliação</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn">Editar</button></td></tr>
-                    <tr><td><strong>Anual</strong></td><td>12 meses</td><td>R$ 1.080,00</td><td>Plano completo</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn">Editar</button></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="card-title"><h3>Contratos dos Alunos</h3></div>
-
-    <div class="table-card">
-        <div class="table-wrap">
-            <table>
-                <thead><tr><th>Aluno</th><th>Plano</th><th>Início</th><th>Vencimento</th><th>Situação</th><th>Ação</th></tr></thead>
-                <tbody>
-                    <tr><td>Gabriela Santos</td><td>Mensal</td><td>01/10/2026</td><td>31/10/2026</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn red" onclick="openModal('renewModal')">Renovar</button></td></tr>
-                    <tr><td>Lucas Almeida</td><td>Trimestral</td><td>15/09/2026</td><td>15/12/2026</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn red" onclick="openModal('renewModal')">Renovar</button></td></tr>
-                    <tr><td>Ana Carolina</td><td>Semestral</td><td>20/08/2026</td><td>20/02/2027</td><td><span class="badge badge-success">Ativo</span></td><td><button class="action-btn red" onclick="openModal('renewModal')">Renovar</button></td></tr>
-                    <tr><td>João Martins</td><td>Mensal</td><td>01/09/2026</td><td>30/09/2026</td><td><span class="badge badge-danger">Vencido</span></td><td><button class="action-btn red" onclick="openModal('renewModal')">Regularizar</button></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
 </section>
-
 <!-- ================= PAGAMENTOS ================= -->
-<section id="pagamentos" class="section">
-    <div class="page-head">
-        <div>
-            <h1>Pagamentos</h1>
-            <p>Controle financeiro dos contratos da academia.</p>
-        </div>
-        <button class="btn btn-primary" onclick="openModal('paymentModal')">+ Registrar Pagamento</button>
-    </div>
-
-    <div class="stats-grid">
-        <div class="stat-card"><div class="stat-label">RECEBIMENTOS DO MÊS</div><div class="stat-value">R$ 18,4 mil</div><div class="stat-foot">Outubro/2026</div></div>
-        <div class="stat-card"><div class="stat-label">PAGAMENTOS PENDENTES</div><div class="stat-value">11</div><div class="stat-foot">R$ 1.640,00</div></div>
-        <div class="stat-card"><div class="stat-label">INADIMPLENTES</div><div class="stat-value">8</div><div class="stat-foot">5 acessos bloqueados</div></div>
-        <div class="stat-card"><div class="stat-label">PAGOS HOJE</div><div class="stat-value">9</div><div class="stat-foot">R$ 1.280,00</div></div>
-    </div>
-
-    <div class="filters">
-        <input class="input" value="" placeholder="Pesquisar aluno">
-        <select class="input"><option selected>Todos os status</option><option>Pago</option><option>Pendente</option><option>Vencido</option></select>
-        <input type="month" class="input" value="2026-10">
-    </div>
-
-    <div class="table-card">
-        <div class="table-wrap">
-            <table>
-                <thead><tr><th>Aluno</th><th>Plano</th><th>Vencimento</th><th>Valor</th><th>Pagamento</th><th>Status</th><th>Ação</th></tr></thead>
-                <tbody>
-                    <tr><td>Gabriela Santos</td><td>Mensal</td><td>31/10/2026</td><td>R$ 120,00</td><td>01/10/2026</td><td><span class="badge badge-success">Pago</span></td><td><button class="action-btn">Recibo</button></td></tr>
-                    <tr><td>Lucas Almeida</td><td>Trimestral</td><td>15/12/2026</td><td>R$ 330,00</td><td>15/09/2026</td><td><span class="badge badge-success">Pago</span></td><td><button class="action-btn">Recibo</button></td></tr>
-                    <tr><td>João Martins</td><td>Mensal</td><td>30/09/2026</td><td>R$ 120,00</td><td>—</td><td><span class="badge badge-danger">Vencido</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Registrar</button></td></tr>
-                    <tr><td>Marcos Silva</td><td>Mensal</td><td>05/10/2026</td><td>R$ 120,00</td><td>—</td><td><span class="badge badge-warning">Pendente</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Registrar</button></td></tr>
-                    <tr><td>Fernanda Alves</td><td>Anual</td><td>17/08/2027</td><td>R$ 1.080,00</td><td>17/08/2026</td><td><span class="badge badge-success">Pago</span></td><td><button class="action-btn">Recibo</button></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+<section class="section" id="pagamentos">
+<div class="page-head">
+<div>
+<h1>Pagamentos</h1>
+<p>Controle financeiro dos contratos da academia.</p>
+</div>
+<button class="btn btn-primary" onclick="openModal('paymentModal')">+ Registrar Pagamento</button>
+</div>
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-label">RECEBIMENTOS DO MÊS</div><div class="stat-value">R$ 18,4 mil</div><div class="stat-foot">Outubro/2026</div></div>
+<div class="stat-card"><div class="stat-label">PAGAMENTOS PENDENTES</div><div class="stat-value">11</div><div class="stat-foot">R$ 1.640,00</div></div>
+<div class="stat-card"><div class="stat-label">INADIMPLENTES</div><div class="stat-value">8</div><div class="stat-foot">5 acessos bloqueados</div></div>
+<div class="stat-card"><div class="stat-label">PAGOS HOJE</div><div class="stat-value">9</div><div class="stat-foot">R$ 1.280,00</div></div>
+</div>
+<div class="filters">
+<input class="input" placeholder="Pesquisar aluno" value=""/>
+<select class="input"><option selected="">Todos os status</option><option>Pago</option><option>Pendente</option><option>Vencido</option></select>
+<input class="input" type="month" value="2026-10"/>
+</div>
+<div class="table-card">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Aluno</th><th>Plano</th><th>Vencimento</th><th>Valor</th><th>Pagamento</th><th>Status</th><th>Ação</th></tr></thead>
+<tbody>
+<tr><td>Gabriela Santos</td><td>Mensal</td><td>31/10/2026</td><td>R$ 120,00</td><td>01/10/2026</td><td><span class="badge badge-success">Pago</span></td><td><button class="action-btn">Recibo</button></td></tr>
+<tr><td>Lucas Almeida</td><td>Trimestral</td><td>15/12/2026</td><td>R$ 330,00</td><td>15/09/2026</td><td><span class="badge badge-success">Pago</span></td><td><button class="action-btn">Recibo</button></td></tr>
+<tr><td>João Martins</td><td>Mensal</td><td>30/09/2026</td><td>R$ 120,00</td><td>—</td><td><span class="badge badge-danger">Vencido</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Registrar</button></td></tr>
+<tr><td>Marcos Silva</td><td>Mensal</td><td>05/10/2026</td><td>R$ 120,00</td><td>—</td><td><span class="badge badge-warning">Pendente</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Registrar</button></td></tr>
+<tr><td>Fernanda Alves</td><td>Anual</td><td>17/08/2027</td><td>R$ 1.080,00</td><td>17/08/2026</td><td><span class="badge badge-success">Pago</span></td><td><button class="action-btn">Recibo</button></td></tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
-
 <!-- ================= INADIMPLENTES ================= -->
-<section id="inadimplentes" class="section">
-    <div class="page-head">
-        <div>
-            <h1>Alunos Inadimplentes</h1>
-            <p>Acompanhe vencimentos, tolerância e bloqueios de acesso.</p>
-        </div>
-        <button class="btn btn-primary" onclick="openModal('paymentModal')">Registrar Pagamento</button>
-    </div>
-
-    <div class="table-card danger-table">
-        <div class="table-wrap">
-            <table>
-                <thead><tr><th>Aluno</th><th>Telefone</th><th>Plano</th><th>Vencimento</th><th>Atraso</th><th>Situação</th><th>Ação</th></tr></thead>
-                <tbody>
-                    <tr><td>João Martins</td><td>(19) 98853-4071</td><td>Mensal</td><td>30/09/2026</td><td>1 dia</td><td><span class="badge badge-warning">Tolerância</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Regularizar</button></td></tr>
-                    <tr><td>Renata Souza</td><td>(19) 99781-2206</td><td>Mensal</td><td>18/09/2026</td><td>13 dias</td><td><span class="badge badge-danger">Acesso bloqueado</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Regularizar</button></td></tr>
-                    <tr><td>Carlos Eduardo</td><td>(19) 98442-6185</td><td>Trimestral</td><td>15/09/2026</td><td>16 dias</td><td><span class="badge badge-danger">Acesso bloqueado</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Regularizar</button></td></tr>
-                    <tr><td>Patrícia Lima</td><td>(19) 99314-6080</td><td>Mensal</td><td>25/09/2026</td><td>6 dias</td><td><span class="badge badge-warning">Tolerância</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Regularizar</button></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+<section class="section" id="inadimplentes">
+<div class="page-head">
+<div>
+<h1>Alunos Inadimplentes</h1>
+<p>Acompanhe vencimentos, tolerância e bloqueios de acesso.</p>
+</div>
+<button class="btn btn-primary" onclick="openModal('paymentModal')">Registrar Pagamento</button>
+</div>
+<div class="table-card danger-table">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Aluno</th><th>Telefone</th><th>Plano</th><th>Vencimento</th><th>Atraso</th><th>Situação</th><th>Ação</th></tr></thead>
+<tbody>
+<tr><td>João Martins</td><td>(19) 98853-4071</td><td>Mensal</td><td>30/09/2026</td><td>1 dia</td><td><span class="badge badge-warning">Tolerância</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Regularizar</button></td></tr>
+<tr><td>Renata Souza</td><td>(19) 99781-2206</td><td>Mensal</td><td>18/09/2026</td><td>13 dias</td><td><span class="badge badge-danger">Acesso bloqueado</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Regularizar</button></td></tr>
+<tr><td>Carlos Eduardo</td><td>(19) 98442-6185</td><td>Trimestral</td><td>15/09/2026</td><td>16 dias</td><td><span class="badge badge-danger">Acesso bloqueado</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Regularizar</button></td></tr>
+<tr><td>Patrícia Lima</td><td>(19) 99314-6080</td><td>Mensal</td><td>25/09/2026</td><td>6 dias</td><td><span class="badge badge-warning">Tolerância</span></td><td><button class="action-btn red" onclick="openModal('paymentModal')">Regularizar</button></td></tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
-
 <!-- ================= ACESSO ================= -->
-<section id="acesso" class="section">
-    <div class="page-head">
-        <div>
-            <h1>Controle de Acesso</h1>
-            <p>Validação automática do cadastro e situação do plano.</p>
-        </div>
-        <button class="btn btn-outline" onclick="showSection('historico-acesso')">Histórico de Acessos</button>
-    </div>
-
-    <div class="access-panel">
-        <div class="access-search">
-            <h2>Validar Entrada</h2>
-            <p>Digite ou leia o CPF, matrícula ou carteirinha do aluno.</p>
-            <input id="accessInput" class="input" value="45328196810">
-            <button class="btn btn-primary btn-lg" onclick="validateAccess()">Consultar Aluno</button>
-        </div>
-
-        <div class="access-student" id="accessStudent">
-            <div class="student-main">
-                <div class="student-photo">GS</div>
-                <div>
-                    <h2>Gabriela Santos</h2>
-                    <p class="muted">Matrícula CA-2026-0147</p><br>
-                    <span class="badge badge-success">PLANO ATIVO</span>
-                </div>
-            </div>
-
-            <div class="grid-3">
-                <div><span class="muted">Plano</span><br><strong>Mensal</strong></div>
-                <div><span class="muted">Vencimento</span><br><strong>31/10/2026</strong></div>
-                <div><span class="muted">Financeiro</span><br><strong>Regular</strong></div>
-            </div>
-
-            <div class="access-status">✓ ACESSO LIBERADO</div>
-
-            <button class="access-button" onclick="registerAccess()">
+<section class="section" id="acesso">
+<div class="page-head">
+<div>
+<h1>Controle de Acesso</h1>
+<p>Validação automática do cadastro e situação do plano.</p>
+</div>
+<button class="btn btn-outline" onclick="showSection('historico-acesso')">Histórico de Acessos</button>
+</div>
+<div class="access-panel">
+<div class="access-search">
+<h2>Validar Entrada</h2>
+<p>Digite ou leia o CPF, matrícula ou carteirinha do aluno.</p>
+<input class="input" id="accessInput" value="45328196810"/>
+<button class="btn btn-primary btn-lg" onclick="validateAccess()">Consultar Aluno</button>
+</div>
+<div class="access-student" id="accessStudent">
+<div class="student-main">
+<div class="student-photo">GS</div>
+<div>
+<h2>Gabriela Santos</h2>
+<p class="muted">Matrícula CA-2026-0147</p><br/>
+<span class="badge badge-success">PLANO ATIVO</span>
+</div>
+</div>
+<div class="grid-3">
+<div><span class="muted">Plano</span><br/><strong>Mensal</strong></div>
+<div><span class="muted">Vencimento</span><br/><strong>31/10/2026</strong></div>
+<div><span class="muted">Financeiro</span><br/><strong>Regular</strong></div>
+</div>
+<div class="access-status">✓ ACESSO LIBERADO</div>
+<button class="access-button" onclick="registerAccess()">
                 REGISTRAR ENTRADA
             </button>
-        </div>
-    </div>
+</div>
+</div>
 </section>
-
 <!-- ================= HISTÓRICO ACESSO ================= -->
-<section id="historico-acesso" class="section">
-    <div class="page-head">
-        <div>
-            <h1>Histórico de Acessos</h1>
-            <p>Entradas e tentativas de acesso registradas hoje.</p>
-        </div>
-        <button class="btn btn-primary" onclick="showSection('acesso')">+ Registrar Entrada</button>
-    </div>
-
-    <div class="filters">
-        <input type="date" class="input" value="2026-10-01">
-        <input class="input" value="" placeholder="Pesquisar aluno">
-        <select class="input"><option selected>Todos</option><option>Liberado</option><option>Bloqueado</option></select>
-    </div>
-
-    <div class="table-card">
-        <div class="table-wrap">
-            <table>
-                <thead><tr><th>Data</th><th>Hora</th><th>Aluno</th><th>Plano</th><th>Resultado</th></tr></thead>
-                <tbody id="accessHistory">
-                    <tr><td>01/10/2026</td><td>12:16</td><td>Gabriela Santos</td><td>Mensal</td><td><span class="badge badge-success">Liberado</span></td></tr>
-                    <tr><td>01/10/2026</td><td>11:52</td><td>Lucas Almeida</td><td>Trimestral</td><td><span class="badge badge-success">Liberado</span></td></tr>
-                    <tr><td>01/10/2026</td><td>10:34</td><td>João Martins</td><td>Mensal</td><td><span class="badge badge-danger">Bloqueado</span></td></tr>
-                    <tr><td>01/10/2026</td><td>09:21</td><td>Ana Carolina</td><td>Semestral</td><td><span class="badge badge-success">Liberado</span></td></tr>
-                    <tr><td>01/10/2026</td><td>08:05</td><td>Fernanda Alves</td><td>Anual</td><td><span class="badge badge-success">Liberado</span></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+<section class="section" id="historico-acesso">
+<div class="page-head">
+<div>
+<h1>Histórico de Acessos</h1>
+<p>Entradas e tentativas de acesso registradas hoje.</p>
+</div>
+<button class="btn btn-primary" onclick="showSection('acesso')">+ Registrar Entrada</button>
+</div>
+<div class="filters">
+<input class="input" type="date" value="2026-10-01"/>
+<input class="input" placeholder="Pesquisar aluno" value=""/>
+<select class="input"><option selected="">Todos</option><option>Liberado</option><option>Bloqueado</option></select>
+</div>
+<div class="table-card">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Data</th><th>Hora</th><th>Aluno</th><th>Plano</th><th>Resultado</th></tr></thead>
+<tbody id="accessHistory">
+<tr><td>01/10/2026</td><td>12:16</td><td>Gabriela Santos</td><td>Mensal</td><td><span class="badge badge-success">Liberado</span></td></tr>
+<tr><td>01/10/2026</td><td>11:52</td><td>Lucas Almeida</td><td>Trimestral</td><td><span class="badge badge-success">Liberado</span></td></tr>
+<tr><td>01/10/2026</td><td>10:34</td><td>João Martins</td><td>Mensal</td><td><span class="badge badge-danger">Bloqueado</span></td></tr>
+<tr><td>01/10/2026</td><td>09:21</td><td>Ana Carolina</td><td>Semestral</td><td><span class="badge badge-success">Liberado</span></td></tr>
+<tr><td>01/10/2026</td><td>08:05</td><td>Fernanda Alves</td><td>Anual</td><td><span class="badge badge-success">Liberado</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
-
 <!-- ================= TREINOS ================= -->
-<section id="treinos" class="section">
-    <div class="page-head">
-        <div>
-            <h1>Treinos</h1>
-            <p>Fichas personalizadas e acompanhamento dos alunos.</p>
-        </div>
-        <button class="btn btn-primary" onclick="showSection('treino-form')">+ Criar Ficha de Treino</button>
-    </div>
-
-    <div class="filters">
-        <input class="input" value="" placeholder="Pesquisar aluno">
-        <select class="input"><option selected>Todos os professores</option><option>Ricardo Lima</option><option>Juliana Prado</option><option>Bruno Alves</option></select>
-    </div>
-
-    <div class="table-card">
-        <div class="table-wrap">
-            <table>
-                <thead><tr><th>Aluno</th><th>Objetivo</th><th>Professor</th><th>Treino</th><th>Atualização</th><th>Ação</th></tr></thead>
-                <tbody>
-                    <tr><td>Gabriela Santos</td><td>Hipertrofia</td><td>Ricardo Lima</td><td>A/B/C</td><td>20/09/2026</td><td><button class="action-btn red" onclick="showSection('treino-form')">Ver treino</button></td></tr>
-                    <tr><td>Lucas Almeida</td><td>Condicionamento</td><td>Juliana Prado</td><td>A/B</td><td>15/09/2026</td><td><button class="action-btn red" onclick="showSection('treino-form')">Ver treino</button></td></tr>
-                    <tr><td>Ana Carolina</td><td>Emagrecimento</td><td>Bruno Alves</td><td>A/B/C</td><td>25/09/2026</td><td><button class="action-btn red" onclick="showSection('treino-form')">Ver treino</button></td></tr>
-                    <tr><td>Fernanda Alves</td><td>Hipertrofia</td><td>Ricardo Lima</td><td>A/B/C/D</td><td>10/09/2026</td><td><button class="action-btn red" onclick="showSection('treino-form')">Ver treino</button></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
+<section class="section" id="treinos">
+<div class="page-head">
+<div>
+<h1>Treinos</h1>
+<p>Fichas personalizadas e acompanhamento dos alunos.</p>
+</div>
+<div class="page-actions"><button class="btn btn-outline" onclick="showSection('modelos-treino')">Modelos Padrão</button><button class="btn btn-outline" onclick="editTemplate(-1)">+ Cadastrar Tipo de Treino</button><button class="btn btn-primary" onclick="showSection('treino-form')">+ Criar Ficha de Treino</button></div>
+</div>
+<div class="filters">
+<input class="input" placeholder="Pesquisar aluno" value=""/>
+<select class="input"><option selected="">Todos os professores</option><option>Ricardo Lima</option><option>Juliana Prado</option><option>Bruno Alves</option></select>
+</div>
+<div class="table-card">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Aluno</th><th>Objetivo</th><th>Professor</th><th>Treino</th><th>Atualização</th><th>Ação</th></tr></thead>
+<tbody>
+<tr><td>Gabriela Santos</td><td>Hipertrofia</td><td>Ricardo Lima</td><td>A/B/C</td><td>20/09/2026</td><td><button class="action-btn red" onclick="showSection('treino-form')">Ver treino</button></td></tr>
+<tr><td>Lucas Almeida</td><td>Condicionamento</td><td>Juliana Prado</td><td>A/B</td><td>15/09/2026</td><td><button class="action-btn red" onclick="showSection('treino-form')">Ver treino</button></td></tr>
+<tr><td>Ana Carolina</td><td>Emagrecimento</td><td>Bruno Alves</td><td>A/B/C</td><td>25/09/2026</td><td><button class="action-btn red" onclick="showSection('treino-form')">Ver treino</button></td></tr>
+<tr><td>Fernanda Alves</td><td>Hipertrofia</td><td>Ricardo Lima</td><td>A/B/C/D</td><td>10/09/2026</td><td><button class="action-btn red" onclick="showSection('treino-form')">Ver treino</button></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section class="section" id="cadastro-exercicios"><div class="page-head"><div><h1>Cadastro de Exercícios</h1><p>Parâmetros de exercícios utilizados nas fichas de treino.</p></div><button class="btn btn-outline" onclick="showSection('treinos')">← Voltar aos treinos</button></div><div class="tabs" role="tablist"><button class="tab active" onclick="switchCustomTab('cadastro-exercicios',0)">Exercícios cadastrados</button><button class="tab" onclick="switchCustomTab('cadastro-exercicios',1)">Cadastrar / editar exercício</button></div><div class="custom-tab-panel" id="cadastro-exercicios-pane-0"><div class="filters"><input class="input" id="exerciseSearch" oninput="renderExerciseCatalog()" placeholder="Pesquisar exercício"/><button class="btn btn-primary" onclick="newCatalogExercise()">+ Novo exercício</button></div><div class="table-card"><div class="table-wrap"><table><thead><tr><th>Nome</th><th>Grupo muscular</th><th>Equipamento</th><th>Orientações</th><th>Ações</th></tr></thead><tbody id="exerciseCatalogRows"></tbody></table></div></div></div><div class="custom-tab-panel d-none" id="cadastro-exercicios-pane-1"><div class="form-card"><h3>Parâmetros do exercício</h3><input id="catalogExerciseId" type="hidden"/><div class="form-grid two"><div class="form-group"><label for="catalogName">Nome do exercício *</label><input class="input" id="catalogName" placeholder="Ex.: Supino reto"/></div><div class="form-group"><label for="catalogMuscle">Grupo muscular *</label><select class="input" id="catalogMuscle"><option>Peito</option><option>Costas</option><option>Pernas</option><option>Ombros</option><option>Braços</option><option>Abdômen</option><option>Cardio</option><option>Outros</option></select></div><div class="form-group"><label for="catalogEquipment">Equipamento</label><input class="input" id="catalogEquipment" placeholder="Ex.: Banco e barra"/></div><div class="form-group"><label for="catalogVariation">Variação</label><input class="input" id="catalogVariation" placeholder="Ex.: Reto / inclinado / declinado"/></div><div class="form-group full"><label for="catalogInstructions">Orientações de execução</label><textarea class="input" id="catalogInstructions"></textarea></div></div><div class="form-actions"><button class="btn btn-outline" onclick="switchCustomTab('cadastro-exercicios',0)">Cancelar</button><button class="btn btn-primary" onclick="saveCatalogExercise()">Salvar exercício</button></div></div></div></section>
 <!-- ================= TREINO FORM ================= -->
-<section id="treino-form" class="section">
-    <div class="page-head">
-        <div>
-            <h1>Ficha de Treino</h1>
-            <p>Criação e edição do treino individual do aluno.</p>
-        </div>
-        <button class="btn btn-outline" onclick="showSection('treinos')">← Voltar</button>
-    </div>
+<section class="section" id="treino-form">
+<div class="page-head">
+<div>
+<h1>Ficha de Treino</h1>
+<p>Criação e edição do treino individual do aluno.</p>
+</div>
+<button class="btn btn-outline" onclick="showSection('treinos')">← Voltar</button>
+</div>
+<div aria-label="Etapas e visualizações" class="tabs" role="tablist"><button aria-selected="true" class="tab active" onclick="switchCustomTab('treino-form',0)" role="tab" type="button">Identificação do aluno</button><button aria-selected="false" class="tab" onclick="switchCustomTab('treino-form',1)" role="tab" type="button">Treino e exercícios</button></div><div class="custom-tab-panel" id="treino-form-pane-0" role="tabpanel"><div class="form-card">
 
-    <div class="form-card">
-        <h3>Identificação</h3>
+<div class="form-grid">
+<div class="form-group">
+<label>Aluno</label>
+<select class="input"><option selected="">Gabriela Santos</option><option>Lucas Almeida</option><option>Ana Carolina</option></select>
+</div>
+<div class="form-group">
+<label>Professor</label>
+<select class="input"><option selected="">Ricardo Lima</option><option>Juliana Prado</option><option>Bruno Alves</option></select>
+</div>
+<div class="form-group">
+<label>Objetivo</label>
+<input class="input" value="Hipertrofia e condicionamento"/>
+</div>
+<div class="form-group">
+<label>Data de elaboração</label>
+<input class="input" type="date" value="2026-09-20"/>
+</div>
+<div class="form-group">
+<label>Divisão</label>
+<select class="input"><option selected="">Treino A</option><option>Treino B</option><option>Treino C</option></select>
+</div>
+<div class="form-group">
+<label>Modelo</label>
+<select class="input"><option selected="">Hipertrofia - Intermediário</option><option>Condicionamento</option><option>Emagrecimento</option></select>
+</div>
+</div>
+</div><div class="form-actions"><button class="btn btn-primary" onclick="switchCustomTab('treino-form',1)">Próximo: exercícios →</button></div></div><div class="custom-tab-panel d-none" id="treino-form-pane-1" role="tabpanel"><div class="table-card">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Exercício</th><th>Séries</th><th>Repetições</th><th>Carga</th><th>Descanso</th><th>Ação</th></tr></thead>
+<tbody id="studentExerciseRows">
+<tr><td><input aria-label="Exercício" class="input" value="Supino reto"/></td><td><input aria-label="Séries" class="input" value="4"/></td><td><input aria-label="Repetições" class="input" value="10"/></td><td><input aria-label="Carga" class="input" value="30 kg"/></td><td><input aria-label="Descanso" class="input" value="60 s"/></td><td><button class="action-btn red" onclick="removeStudentExercise(this)" type="button">Remover</button></td></tr>
+<tr><td><input aria-label="Exercício" class="input" value="Crucifixo inclinado"/></td><td><input aria-label="Séries" class="input" value="3"/></td><td><input aria-label="Repetições" class="input" value="12"/></td><td><input aria-label="Carga" class="input" value="10 kg"/></td><td><input aria-label="Descanso" class="input" value="45 s"/></td><td><button class="action-btn red" onclick="removeStudentExercise(this)" type="button">Remover</button></td></tr>
+<tr><td><input aria-label="Exercício" class="input" value="Desenvolvimento"/></td><td><input aria-label="Séries" class="input" value="4"/></td><td><input aria-label="Repetições" class="input" value="10"/></td><td><input aria-label="Carga" class="input" value="16 kg"/></td><td><input aria-label="Descanso" class="input" value="60 s"/></td><td><button class="action-btn red" onclick="removeStudentExercise(this)" type="button">Remover</button></td></tr>
+<tr><td><input aria-label="Exercício" class="input" value="Elevação lateral"/></td><td><input aria-label="Séries" class="input" value="3"/></td><td><input aria-label="Repetições" class="input" value="12"/></td><td><input aria-label="Carga" class="input" value="7 kg"/></td><td><input aria-label="Descanso" class="input" value="45 s"/></td><td><button class="action-btn red" onclick="removeStudentExercise(this)" type="button">Remover</button></td></tr>
+<tr><td><input aria-label="Exercício" class="input" value="Tríceps corda"/></td><td><input aria-label="Séries" class="input" value="3"/></td><td><input aria-label="Repetições" class="input" value="12"/></td><td><input aria-label="Carga" class="input" value="20 kg"/></td><td><input aria-label="Descanso" class="input" value="45 s"/></td><td><button class="action-btn red" onclick="removeStudentExercise(this)" type="button">Remover</button></td></tr>
+</tbody>
+</table>
+</div>
+</div><div class="form-card" style="margin-top:20px">
+<div class="form-group">
+<label>Observações do professor</label>
+<textarea class="input">Manter execução controlada, priorizando amplitude completa. Aumentar a carga apenas quando completar todas as repetições com técnica adequada.</textarea>
+</div>
+<div class="form-actions">
+<button class="btn btn-outline" onclick="addStudentExercise()">+ Adicionar Exercício</button>
+<button class="btn btn-primary" onclick="saveStudentWorkout()">Salvar Treino</button>
+</div>
+</div></div>
 
-        <div class="form-grid">
-            <div class="form-group">
-                <label>Aluno</label>
-                <select class="input"><option selected>Gabriela Santos</option><option>Lucas Almeida</option><option>Ana Carolina</option></select>
-            </div>
 
-            <div class="form-group">
-                <label>Professor</label>
-                <select class="input"><option selected>Ricardo Lima</option><option>Juliana Prado</option><option>Bruno Alves</option></select>
-            </div>
-
-            <div class="form-group">
-                <label>Objetivo</label>
-                <input class="input" value="Hipertrofia e condicionamento">
-            </div>
-
-            <div class="form-group">
-                <label>Data de elaboração</label>
-                <input type="date" class="input" value="2026-09-20">
-            </div>
-
-            <div class="form-group">
-                <label>Divisão</label>
-                <select class="input"><option selected>Treino A</option><option>Treino B</option><option>Treino C</option></select>
-            </div>
-
-            <div class="form-group">
-                <label>Modelo</label>
-                <select class="input"><option selected>Hipertrofia - Intermediário</option><option>Condicionamento</option><option>Emagrecimento</option></select>
-            </div>
-        </div>
-    </div>
-
-    <div class="table-card">
-        <div class="table-wrap">
-            <table>
-                <thead><tr><th>Exercício</th><th>Séries</th><th>Repetições</th><th>Carga</th><th>Descanso</th><th>Ação</th></tr></thead>
-                <tbody>
-                    <tr><td>Supino reto</td><td>4</td><td>10</td><td>30 kg</td><td>60 s</td><td><button class="action-btn">Editar</button></td></tr>
-                    <tr><td>Crucifixo inclinado</td><td>3</td><td>12</td><td>10 kg</td><td>45 s</td><td><button class="action-btn">Editar</button></td></tr>
-                    <tr><td>Desenvolvimento</td><td>4</td><td>10</td><td>16 kg</td><td>60 s</td><td><button class="action-btn">Editar</button></td></tr>
-                    <tr><td>Elevação lateral</td><td>3</td><td>12</td><td>7 kg</td><td>45 s</td><td><button class="action-btn">Editar</button></td></tr>
-                    <tr><td>Tríceps corda</td><td>3</td><td>12</td><td>20 kg</td><td>45 s</td><td><button class="action-btn">Editar</button></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="form-card" style="margin-top:20px">
-        <div class="form-group">
-            <label>Observações do professor</label>
-            <textarea class="input">Manter execução controlada, priorizando amplitude completa. Aumentar a carga apenas quando completar todas as repetições com técnica adequada.</textarea>
-        </div>
-
-        <div class="form-actions">
-            <button class="btn btn-outline" onclick="toast('Novo exercício adicionado à ficha.')">+ Adicionar Exercício</button>
-            <button class="btn btn-primary" onclick="toast('Treino salvo com sucesso!')">Salvar Treino</button>
-        </div>
-    </div>
 </section>
-
 <!-- ================= AVALIAÇÕES ================= -->
-<section id="avaliacoes" class="section">
-    <div class="page-head">
-        <div>
-            <h1>Avaliações Físicas</h1>
-            <p>Agenda, registros corporais e acompanhamento da evolução.</p>
-        </div>
-        <div class="page-actions">
-            <button class="btn btn-outline" onclick="openModal('evaluationModal')">Registrar Avaliação</button>
-            <button class="btn btn-primary" onclick="openModal('scheduleModal')">+ Agendar Avaliação</button>
-        </div>
-    </div>
+<section class="section" id="avaliacoes">
+<div class="page-head">
+<div>
+<h1>Avaliações Físicas</h1>
+<p>Agenda, registros corporais e acompanhamento da evolução.</p>
+</div>
+<div class="page-actions">
+<button class="btn btn-outline" onclick="openModal('evaluationModal')">Registrar Avaliação</button>
+<button class="btn btn-primary" onclick="openModal('scheduleModal')">+ Agendar Avaliação</button>
+</div>
+</div>
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-label">AVALIAÇÕES HOJE</div><div class="stat-value">4</div><div class="stat-foot">2 realizadas</div></div>
+<div class="stat-card"><div class="stat-label">ESTA SEMANA</div><div class="stat-value">18</div><div class="stat-foot">Agendamentos</div></div>
+<div class="stat-card"><div class="stat-label">PRÓXIMA</div><div class="stat-value">16:30</div><div class="stat-foot">Mariana Costa</div></div>
+<div class="stat-card"><div class="stat-label">SALAS LIVRES</div><div class="stat-value">1</div><div class="stat-foot">Sala de Avaliação 02</div></div>
+</div>
+<div aria-label="Etapas e visualizações" class="tabs" role="tablist"><button aria-selected="true" class="tab active" onclick="switchCustomTab('avaliacoes',0)" role="tab" type="button">Agenda da semana</button><button aria-selected="false" class="tab" onclick="switchCustomTab('avaliacoes',1)" role="tab" type="button">Avaliações registradas</button><button aria-selected="false" class="tab" onclick="switchCustomTab('avaliacoes',2)" role="tab" type="button">Evolução física</button></div><div class="custom-tab-panel" id="avaliacoes-pane-0" role="tabpanel"><div class="card card-pad" style="margin-bottom:20px">
+<div class="card-title">
+<h3>Agenda da Semana</h3>
+<div>
+<button class="action-btn">Hoje</button>
+<button class="action-btn red">Semana</button>
+<button class="action-btn">Mês</button>
+</div>
+</div>
+<div class="calendar">
+<div class="day">
+<h4>Segunda 28/09</h4>
+<div class="event"><strong>09:00</strong><br/>Lucas Almeida<br/>Ricardo • Sala 1</div>
+<div class="event"><strong>15:00</strong><br/>Ana Carolina<br/>Juliana • Sala 1</div>
+</div>
+<div class="day">
+<h4>Terça 29/09</h4>
+<div class="event"><strong>10:30</strong><br/>Fernanda Alves<br/>Bruno • Sala 2</div>
+<div class="event"><strong>18:00</strong><br/>Paulo César<br/>Ricardo • Sala 1</div>
+</div>
+<div class="day">
+<h4>Quarta 30/09</h4>
+<div class="event"><strong>08:30</strong><br/>Marcos Silva<br/>Juliana • Sala 2</div>
+<div class="event"><strong>17:30</strong><br/>Renata Souza<br/>Bruno • Sala 1</div>
+</div>
+<div class="day">
+<h4>Hoje 01/10</h4>
+<div class="event"><strong>09:00</strong><br/>Gabriela Santos<br/>Ricardo • Sala 1</div>
+<div class="event"><strong>16:30</strong><br/>Mariana Costa<br/>Juliana • Sala 2</div>
+</div>
+<div class="day">
+<h4>Sexta 02/10</h4>
+<div class="event"><strong>10:00</strong><br/>Felipe Gomes<br/>Bruno • Sala 1</div>
+<div class="event"><strong>14:30</strong><br/>Carla Lima<br/>Ricardo • Sala 2</div>
+</div>
+</div>
+</div></div><div class="custom-tab-panel d-none" id="avaliacoes-pane-1" role="tabpanel"><div class="card card-pad"><h3>Avaliações registradas</h3><p class="muted" style="margin:12px 0">Clique duas vezes em uma avaliação para consultar os dados.</p><div class="table-wrap"><table><thead><tr><th>Aluno</th><th>Data</th><th>Peso</th><th>Altura</th><th>IMC</th><th>Ação</th></tr></thead><tbody id="registeredEvaluationRows"></tbody></table></div></div></div><div class="custom-tab-panel d-none" id="avaliacoes-pane-2" role="tabpanel"><div class="grid-2">
+<div class="card card-pad">
+<div class="card-title">
+<h3>Evolução — Gabriela Santos</h3>
+<button class="action-btn red">Comparar Avaliações</button>
+</div>
+<div class="report-chart">
+<div class="bar-group"><div class="bar" style="height:82%"><span>65,2</span></div><div class="bar-label">Mai</div></div>
+<div class="bar-group"><div class="bar" style="height:75%"><span>64,1</span></div><div class="bar-label">Jun</div></div>
+<div class="bar-group"><div class="bar" style="height:69%"><span>63,5</span></div><div class="bar-label">Jul</div></div>
+<div class="bar-group"><div class="bar" style="height:63%"><span>62,9</span></div><div class="bar-label">Ago</div></div>
+<div class="bar-group"><div class="bar" style="height:58%"><span>62,4</span></div><div class="bar-label">Set</div></div>
+</div>
+<p class="muted" style="margin-top:12px;text-align:center">Evolução do peso corporal (kg)</p>
+</div>
+<div class="card card-pad">
+<h3>Última Avaliação</h3><br/>
+<div class="grid-2">
+<div><span class="muted">Peso</span><h2>62,4 kg</h2></div>
+<div><span class="muted">Altura</span><h2>1,65 m</h2></div>
+<div><span class="muted">IMC</span><h2>22,9</h2></div>
+<div><span class="muted">Gordura</span><h2>24,1%</h2></div>
+</div><br/>
+<span class="badge badge-success">↓ 2,8 kg desde maio</span>
+</div>
+</div></div>
 
-    <div class="stats-grid">
-        <div class="stat-card"><div class="stat-label">AVALIAÇÕES HOJE</div><div class="stat-value">4</div><div class="stat-foot">2 realizadas</div></div>
-        <div class="stat-card"><div class="stat-label">ESTA SEMANA</div><div class="stat-value">18</div><div class="stat-foot">Agendamentos</div></div>
-        <div class="stat-card"><div class="stat-label">PRÓXIMA</div><div class="stat-value">16:30</div><div class="stat-foot">Mariana Costa</div></div>
-        <div class="stat-card"><div class="stat-label">SALAS LIVRES</div><div class="stat-value">1</div><div class="stat-foot">Sala de Avaliação 02</div></div>
-    </div>
-
-    <div class="card card-pad" style="margin-bottom:20px">
-        <div class="card-title">
-            <h3>Agenda da Semana</h3>
-            <div>
-                <button class="action-btn">Hoje</button>
-                <button class="action-btn red">Semana</button>
-                <button class="action-btn">Mês</button>
-            </div>
-        </div>
-
-        <div class="calendar">
-            <div class="day">
-                <h4>Segunda 28/09</h4>
-                <div class="event"><strong>09:00</strong><br>Lucas Almeida<br>Ricardo • Sala 1</div>
-                <div class="event"><strong>15:00</strong><br>Ana Carolina<br>Juliana • Sala 1</div>
-            </div>
-
-            <div class="day">
-                <h4>Terça 29/09</h4>
-                <div class="event"><strong>10:30</strong><br>Fernanda Alves<br>Bruno • Sala 2</div>
-                <div class="event"><strong>18:00</strong><br>Paulo César<br>Ricardo • Sala 1</div>
-            </div>
-
-            <div class="day">
-                <h4>Quarta 30/09</h4>
-                <div class="event"><strong>08:30</strong><br>Marcos Silva<br>Juliana • Sala 2</div>
-                <div class="event"><strong>17:30</strong><br>Renata Souza<br>Bruno • Sala 1</div>
-            </div>
-
-            <div class="day">
-                <h4>Hoje 01/10</h4>
-                <div class="event"><strong>09:00</strong><br>Gabriela Santos<br>Ricardo • Sala 1</div>
-                <div class="event"><strong>16:30</strong><br>Mariana Costa<br>Juliana • Sala 2</div>
-            </div>
-
-            <div class="day">
-                <h4>Sexta 02/10</h4>
-                <div class="event"><strong>10:00</strong><br>Felipe Gomes<br>Bruno • Sala 1</div>
-                <div class="event"><strong>14:30</strong><br>Carla Lima<br>Ricardo • Sala 2</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="grid-2">
-        <div class="card card-pad">
-            <div class="card-title">
-                <h3>Evolução — Gabriela Santos</h3>
-                <button class="action-btn red">Comparar Avaliações</button>
-            </div>
-
-            <div class="report-chart">
-                <div class="bar-group"><div class="bar" style="height:82%"><span>65,2</span></div><div class="bar-label">Mai</div></div>
-                <div class="bar-group"><div class="bar" style="height:75%"><span>64,1</span></div><div class="bar-label">Jun</div></div>
-                <div class="bar-group"><div class="bar" style="height:69%"><span>63,5</span></div><div class="bar-label">Jul</div></div>
-                <div class="bar-group"><div class="bar" style="height:63%"><span>62,9</span></div><div class="bar-label">Ago</div></div>
-                <div class="bar-group"><div class="bar" style="height:58%"><span>62,4</span></div><div class="bar-label">Set</div></div>
-            </div>
-
-            <p class="muted" style="margin-top:12px;text-align:center">Evolução do peso corporal (kg)</p>
-        </div>
-
-        <div class="card card-pad">
-            <h3>Última Avaliação</h3><br>
-
-            <div class="grid-2">
-                <div><span class="muted">Peso</span><h2>62,4 kg</h2></div>
-                <div><span class="muted">Altura</span><h2>1,65 m</h2></div>
-                <div><span class="muted">IMC</span><h2>22,9</h2></div>
-                <div><span class="muted">Gordura</span><h2>24,1%</h2></div>
-            </div><br>
-
-            <span class="badge badge-success">↓ 2,8 kg desde maio</span>
-        </div>
-    </div>
 </section>
-
 <!-- ================= EQUIPAMENTOS ================= -->
-<section id="equipamentos" class="section">
-    <div class="page-head">
-        <div>
-            <h1>Equipamentos e Manutenção</h1>
-            <p>Controle de disponibilidade, conservação e reparos.</p>
-        </div>
-        <button class="btn btn-primary" onclick="openModal('equipmentModal')">+ Cadastrar Equipamento</button>
-    </div>
+<section class="section" id="equipamentos">
+<div class="page-head">
+<div>
+<h1>Equipamentos e Manutenção</h1>
+<p>Controle de disponibilidade, conservação e reparos.</p>
+</div>
+<button class="btn btn-primary" onclick="openModal('equipmentModal')">+ Cadastrar Equipamento</button>
+</div>
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-label">TOTAL</div><div class="stat-value">84</div><div class="stat-foot">Equipamentos cadastrados</div></div>
+<div class="stat-card"><div class="stat-label">DISPONÍVEIS</div><div class="stat-value">78</div><div class="stat-foot">Funcionamento normal</div></div>
+<div class="stat-card"><div class="stat-label">EM MANUTENÇÃO</div><div class="stat-value">3</div><div class="stat-foot">Temporariamente indisponíveis</div></div>
+<div class="stat-card"><div class="stat-label">ATENÇÃO</div><div class="stat-value">3</div><div class="stat-foot">Necessitam inspeção</div></div>
+</div>
+<div aria-label="Etapas e visualizações" class="tabs" role="tablist"><button aria-selected="true" class="tab active" onclick="switchCustomTab('equipamentos',0)" role="tab" type="button">Equipamentos</button><button aria-selected="false" class="tab" onclick="switchCustomTab('equipamentos',1)" role="tab" type="button">Ordem de manutenção</button></div><div class="custom-tab-panel" id="equipamentos-pane-0" role="tabpanel"><div class="table-card" style="margin-bottom:20px">
+<div class="table-wrap">
+<table>
+<thead><tr><th>Equipamento</th><th>Categoria</th><th>Localização</th><th>Estado</th><th>Situação</th><th>Ações</th></tr></thead>
+<tbody>
+<tr><td>Esteira 01</td><td>Cardio</td><td>Sala Cardio</td><td>Excelente</td><td><span class="badge badge-success">Disponível</span></td><td><button class="action-btn">Ver</button><button class="action-btn red" onclick="fillMaintenance('Esteira 01')">Problema</button></td></tr>
+<tr><td>Esteira 03</td><td>Cardio</td><td>Sala Cardio</td><td>Regular</td><td><span class="badge badge-warning">Em manutenção</span></td><td><button class="action-btn">Histórico</button></td></tr>
+<tr><td>Leg Press 02</td><td>Musculação</td><td>Sala Principal</td><td>Regular</td><td><span class="badge badge-warning">Em manutenção</span></td><td><button class="action-btn">Histórico</button></td></tr>
+<tr><td>Supino Reto 01</td><td>Musculação</td><td>Sala Principal</td><td>Bom</td><td><span class="badge badge-success">Disponível</span></td><td><button class="action-btn">Ver</button><button class="action-btn red" onclick="fillMaintenance('Supino Reto 01')">Problema</button></td></tr>
+<tr><td>Bike 05</td><td>Cardio</td><td>Sala Cardio</td><td>Ruim</td><td><span class="badge badge-danger">Em manutenção</span></td><td><button class="action-btn">Histórico</button></td></tr>
+</tbody>
+</table>
+</div>
+</div></div><div class="custom-tab-panel d-none" id="equipamentos-pane-1" role="tabpanel"><div class="form-card quick-maintenance">
+<h3>Abrir Ordem de Manutenção</h3>
+<div class="form-grid">
+<div class="form-group">
+<label>Equipamento</label>
+<select class="input" id="maintenanceEquipment">
+<option selected="">Esteira 01</option>
+<option>Supino Reto 01</option>
+<option>Crossover 02</option>
+</select>
+</div>
+<div class="form-group">
+<label>Data da ocorrência</label>
+<input class="input" type="date" value="2026-10-01"/>
+</div>
+<div class="form-group">
+<label>Responsável pela identificação</label>
+<input class="input" value="Carlos - Recepção"/>
+</div>
+<div class="form-group">
+<label>Componente afetado</label>
+<input class="input" value="Correia / sistema de tração"/>
+</div>
+<div class="form-group">
+<label>Tipo</label>
+<select class="input"><option selected="">Corretiva</option><option>Preventiva</option></select>
+</div>
+<div class="form-group">
+<label>Prioridade</label>
+<select class="input"><option selected="">Alta</option><option>Média</option><option>Baixa</option></select>
+</div>
+<div class="form-group full">
+<label>Problema identificado</label>
+<textarea class="input">Equipamento apresenta ruído durante o funcionamento e oscilação na velocidade da correia.</textarea>
+</div>
+</div>
+<div class="form-actions">
+<button class="btn btn-primary" onclick="maintenance()">Abrir Ordem de Manutenção</button>
+</div>
+</div></div>
 
-    <div class="stats-grid">
-        <div class="stat-card"><div class="stat-label">TOTAL</div><div class="stat-value">84</div><div class="stat-foot">Equipamentos cadastrados</div></div>
-        <div class="stat-card"><div class="stat-label">DISPONÍVEIS</div><div class="stat-value">78</div><div class="stat-foot">Funcionamento normal</div></div>
-        <div class="stat-card"><div class="stat-label">EM MANUTENÇÃO</div><div class="stat-value">3</div><div class="stat-foot">Temporariamente indisponíveis</div></div>
-        <div class="stat-card"><div class="stat-label">ATENÇÃO</div><div class="stat-value">3</div><div class="stat-foot">Necessitam inspeção</div></div>
-    </div>
-
-    <div class="table-card" style="margin-bottom:20px">
-        <div class="table-wrap">
-            <table>
-                <thead><tr><th>Equipamento</th><th>Categoria</th><th>Localização</th><th>Estado</th><th>Situação</th><th>Ações</th></tr></thead>
-                <tbody>
-                    <tr><td>Esteira 01</td><td>Cardio</td><td>Sala Cardio</td><td>Excelente</td><td><span class="badge badge-success">Disponível</span></td><td><button class="action-btn">Ver</button><button class="action-btn red" onclick="fillMaintenance('Esteira 01')">Problema</button></td></tr>
-                    <tr><td>Esteira 03</td><td>Cardio</td><td>Sala Cardio</td><td>Regular</td><td><span class="badge badge-warning">Em manutenção</span></td><td><button class="action-btn">Histórico</button></td></tr>
-                    <tr><td>Leg Press 02</td><td>Musculação</td><td>Sala Principal</td><td>Regular</td><td><span class="badge badge-warning">Em manutenção</span></td><td><button class="action-btn">Histórico</button></td></tr>
-                    <tr><td>Supino Reto 01</td><td>Musculação</td><td>Sala Principal</td><td>Bom</td><td><span class="badge badge-success">Disponível</span></td><td><button class="action-btn">Ver</button><button class="action-btn red" onclick="fillMaintenance('Supino Reto 01')">Problema</button></td></tr>
-                    <tr><td>Bike 05</td><td>Cardio</td><td>Sala Cardio</td><td>Ruim</td><td><span class="badge badge-danger">Em manutenção</span></td><td><button class="action-btn">Histórico</button></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="form-card quick-maintenance">
-        <h3>Abrir Ordem de Manutenção</h3>
-
-        <div class="form-grid">
-            <div class="form-group">
-                <label>Equipamento</label>
-                <select id="maintenanceEquipment" class="input">
-                    <option selected>Esteira 01</option>
-                    <option>Supino Reto 01</option>
-                    <option>Crossover 02</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Data da ocorrência</label>
-                <input type="date" class="input" value="2026-10-01">
-            </div>
-
-            <div class="form-group">
-                <label>Responsável pela identificação</label>
-                <input class="input" value="Carlos - Recepção">
-            </div>
-
-            <div class="form-group">
-                <label>Componente afetado</label>
-                <input class="input" value="Correia / sistema de tração">
-            </div>
-
-            <div class="form-group">
-                <label>Tipo</label>
-                <select class="input"><option selected>Corretiva</option><option>Preventiva</option></select>
-            </div>
-
-            <div class="form-group">
-                <label>Prioridade</label>
-                <select class="input"><option selected>Alta</option><option>Média</option><option>Baixa</option></select>
-            </div>
-
-            <div class="form-group full">
-                <label>Problema identificado</label>
-                <textarea class="input">Equipamento apresenta ruído durante o funcionamento e oscilação na velocidade da correia.</textarea>
-            </div>
-        </div>
-
-        <div class="form-actions">
-            <button class="btn btn-primary" onclick="maintenance()">Abrir Ordem de Manutenção</button>
-        </div>
-    </div>
 </section>
-
 <!-- ================= RELATÓRIOS ================= -->
-<section id="relatorios" class="section">
-    <div class="page-head">
-        <div>
-            <h1>Relatórios Gerenciais</h1>
-            <p>Indicadores consolidados para apoio à gestão da academia.</p>
-        </div>
-        <div class="page-actions">
-            <button class="btn btn-outline" onclick="toast('Visualização preparada para impressão.')">Imprimir</button>
-            <button class="btn btn-primary" onclick="toast('Exportação para PDF simulada com sucesso!')">Exportar PDF</button>
-        </div>
-    </div>
-
-    <div class="filters">
-        <div class="form-group">
-            <label>Data inicial</label>
-            <input type="date" class="input" value="2026-09-01">
-        </div>
-
-        <div class="form-group">
-            <label>Data final</label>
-            <input type="date" class="input" value="2026-10-01">
-        </div>
-
-        <div class="form-group">
-            <label>Relatório</label>
-            <select class="input">
-                <option selected>Visão Geral</option>
-                <option>Alunos Ativos</option>
-                <option>Planos a Vencer</option>
-                <option>Inadimplentes</option>
-                <option>Evolução Física</option>
-                <option>Manutenções</option>
-            </select>
-        </div>
-
-        <button class="btn btn-primary" onclick="toast('Relatório atualizado.')">Gerar Relatório</button>
-    </div>
-
-    <div class="stats-grid">
-        <div class="stat-card"><div class="stat-label">FATURAMENTO</div><div class="stat-value">R$ 18.420</div><div class="stat-foot">Período selecionado</div></div>
-        <div class="stat-card"><div class="stat-label">NOVOS ALUNOS</div><div class="stat-value">18</div><div class="stat-foot">+12% vs. período anterior</div></div>
-        <div class="stat-card"><div class="stat-label">FREQUÊNCIA</div><div class="stat-value">1.624</div><div class="stat-foot">Entradas registradas</div></div>
-        <div class="stat-card"><div class="stat-label">TICKET MÉDIO</div><div class="stat-value">R$ 125,30</div><div class="stat-foot">Por aluno ativo</div></div>
-    </div>
-
-    <div class="grid-2">
-        <div class="card card-pad">
-            <div class="card-title"><h3>Faturamento Mensal</h3><span class="badge badge-success">+9,8%</span></div>
-
-            <div class="report-chart">
-                <div class="bar-group"><div class="bar" style="height:52%"><span>13,2k</span></div><div class="bar-label">Mai</div></div>
-                <div class="bar-group"><div class="bar" style="height:60%"><span>14,5k</span></div><div class="bar-label">Jun</div></div>
-                <div class="bar-group"><div class="bar" style="height:68%"><span>15,7k</span></div><div class="bar-label">Jul</div></div>
-                <div class="bar-group"><div class="bar" style="height:76%"><span>16,9k</span></div><div class="bar-label">Ago</div></div>
-                <div class="bar-group"><div class="bar" style="height:83%"><span>17,8k</span></div><div class="bar-label">Set</div></div>
-                <div class="bar-group"><div class="bar" style="height:90%"><span>18,4k</span></div><div class="bar-label">Out</div></div>
-            </div>
-        </div>
-
-        <div class="card card-pad">
-            <div class="card-title"><h3>Frequência por Horário</h3><span class="muted">Últimos 30 dias</span></div>
-
-            <div class="progress-row"><div class="progress-head"><span>06h - 09h</span><strong>68%</strong></div><div class="progress"><span style="width:68%"></span></div></div>
-            <div class="progress-row"><div class="progress-head"><span>09h - 12h</span><strong>42%</strong></div><div class="progress"><span style="width:42%"></span></div></div>
-            <div class="progress-row"><div class="progress-head"><span>12h - 15h</span><strong>31%</strong></div><div class="progress"><span style="width:31%"></span></div></div>
-            <div class="progress-row"><div class="progress-head"><span>15h - 18h</span><strong>57%</strong></div><div class="progress"><span style="width:57%"></span></div></div>
-            <div class="progress-row"><div class="progress-head"><span>18h - 21h</span><strong>91%</strong></div><div class="progress"><span style="width:91%"></span></div></div>
-        </div>
-    </div>
+<section class="section" id="relatorios">
+<div class="page-head">
+<div>
+<h1>Relatórios Gerenciais</h1>
+<p>Indicadores consolidados para apoio à gestão da academia.</p>
+</div>
+<div class="page-actions">
+<button class="btn btn-outline" onclick="toast('Visualização preparada para impressão.')">Imprimir</button>
+<button class="btn btn-primary" onclick="toast('Exportação para PDF simulada com sucesso!')">Exportar PDF</button>
+</div>
+</div>
+<div class="filters">
+<div class="form-group">
+<label>Data inicial</label>
+<input class="input" type="date" value="2026-09-01"/>
+</div>
+<div class="form-group">
+<label>Data final</label>
+<input class="input" type="date" value="2026-10-01"/>
+</div>
+<div class="form-group">
+<label>Relatório</label>
+<select class="input">
+<option selected="">Visão Geral</option>
+<option>Alunos Ativos</option>
+<option>Planos a Vencer</option>
+<option>Inadimplentes</option>
+<option>Evolução Física</option><option>Frequência e Aulas Coletivas</option><option>Histórico de Manutenções</option>
+<option>Manutenções</option>
+</select>
+</div>
+<button class="btn btn-primary" onclick="toast('Relatório atualizado.')">Gerar Relatório</button>
+</div>
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-label">FATURAMENTO</div><div class="stat-value">R$ 18.420</div><div class="stat-foot">Período selecionado</div></div>
+<div class="stat-card"><div class="stat-label">NOVOS ALUNOS</div><div class="stat-value">18</div><div class="stat-foot">+12% vs. período anterior</div></div>
+<div class="stat-card"><div class="stat-label">FREQUÊNCIA</div><div class="stat-value">1.624</div><div class="stat-foot">Entradas registradas</div></div>
+<div class="stat-card"><div class="stat-label">TICKET MÉDIO</div><div class="stat-value">R$ 125,30</div><div class="stat-foot">Por aluno ativo</div></div>
+</div>
+<div aria-label="Etapas e visualizações" class="tabs" role="tablist"><button aria-selected="true" class="tab active" onclick="switchCustomTab('relatorios',0)" role="tab" type="button">Indicadores e gráficos</button><button aria-selected="false" class="tab" onclick="switchCustomTab('relatorios',1)" role="tab" type="button">Alunos e vencimentos</button><button aria-selected="false" class="tab" onclick="switchCustomTab('relatorios',2)" role="tab" type="button">Frequência e aulas</button><button aria-selected="false" class="tab" onclick="switchCustomTab('relatorios',3)" role="tab" type="button">Manutenções</button></div><div class="custom-tab-panel" id="relatorios-pane-0" role="tabpanel"><div class="grid-2">
+<div class="card card-pad">
+<div class="card-title"><h3>Faturamento Mensal</h3><span class="badge badge-success">+9,8%</span></div>
+<div class="report-chart">
+<div class="bar-group"><div class="bar" style="height:52%"><span>13,2k</span></div><div class="bar-label">Mai</div></div>
+<div class="bar-group"><div class="bar" style="height:60%"><span>14,5k</span></div><div class="bar-label">Jun</div></div>
+<div class="bar-group"><div class="bar" style="height:68%"><span>15,7k</span></div><div class="bar-label">Jul</div></div>
+<div class="bar-group"><div class="bar" style="height:76%"><span>16,9k</span></div><div class="bar-label">Ago</div></div>
+<div class="bar-group"><div class="bar" style="height:83%"><span>17,8k</span></div><div class="bar-label">Set</div></div>
+<div class="bar-group"><div class="bar" style="height:90%"><span>18,4k</span></div><div class="bar-label">Out</div></div>
+</div>
+</div>
+<div class="card card-pad">
+<div class="card-title"><h3>Frequência por Horário</h3><span class="muted">Últimos 30 dias</span></div>
+<div class="progress-row"><div class="progress-head"><span>06h - 09h</span><strong>68%</strong></div><div class="progress"><span style="width:68%"></span></div></div>
+<div class="progress-row"><div class="progress-head"><span>09h - 12h</span><strong>42%</strong></div><div class="progress"><span style="width:42%"></span></div></div>
+<div class="progress-row"><div class="progress-head"><span>12h - 15h</span><strong>31%</strong></div><div class="progress"><span style="width:31%"></span></div></div>
+<div class="progress-row"><div class="progress-head"><span>15h - 18h</span><strong>57%</strong></div><div class="progress"><span style="width:57%"></span></div></div>
+<div class="progress-row"><div class="progress-head"><span>18h - 21h</span><strong>91%</strong></div><div class="progress"><span style="width:91%"></span></div></div>
+</div>
+</div></div><div class="custom-tab-panel d-none" id="relatorios-pane-1" role="tabpanel"><div class="card card-pad" style="margin-top:20px"><div class="card-title"><h3>Alunos Ativos e Vencimentos</h3><span class="muted">Cadastros demonstrativos do protótipo</span></div><div id="activeChart"></div><div class="form-group" style="margin:20px 0"><label for="expiryFilter">Vencimentos</label><select class="input" id="expiryFilter" onchange="renderExtraReports()"><option value="all">Todos</option><option value="expired">Vencidos</option><option value="soon">A vencer em até 30 dias</option></select></div><div class="table-wrap"><table><thead><tr><th>Aluno</th><th>Plano</th><th>Vencimento</th><th>Situação</th></tr></thead><tbody id="expiryRows"></tbody></table></div></div></div><div class="custom-tab-panel d-none" id="relatorios-pane-2" role="tabpanel"><div class="card card-pad" style="margin-top:20px"><h3>Frequência e Aulas Coletivas</h3><p class="muted" style="margin:10px 0">Resumo das chamadas registradas nas aulas.</p><div id="classChart"></div><div class="table-wrap"><table><thead><tr><th>Aula / Data</th><th>Professor</th><th>Inscritos</th><th>Presentes</th><th>Ausentes</th><th>Frequência</th></tr></thead><tbody id="classReport"></tbody></table></div></div></div><div class="custom-tab-panel d-none" id="relatorios-pane-3" role="tabpanel"><div class="card card-pad" style="margin-top:20px"><h3>Histórico de Manutenções</h3><div class="form-group" style="margin:15px 0"><label for="maintenanceReportFilter">Situação da ordem</label><select class="input" id="maintenanceReportFilter" onchange="renderExtraReports()"><option>Todos</option><option>Aberta</option><option>Concluída</option></select></div><div class="table-wrap"><table><thead><tr><th>Ordem</th><th>Equipamento</th><th>Abertura</th><th>Tipo</th><th>Problema</th><th>Conclusão</th><th>Situação</th></tr></thead><tbody id="maintenanceReport"></tbody></table></div></div></div>
 </section>
-
+<section class="section" id="carteirinhas"><div class="page-head"><div><h1>Emissão de Carteirinhas</h1><p>Criação, segunda via e controle das emissões por aluno.</p></div></div><div aria-label="Etapas e visualizações" class="tabs" role="tablist"><button aria-selected="true" class="tab active" onclick="switchCustomTab('carteirinhas',0)" role="tab" type="button">Emitir carteirinha</button><button aria-selected="false" class="tab" onclick="switchCustomTab('carteirinhas',1)" role="tab" type="button">Histórico de emissões</button></div><div class="custom-tab-panel" id="carteirinhas-pane-0" role="tabpanel"><div class="form-card"><div class="form-grid two"><div class="form-group"><label for="cardStudent">Aluno</label><select class="input" id="cardStudent" onchange="previewCard()"></select></div><div class="form-group"><label for="cardReason">Tipo de emissão</label><select class="input" id="cardReason"><option>Primeira via</option><option>Segunda via</option></select></div></div><div id="cardPreview" style="margin:20px 0"></div><div class="form-actions"><button class="btn btn-primary" onclick="issueCard()">Emitir Carteirinha</button><button class="btn btn-outline" onclick="printCard()">Imprimir Carteirinha</button></div></div></div><div class="custom-tab-panel d-none" id="carteirinhas-pane-1" role="tabpanel"><div class="table-card" style="margin-top:20px"><div class="card-pad"><h3>Histórico de Emissões</h3></div><div class="table-wrap"><table><thead><tr><th>Número</th><th>Aluno</th><th>Emissão</th><th>Via</th><th>Responsável</th></tr></thead><tbody id="cardHistory"></tbody></table></div></div></div></section><section class="section" id="aulas-coletivas"><div class="page-head"><div><h1>Aulas Coletivas — Chamada</h1><p>Registro de presença dos alunos inscritos em cada aula.</p></div></div><div class="form-card"><div class="form-group"><label for="classSelect">Selecione a aula marcada</label><select class="input" id="classSelect" onchange="renderAttendance()"></select></div><p class="muted" id="classDetails" style="margin:15px 0"></p><div class="table-wrap"><table><thead><tr><th>Matrícula</th><th>Aluno inscrito</th><th>Presença</th></tr></thead><tbody id="attendanceRows"></tbody></table></div><div class="form-actions"><button class="btn btn-primary" onclick="saveAttendance()">Salvar Chamada</button></div><p aria-live="polite" class="muted" id="attendanceStatus"></p></div></section><section class="section" id="modelos-treino"><div class="page-head"><div><h1>Modelos Padrão de Treinos</h1><p>Cadastre e edite modelos reutilizáveis para as fichas dos alunos.</p></div></div><div class="page-actions" style="margin-bottom:20px"><button class="btn btn-primary" onclick="editTemplate(-1)">+ Cadastrar Tipo de Treino</button><button class="btn btn-outline" onclick="showSection('treinos')">Voltar aos Treinos</button></div><div class="table-card"><div class="table-wrap"><table><thead><tr><th>Tipo / Nome</th><th>Objetivo</th><th>Divisão</th><th>Ações</th></tr></thead><tbody id="templateRows"></tbody></table></div></div></section>
 </div>
 </main>
 </div>
-
 <!-- ================= MODAIS ================= -->
-
-<div id="paymentModal" class="modal-overlay">
-    <div class="modal">
-        <div class="modal-head">
-            <div>
-                <h2>Registrar Pagamento</h2>
-                <p class="muted">Vinculado ao contrato do aluno.</p>
-            </div>
-            <button class="modal-close" onclick="closeModal('paymentModal')">×</button>
-        </div>
-
-        <div class="form-grid two">
-            <div class="form-group full">
-                <label>Aluno</label>
-                <select class="input">
-                    <option selected>João Martins</option>
-                    <option>Gabriela Santos</option>
-                    <option>Lucas Almeida</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Plano</label>
-                <input class="input" value="Mensal">
-            </div>
-
-            <div class="form-group">
-                <label>Vencimento</label>
-                <input class="input" value="30/09/2026">
-            </div>
-
-            <div class="form-group">
-                <label>Valor pago</label>
-                <input class="input" value="R$ 120,00">
-            </div>
-
-            <div class="form-group">
-                <label>Data do pagamento</label>
-                <input type="date" class="input" value="2026-10-01">
-            </div>
-
-            <div class="form-group">
-                <label>Forma de pagamento</label>
-                <select class="input">
-                    <option selected>PIX</option>
-                    <option>Dinheiro</option>
-                    <option>Débito</option>
-                    <option>Crédito</option>
-                    <option>Transferência</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Período referente</label>
-                <input class="input" value="Outubro/2026">
-            </div>
-
-            <div class="form-group full">
-                <label>Observações</label>
-                <textarea class="input">Pagamento recebido na recepção para regularização do plano.</textarea>
-            </div>
-        </div>
-
-        <div class="form-actions">
-            <button class="btn btn-outline" onclick="closeModal('paymentModal')">Cancelar</button>
-            <button class="btn btn-primary" onclick="registerPayment()">Registrar Pagamento</button>
-        </div>
-    </div>
+<div class="modal-overlay" id="paymentModal">
+<div class="modal">
+<div class="modal-head">
+<div>
+<h2>Registrar Pagamento</h2>
+<p class="muted">Vinculado ao contrato do aluno.</p>
 </div>
-
-<div id="renewModal" class="modal-overlay">
-    <div class="modal">
-        <div class="modal-head">
-            <div>
-                <h2>Renovação de Plano</h2>
-                <p class="muted">Gabriela Santos • Mensal</p>
-            </div>
-            <button class="modal-close" onclick="closeModal('renewModal')">×</button>
-        </div>
-
-        <div class="form-grid two">
-            <div class="form-group">
-                <label>Plano atual</label>
-                <input class="input" value="Mensal">
-            </div>
-
-            <div class="form-group">
-                <label>Vencimento atual</label>
-                <input class="input" value="31/10/2026">
-            </div>
-
-            <div class="form-group">
-                <label>Novo plano</label>
-                <select class="input">
-                    <option selected>Mensal - R$ 120,00</option>
-                    <option>Trimestral - R$ 330,00</option>
-                    <option>Semestral - R$ 600,00</option>
-                    <option>Anual - R$ 1.080,00</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Nova data de início</label>
-                <input type="date" class="input" value="2026-11-01">
-            </div>
-
-            <div class="form-group">
-                <label>Novo vencimento</label>
-                <input class="input" value="30/11/2026">
-            </div>
-
-            <div class="form-group">
-                <label>Valor</label>
-                <input class="input" value="R$ 120,00">
-            </div>
-
-            <div class="form-group full">
-                <label>Forma de pagamento</label>
-                <select class="input">
-                    <option selected>PIX</option>
-                    <option>Dinheiro</option>
-                    <option>Débito</option>
-                    <option>Crédito</option>
-                    <option>Transferência</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-actions">
-            <button class="btn btn-outline" onclick="closeModal('renewModal')">Cancelar</button>
-            <button class="btn btn-primary" onclick="renewPlan()">Confirmar Renovação</button>
-        </div>
-    </div>
+<button class="modal-close" onclick="closeModal('paymentModal')">×</button>
 </div>
-
-<div id="planModal" class="modal-overlay">
-    <div class="modal">
-        <div class="modal-head">
-            <h2>Cadastrar Plano</h2>
-            <button class="modal-close" onclick="closeModal('planModal')">×</button>
-        </div>
-
-        <div class="form-grid two">
-            <div class="form-group">
-                <label>Nome do plano</label>
-                <input class="input" value="Mensal Premium">
-            </div>
-
-            <div class="form-group">
-                <label>Valor</label>
-                <input class="input" value="R$ 160,00">
-            </div>
-
-            <div class="form-group">
-                <label>Vigência</label>
-                <select class="input"><option selected>1 mês</option><option>3 meses</option><option>6 meses</option><option>12 meses</option></select>
-            </div>
-
-            <div class="form-group">
-                <label>Situação</label>
-                <select class="input"><option selected>Ativo</option><option>Inativo</option></select>
-            </div>
-
-            <div class="form-group full">
-                <label>Descrição / Benefícios</label>
-                <textarea class="input">Acesso completo à musculação, avaliação física e acompanhamento mensal.</textarea>
-            </div>
-        </div>
-
-        <div class="form-actions">
-            <button class="btn btn-outline" onclick="closeModal('planModal')">Cancelar</button>
-            <button class="btn btn-primary" onclick="genericSave('planModal','Plano salvo com sucesso!')">Salvar Plano</button>
-        </div>
-    </div>
+<div class="form-grid two">
+<div class="form-group full">
+<label>Aluno</label>
+<select class="input">
+<option selected="">João Martins</option>
+<option>Gabriela Santos</option>
+<option>Lucas Almeida</option>
+</select>
 </div>
-
-<div id="scheduleModal" class="modal-overlay">
-    <div class="modal">
-        <div class="modal-head">
-            <h2>Agendar Avaliação</h2>
-            <button class="modal-close" onclick="closeModal('scheduleModal')">×</button>
-        </div>
-
-        <div class="form-grid two">
-            <div class="form-group full">
-                <label>Aluno</label>
-                <select class="input"><option selected>Gabriela Santos</option><option>Lucas Almeida</option><option>Ana Carolina</option></select>
-            </div>
-
-            <div class="form-group">
-                <label>Professor</label>
-                <select class="input"><option selected>Ricardo Lima</option><option>Juliana Prado</option></select>
-            </div>
-
-            <div class="form-group">
-                <label>Sala</label>
-                <select class="input"><option selected>Sala de Avaliação 01</option><option>Sala de Avaliação 02</option></select>
-            </div>
-
-            <div class="form-group">
-                <label>Data</label>
-                <input type="date" class="input" value="2026-10-05">
-            </div>
-
-            <div class="form-group">
-                <label>Horário</label>
-                <input type="time" class="input" value="15:30">
-            </div>
-        </div>
-
-        <p style="margin-top:15px"><span class="badge badge-success">✓ Professor e sala disponíveis</span></p>
-
-        <div class="form-actions">
-            <button class="btn btn-outline" onclick="closeModal('scheduleModal')">Cancelar</button>
-            <button class="btn btn-primary" onclick="genericSave('scheduleModal','Avaliação agendada sem conflitos!')">Confirmar Agendamento</button>
-        </div>
-    </div>
+<div class="form-group">
+<label>Plano</label>
+<input class="input" value="Mensal"/>
 </div>
-
-<div id="evaluationModal" class="modal-overlay">
-    <div class="modal">
-        <div class="modal-head">
-            <h2>Registrar Avaliação Física</h2>
-            <button class="modal-close" onclick="closeModal('evaluationModal')">×</button>
-        </div>
-
-        <div class="form-grid two">
-            <div class="form-group">
-                <label>Aluno</label>
-                <select class="input"><option selected>Gabriela Santos</option><option>Lucas Almeida</option></select>
-            </div>
-
-            <div class="form-group">
-                <label>Professor</label>
-                <select class="input"><option selected>Ricardo Lima</option><option>Juliana Prado</option></select>
-            </div>
-
-            <div class="form-group">
-                <label>Peso</label>
-                <input id="weight" class="input" value="62.4" oninput="calculateBMI()">
-            </div>
-
-            <div class="form-group">
-                <label>Altura</label>
-                <input id="height" class="input" value="1.65" oninput="calculateBMI()">
-            </div>
-
-            <div class="form-group">
-                <label>IMC calculado</label>
-                <input id="bmi" class="input" value="22.9">
-            </div>
-
-            <div class="form-group">
-                <label>Gordura corporal</label>
-                <input class="input" value="24.1%">
-            </div>
-
-            <div class="form-group">
-                <label>Cintura</label>
-                <input class="input" value="72 cm">
-            </div>
-
-            <div class="form-group">
-                <label>Quadril</label>
-                <input class="input" value="96 cm">
-            </div>
-
-            <div class="form-group">
-                <label>Coxa</label>
-                <input class="input" value="56 cm">
-            </div>
-
-            <div class="form-group">
-                <label>Braço</label>
-                <input class="input" value="29 cm">
-            </div>
-        </div>
-
-        <div class="form-actions">
-            <button class="btn btn-outline" onclick="closeModal('evaluationModal')">Cancelar</button>
-            <button class="btn btn-primary" onclick="genericSave('evaluationModal','Avaliação física registrada!')">Salvar Avaliação</button>
-        </div>
-    </div>
+<div class="form-group">
+<label>Vencimento</label>
+<input class="input" value="30/09/2026"/>
 </div>
-
-<div id="equipmentModal" class="modal-overlay">
-    <div class="modal">
-        <div class="modal-head">
-            <h2>Cadastrar Equipamento</h2>
-            <button class="modal-close" onclick="closeModal('equipmentModal')">×</button>
-        </div>
-
-        <div class="form-grid two">
-            <div class="form-group">
-                <label>Equipamento</label>
-                <input class="input" value="Cadeira Extensora 04">
-            </div>
-
-            <div class="form-group">
-                <label>Categoria</label>
-                <select class="input"><option selected>Musculação</option><option>Cardio</option><option>Funcional</option></select>
-            </div>
-
-            <div class="form-group">
-                <label>Localização</label>
-                <input class="input" value="Sala Principal">
-            </div>
-
-            <div class="form-group">
-                <label>Data de aquisição</label>
-                <input type="date" class="input" value="2026-08-15">
-            </div>
-
-            <div class="form-group">
-                <label>Estado de conservação</label>
-                <select class="input"><option selected>Excelente</option><option>Bom</option><option>Regular</option><option>Ruim</option></select>
-            </div>
-
-            <div class="form-group">
-                <label>Situação</label>
-                <select class="input"><option selected>Disponível</option><option>Atenção</option><option>Em manutenção</option></select>
-            </div>
-
-            <div class="form-group full">
-                <label>Observações</label>
-                <textarea class="input">Equipamento novo, instalado e testado pela equipe técnica.</textarea>
-            </div>
-        </div>
-
-        <div class="form-actions">
-            <button class="btn btn-outline" onclick="closeModal('equipmentModal')">Cancelar</button>
-            <button class="btn btn-primary" onclick="genericSave('equipmentModal','Equipamento cadastrado!')">Salvar Equipamento</button>
-        </div>
-    </div>
+<div class="form-group">
+<label>Valor pago</label>
+<input class="input" value="R$ 120,00"/>
 </div>
-
-<div id="toast" class="toast">Operação realizada.</div>
-
+<div class="form-group">
+<label>Data do pagamento</label>
+<input class="input" type="date" value="2026-10-01"/>
+</div>
+<div class="form-group">
+<label>Forma de pagamento</label>
+<select class="input">
+<option selected="">PIX</option>
+<option>Dinheiro</option>
+<option>Débito</option>
+<option>Crédito</option>
+<option>Transferência</option>
+</select>
+</div>
+<div class="form-group">
+<label>Período referente</label>
+<input class="input" value="Outubro/2026"/>
+</div>
+<div class="form-group full">
+<label>Observações</label>
+<textarea class="input">Pagamento recebido na recepção para regularização do plano.</textarea>
+</div>
+</div>
+<div class="form-actions">
+<button class="btn btn-outline" onclick="closeModal('paymentModal')">Cancelar</button>
+<button class="btn btn-primary" onclick="registerPayment()">Registrar Pagamento</button>
+</div>
+</div>
+</div>
+<div class="modal-overlay" id="renewModal">
+<div class="modal">
+<div class="modal-head">
+<div>
+<h2>Renovação de Plano</h2>
+<p class="muted">Gabriela Santos • Mensal</p>
+</div>
+<button class="modal-close" onclick="closeModal('renewModal')">×</button>
+</div>
+<div class="form-grid two">
+<div class="form-group">
+<label>Plano atual</label>
+<input class="input" value="Mensal"/>
+</div>
+<div class="form-group">
+<label>Vencimento atual</label>
+<input class="input" value="31/10/2026"/>
+</div>
+<div class="form-group">
+<label>Novo plano</label>
+<select class="input">
+<option selected="">Mensal - R$ 120,00</option>
+<option>Trimestral - R$ 330,00</option>
+<option>Semestral - R$ 600,00</option>
+<option>Anual - R$ 1.080,00</option>
+</select>
+</div>
+<div class="form-group">
+<label>Nova data de início</label>
+<input class="input" type="date" value="2026-11-01"/>
+</div>
+<div class="form-group">
+<label>Novo vencimento</label>
+<input class="input" value="30/11/2026"/>
+</div>
+<div class="form-group">
+<label>Valor</label>
+<input class="input" value="R$ 120,00"/>
+</div>
+<div class="form-group full">
+<label>Forma de pagamento</label>
+<select class="input">
+<option selected="">PIX</option>
+<option>Dinheiro</option>
+<option>Débito</option>
+<option>Crédito</option>
+<option>Transferência</option>
+</select>
+</div>
+</div>
+<div class="form-actions">
+<button class="btn btn-outline" onclick="closeModal('renewModal')">Cancelar</button>
+<button class="btn btn-primary" onclick="renewPlan()">Confirmar Renovação</button>
+</div>
+</div>
+</div>
+<div class="modal-overlay" id="planModal">
+<div class="modal">
+<div class="modal-head">
+<h2>Cadastrar Plano</h2>
+<button class="modal-close" onclick="closeModal('planModal')">×</button>
+</div>
+<div class="form-grid two">
+<div class="form-group">
+<label>Nome do plano</label>
+<input class="input" value="Mensal Premium"/>
+</div>
+<div class="form-group">
+<label>Valor</label>
+<input class="input" value="R$ 160,00"/>
+</div>
+<div class="form-group">
+<label>Vigência</label>
+<select class="input"><option selected="">1 mês</option><option>3 meses</option><option>6 meses</option><option>12 meses</option></select>
+</div>
+<div class="form-group">
+<label>Situação</label>
+<select class="input"><option selected="">Ativo</option><option>Inativo</option></select>
+</div>
+<div class="form-group full">
+<label>Descrição / Benefícios</label>
+<textarea class="input">Acesso completo à musculação, avaliação física e acompanhamento mensal.</textarea>
+</div>
+</div>
+<div class="form-actions">
+<button class="btn btn-outline" onclick="closeModal('planModal')">Cancelar</button>
+<button class="btn btn-primary" onclick="genericSave('planModal','Plano salvo com sucesso!')">Salvar Plano</button>
+</div>
+</div>
+</div>
+<div class="modal-overlay" id="scheduleModal">
+<div class="modal">
+<div class="modal-head">
+<h2>Agendar Avaliação</h2>
+<button class="modal-close" onclick="closeModal('scheduleModal')">×</button>
+</div>
+<div class="form-grid two">
+<div class="form-group full">
+<label>Aluno</label>
+<select class="input"><option selected="">Gabriela Santos</option><option>Lucas Almeida</option><option>Ana Carolina</option></select>
+</div>
+<div class="form-group">
+<label>Professor</label>
+<select class="input"><option selected="">Ricardo Lima</option><option>Juliana Prado</option></select>
+</div>
+<div class="form-group">
+<label>Sala</label>
+<select class="input"><option selected="">Sala de Avaliação 01</option><option>Sala de Avaliação 02</option></select>
+</div>
+<div class="form-group">
+<label>Data</label>
+<input class="input" type="date" value="2026-10-05"/>
+</div>
+<div class="form-group">
+<label>Horário</label>
+<input class="input" type="time" value="15:30"/>
+</div>
+</div>
+<p style="margin-top:15px"><span class="badge badge-success">✓ Professor e sala disponíveis</span></p>
+<div class="form-actions">
+<button class="btn btn-outline" onclick="closeModal('scheduleModal')">Cancelar</button>
+<button class="btn btn-primary" onclick="genericSave('scheduleModal','Avaliação agendada sem conflitos!')">Confirmar Agendamento</button>
+</div>
+</div>
+</div>
+<div class="modal-overlay" id="evaluationModal">
+<div class="modal">
+<div class="modal-head">
+<h2>Registrar Avaliação Física</h2>
+<button class="modal-close" onclick="closeModal('evaluationModal')">×</button>
+</div>
+<div class="form-grid two">
+<div class="form-group">
+<label>Aluno</label>
+<select class="input"><option selected="">Gabriela Santos</option><option>Lucas Almeida</option></select>
+</div>
+<div class="form-group">
+<label>Professor</label>
+<select class="input"><option selected="">Ricardo Lima</option><option>Juliana Prado</option></select>
+</div>
+<div class="form-group">
+<label>Peso</label>
+<input class="input" id="weight" oninput="calculateBMI()" value="62.4"/>
+</div>
+<div class="form-group">
+<label>Altura</label>
+<input class="input" id="height" oninput="calculateBMI()" value="1.65"/>
+</div>
+<div class="form-group">
+<label>IMC calculado</label>
+<input class="input" id="bmi" value="22.9"/>
+</div>
+<div class="form-group">
+<label>Gordura corporal</label>
+<input class="input" value="24.1%"/>
+</div>
+<div class="form-group">
+<label>Cintura</label>
+<input class="input" value="72 cm"/>
+</div>
+<div class="form-group">
+<label>Quadril</label>
+<input class="input" value="96 cm"/>
+</div>
+<div class="form-group">
+<label>Coxa</label>
+<input class="input" value="56 cm"/>
+</div>
+<div class="form-group">
+<label>Braço</label>
+<input class="input" value="29 cm"/>
+</div>
+</div>
+<div class="form-actions">
+<button class="btn btn-outline" onclick="closeModal('evaluationModal')">Cancelar</button>
+<button class="btn btn-primary" onclick="recordEvaluationFromForm()">Salvar Avaliação</button>
+</div>
+</div>
+</div>
+<div class="modal-overlay" id="equipmentModal">
+<div class="modal">
+<div class="modal-head">
+<h2>Cadastrar Equipamento</h2>
+<button class="modal-close" onclick="closeModal('equipmentModal')">×</button>
+</div>
+<div class="form-grid two">
+<div class="form-group">
+<label>Equipamento</label>
+<input class="input" value="Cadeira Extensora 04"/>
+</div>
+<div class="form-group">
+<label>Categoria</label>
+<select class="input"><option selected="">Musculação</option><option>Cardio</option><option>Funcional</option></select>
+</div>
+<div class="form-group">
+<label>Localização</label>
+<input class="input" value="Sala Principal"/>
+</div>
+<div class="form-group">
+<label>Data de aquisição</label>
+<input class="input" type="date" value="2026-08-15"/>
+</div>
+<div class="form-group">
+<label>Estado de conservação</label>
+<select class="input"><option selected="">Excelente</option><option>Bom</option><option>Regular</option><option>Ruim</option></select>
+</div>
+<div class="form-group">
+<label>Situação</label>
+<select class="input"><option selected="">Disponível</option><option>Atenção</option><option>Em manutenção</option></select>
+</div>
+<div class="form-group full">
+<label>Observações</label>
+<textarea class="input">Equipamento novo, instalado e testado pela equipe técnica.</textarea>
+</div>
+</div>
+<div class="form-actions">
+<button class="btn btn-outline" onclick="closeModal('equipmentModal')">Cancelar</button>
+<button class="btn btn-primary" onclick="genericSave('equipmentModal','Equipamento cadastrado!')">Salvar Equipamento</button>
+</div>
+</div>
+</div>
+<div class="modal-overlay" id="recoveryModal"><div class="modal"><div class="modal-head"><h2>Recuperar Senha</h2><button aria-label="Fechar" class="modal-close" onclick="closeModal('recoveryModal')">×</button></div><form onsubmit="recoverPassword(event)"><p class="muted" style="margin-bottom:18px">Informe seu e-mail cadastrado para solicitar a recuperação.</p><div class="form-group"><label for="recoveryEmail">E-mail cadastrado</label><input class="input" id="recoveryEmail" required="" type="email" value=""/></div><p aria-live="polite" id="recoveryResult" style="margin:15px 0"></p><div class="form-actions"><button class="btn btn-outline" onclick="closeModal('recoveryModal')" type="button">Voltar ao Login</button><button class="btn btn-primary" type="submit">Solicitar Recuperação</button></div></form></div></div><div class="modal-overlay" id="templateModal"><div class="modal"><div class="modal-head"><h2>Cadastrar / Editar Modelo de Treino</h2><button aria-label="Fechar" class="modal-close" onclick="closeModal('templateModal')">×</button></div><form onsubmit="saveTemplate(event)"><input id="templateId" type="hidden"/><div class="form-grid two"><div class="form-group"><label for="templateName">Nome / Tipo de treino</label><input class="input" id="templateName" required="" type="text" value=""/></div><div class="form-group"><label for="templateGoal">Objetivo</label><input class="input" id="templateGoal" required="" type="text" value=""/></div><div class="form-group"><label for="templateSplit">Divisão (ex.: A/B/C)</label><input class="input" id="templateSplit" required="" type="text" value=""/></div></div><div class="form-group" style="margin:15px 0"><label>Exercícios do modelo</label><div class="table-wrap"><table><thead><tr><th>Exercício</th><th>Séries</th><th>Repetições</th><th>Carga</th><th>Descanso (s)</th><th>Ação</th></tr></thead><tbody id="exerciseRows"></tbody></table></div><button class="btn btn-outline" onclick="addExerciseRow()" style="margin-top:10px" type="button">+ Adicionar Exercício</button></div><div class="form-group"><label for="templateNotes">Orientações</label><textarea class="input" id="templateNotes"></textarea></div><div class="form-actions"><button class="btn btn-outline" onclick="closeModal('templateModal')" type="button">Cancelar</button><button class="btn btn-primary" type="submit">Salvar Modelo</button></div></form></div></div>
+<div class="modal-overlay" id="studentExerciseModal"><div class="modal"><div class="modal-head"><h2>Adicionar exercício à ficha</h2><button class="modal-close" onclick="closeModal('studentExerciseModal')">×</button></div><div class="form-group"><label for="exercisePicker">Exercício cadastrado</label><select class="input" id="exercisePicker"></select></div><div class="form-grid two" style="margin-top:15px"><div class="form-group"><label>Séries</label><input class="input" id="pickSets" min="1" type="number" value="3"/></div><div class="form-group"><label>Repetições</label><input class="input" id="pickReps" value="12"/></div><div class="form-group"><label>Carga</label><input class="input" id="pickLoad" value="10 kg"/></div><div class="form-group"><label>Descanso</label><input class="input" id="pickRest" value="60 s"/></div></div><div class="form-actions"><button class="btn btn-outline" onclick="showSection('cadastro-exercicios');closeModal('studentExerciseModal');newCatalogExercise()">Cadastrar novo parâmetro</button><button class="btn btn-primary" onclick="confirmStudentExercise()">Adicionar à ficha</button></div></div></div><div class="toast" id="toast">Operação realizada.</div>
 <script>
 /* =========================================================
    BANCO DE DADOS FICTÍCIO DO PROTÓTIPO
@@ -2881,10 +2683,7 @@ function calculateBMI(){
 
 function fillMaintenance(equipment){
     document.getElementById("maintenanceEquipment").value = equipment;
-    document.getElementById("maintenanceEquipment").scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-    });
+    switchCustomTab('equipamentos',1);
 
     toast(equipment + " selecionado para manutenção.");
 }
@@ -2937,6 +2736,93 @@ function toast(message){
     },2800);
 }
 </script>
+<script>
 
-</body>
+// Funcionalidades adicionais: RF02, RF05, RF17, RF20, RF25, RF26 e RF27.
+const extraKey = 'corpoAtivoRequisitosV1';
+const extraDefault = {
+ cards: [],
+ templates: [{name:'Hipertrofia — Iniciante',goal:'Hipertrofia',split:'A/B/C',notes:'Priorizar técnica e execução controlada.',exercises:[['Supino reto','3','12','20 kg','60'],['Agachamento','3','12','Livre','60']]}],
+ attendance: {},
+ maintenance: [{id:'OM-001',equipment:'Esteira 03',date:'2026-09-25',type:'Corretiva',problem:'Troca da correia',closed:'2026-09-28',status:'Concluída'},{id:'OM-002',equipment:'Leg Press 02',date:'2026-09-30',type:'Corretiva',problem:'Ruído na articulação',closed:'',status:'Aberta'}]
+};
+let extra;
+try { extra = JSON.parse(localStorage.getItem(extraKey)) || structuredClone(extraDefault); } catch { extra = structuredClone(extraDefault); }
+const collectiveClasses = [
+ {id:'funcional',name:'Funcional',date:'2026-10-01',time:'18:00',teacher:'Ricardo Lima',room:'Sala Funcional',students:[1,2,3]},
+ {id:'danca',name:'Dança',date:'2026-10-02',time:'19:00',teacher:'Juliana Prado',room:'Sala de Dança',students:[1,2]}
+];
+const el = id => document.getElementById(id);
+const esc = value => String(value ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dateBR = date => date ? date.split('-').reverse().join('/') : '—';
+const todayISO = () => new Date().toLocaleDateString('en-CA',{timeZone:'America/Sao_Paulo'});
+function saveExtra(){try {localStorage.setItem(extraKey,JSON.stringify(extra));return true;}catch {toast('Alteração aplicada nesta sessão. O navegador não permitiu salvar localmente.');return false;}}
+function recoverPassword(event){event.preventDefault();el('recoveryResult').textContent='Solicitação demonstrativa concluída para '+el('recoveryEmail').value+'. No sistema final, um link de redefinição será enviado por e-mail. Nenhum e-mail é enviado neste protótipo.';}
+function previewCard(){const student=database.alunos.find(s=>s.id===Number(el('cardStudent').value));if(!student)return;el('cardPreview').innerHTML=`<div class="membership-card"><img src="image(1).png" alt="Academia Corpo Ativo"><div><h3>CARTEIRINHA DO ALUNO</h3><h2>${esc(student.nome)}</h2><p>Matrícula: ${esc(student.matricula)}</p><p>Plano: ${esc(student.plano)} • Validade: ${esc(student.vencimento)}</p><p>Situação: ${esc(student.status)}</p><small>Documento demonstrativo • pessoal e intransferível</small></div></div>`;}
+function issueCard(){const student=database.alunos.find(s=>s.id===Number(el('cardStudent').value));if(!student)return;extra.cards.push({number:'CA-CART-'+String(extra.cards.length+1).padStart(4,'0'),student:student.nome,date:todayISO(),reason:el('cardReason').value,owner:database.usuario.nome});saveExtra();renderCards();toast('Carteirinha emitida e registrada no histórico.');}
+function renderCards(){el('cardHistory').innerHTML=extra.cards.length?extra.cards.map(c=>`<tr><td>${esc(c.number)}</td><td>${esc(c.student)}</td><td>${dateBR(c.date)}</td><td>${esc(c.reason)}</td><td>${esc(c.owner)}</td></tr>`).join(''):'<tr><td colspan="5">Nenhuma carteirinha emitida.</td></tr>';}
+function printCard(){document.body.classList.add('print-card');window.print();document.body.classList.remove('print-card');}
+window.addEventListener('afterprint',()=>document.body.classList.remove('print-card'));
+function renderTemplates(){el('templateRows').innerHTML=extra.templates.map((t,i)=>`<tr><td>${esc(t.name)}</td><td>${esc(t.goal)}</td><td>${esc(t.split)}</td><td><button class="action-btn red" onclick="editTemplate(${i})">Editar Modelo</button><button class="action-btn" onclick="useTemplate(${i})">Usar na Ficha</button></td></tr>`).join('')||'<tr><td colspan="4">Nenhum modelo cadastrado.</td></tr>';}
+function editTemplate(index){const t=extra.templates[index]||{name:'',goal:'',split:'',notes:'',exercises:[['','','','','']]};el('templateId').value=index;el('templateName').value=t.name;el('templateGoal').value=t.goal;el('templateSplit').value=t.split;el('templateNotes').value=t.notes;el('exerciseRows').innerHTML='';t.exercises.forEach(addExerciseRow);openModal('templateModal');}
+function addExerciseRow(values=['','','','','']){const row=document.createElement('tr');row.innerHTML=values.map((v,i)=>`<td><input aria-label="${['Exercício','Séries','Repetições','Carga','Descanso'][i]}" class="input" required ${i===1||i===4?'type="number" min="1" step="1"':''} value="${esc(v)}"></td>`).join('')+'<td><button type="button" class="action-btn red" onclick="this.closest(\'tr\').remove()">Remover</button></td>';el('exerciseRows').append(row);}
+function saveTemplate(event){event.preventDefault();const exercises=[...el('exerciseRows').rows].map(r=>[...r.querySelectorAll('input')].map(i=>i.value.trim()));if(!exercises.length){toast('Adicione pelo menos um exercício.');return;}const t={name:el('templateName').value.trim(),goal:el('templateGoal').value.trim(),split:el('templateSplit').value.trim(),notes:el('templateNotes').value,exercises};if(!t.name||!t.goal||!t.split){toast('Preencha nome, objetivo e divisão.');return;}const index=Number(el('templateId').value);if(index<0)extra.templates.push(t);else extra.templates[index]=t;saveExtra();renderTemplates();closeModal('templateModal');showSection('modelos-treino');toast('Modelo padrão salvo.');}
+function useTemplate(index){const t=extra.templates[index];const target=el('treino-form');const table=target.querySelector('#studentExerciseRows');table.innerHTML='';t.exercises.forEach(e=>appendStudentExercise(e.map((v,i)=>i===4?v+' s':v)));const groups=target.querySelectorAll('#treino-form-pane-0 .form-grid .form-group');groups[2].querySelector('input').value=t.goal;const division=groups[4].querySelector('select');division.replaceChildren(new Option(t.split,t.split,true,true));const model=groups[5].querySelector('select');model.replaceChildren(new Option(t.name,t.name,true,true));const notes=target.querySelector('textarea');if(notes)notes.value=t.notes;showSection('treino-form');switchCustomTab('treino-form',1);toast('Modelo carregado; exercícios podem ser editados.');}
+function renderAttendance(){const c=collectiveClasses.find(c=>c.id===el('classSelect').value);const saved=extra.attendance[c.id];el('classDetails').textContent=`${dateBR(c.date)} às ${c.time} • Professor: ${c.teacher} • ${c.room}`;el('attendanceRows').innerHTML=c.students.map(id=>{const s=database.alunos.find(s=>s.id===id);return `<tr><td>${esc(s.matricula)}</td><td>${esc(s.nome)}</td><td><select class="input" aria-label="Presença de ${esc(s.nome)}" data-student="${id}"><option value="pending">Não registrada</option><option value="present">Presente</option><option value="absent">Ausente</option></select></td></tr>`;}).join('');el('attendanceRows').querySelectorAll('select').forEach(input=>input.value=saved?.marks[input.dataset.student]||'pending');el('attendanceStatus').textContent=saved?'Chamada salva por '+saved.owner+' em '+saved.savedAt:'Chamada ainda não registrada.';}
+function saveAttendance(){const marks={};let pending=false;el('attendanceRows').querySelectorAll('select').forEach(input=>{marks[input.dataset.student]=input.value;if(input.value==='pending')pending=true;});if(pending){toast('Marque presente ou ausente para todos os alunos.');return;}extra.attendance[el('classSelect').value]={marks,owner:database.usuario.nome,savedAt:new Date().toLocaleString('pt-BR')};saveExtra();renderAttendance();renderExtraReports();toast('Chamada registrada. Relatório atualizado.');}
+function statusDate(s){const [d,m,y]=s.vencimento.split('/');const expiry=`${y}-${m}-${d}`;const today=todayISO();const days=Math.round((Date.parse(expiry+'T12:00:00')-Date.parse(today+'T12:00:00'))/86400000);return {days,status:days<0?'Vencido':s.status,active:days>=0&&s.status==='Ativo'};}
+function renderExtraReports(){const active=database.alunos.filter(s=>statusDate(s).active).length;const total=database.alunos.length;el('activeChart').innerHTML=`<div class="progress-row"><div class="progress-head"><span>Alunos ativos</span><strong>${active} de ${total}</strong></div><div class="progress"><span style="width:${total?active/total*100:0}%"></span></div></div><p class="muted">Demais alunos: ${total-active} • Referência: ${dateBR(todayISO())}</p>`;const filter=el('expiryFilter').value;const students=database.alunos.filter(s=>filter==='all'||(filter==='expired'?statusDate(s).days<0:statusDate(s).days>=0&&statusDate(s).days<=30));el('expiryRows').innerHTML=students.map(s=>`<tr><td>${esc(s.nome)}</td><td>${esc(s.plano)}</td><td>${esc(s.vencimento)}</td><td>${esc(statusDate(s).status)}</td></tr>`).join('')||'<tr><td colspan="4">Nenhum aluno neste filtro.</td></tr>';el('classReport').innerHTML=collectiveClasses.map(c=>{const record=extra.attendance[c.id];const n=record?Object.values(record.marks).filter(v=>v==='present').length:0;const absent=record?c.students.length-n:0;return `<tr><td>${esc(c.name)} • ${dateBR(c.date)}</td><td>${esc(c.teacher)}</td><td>${c.students.length}</td><td>${record?n:'—'}</td><td>${record?absent:'—'}</td><td>${record?Math.round(n/c.students.length*100)+'%':'Chamada pendente'}</td></tr>`;}).join('');el('classChart').innerHTML=collectiveClasses.map(c=>{const r=extra.attendance[c.id];const n=r?Object.values(r.marks).filter(v=>v==='present').length:0;return `<div class="progress-row"><div class="progress-head"><span>${esc(c.name)}</span><strong>${r?n+'/'+c.students.length+' presentes':'Pendente'}</strong></div><div class="progress"><span style="width:${n/c.students.length*100}%"></span></div></div>`;}).join('');const maintenanceFilter=el('maintenanceReportFilter').value;const orders=extra.maintenance.filter(o=>maintenanceFilter==='Todos'||o.status===maintenanceFilter);el('maintenanceReport').innerHTML=orders.map(o=>`<tr><td>${esc(o.id)}</td><td>${esc(o.equipment)}</td><td>${dateBR(o.date)}</td><td>${esc(o.type)}</td><td>${esc(o.problem)}</td><td>${dateBR(o.closed)}</td><td>${esc(o.status)}</td></tr>`).join('')||'<tr><td colspan="7">Nenhuma ordem neste filtro.</td></tr>';}
+// Integra as novas ordens ao relatório sem substituir a tela existente.
+maintenance=function(){const form=document.querySelector('.quick-maintenance');const inputs=form.querySelectorAll('input');const selects=form.querySelectorAll('select');const problem=form.querySelector('textarea').value.trim();if(!problem){toast('Informe o problema identificado.');return;}extra.maintenance.push({id:'OM-'+String(extra.maintenance.length+1).padStart(3,'0'),equipment:el('maintenanceEquipment').value,date:inputs[0].value,type:selects[1].value,problem,closed:'',status:'Aberta'});saveExtra();document.querySelectorAll('#equipamentos tbody tr').forEach(row=>{if(row.cells[0].textContent===el('maintenanceEquipment').value)row.cells[4].innerHTML='<span class="badge badge-warning">Em manutenção</span>';});renderExtraReports();toast('Ordem aberta e adicionada ao histórico de manutenções.');};
+el('cardStudent').innerHTML=database.alunos.map(s=>`<option value="${s.id}">${esc(s.nome)} — ${esc(s.matricula)}</option>`).join('');
+el('classSelect').innerHTML=collectiveClasses.map(c=>`<option value="${c.id}">${esc(c.name)} — ${dateBR(c.date)} às ${c.time}</option>`).join('');
+previewCard();renderCards();renderTemplates();renderAttendance();renderExtraReports();
+document.addEventListener('keydown',event=>{if(event.key==='Escape')document.querySelectorAll('.modal-overlay.show').forEach(m=>closeModal(m.id));});
+
+</script>
+<div class="modal-overlay" id="evaluationDetailModal"><div class="modal"><div class="modal-head"><h2>Ficha da Avaliação Física</h2><button class="modal-close" onclick="closeModal('evaluationDetailModal')">×</button></div><div id="evaluationDetailBody"></div><div class="form-actions"><button class="btn btn-primary" onclick="closeModal('evaluationDetailModal')">Fechar</button></div></div></div><script>
+// NAVEGAÇÃO EM ABAS
+function switchCustomTab(sectionId,index){
+ const sec=document.getElementById(sectionId);if(!sec)return;
+ const tabs=[...sec.querySelectorAll(':scope > .tabs > .tab')];
+ const panes=[...sec.querySelectorAll(':scope > .custom-tab-panel')];
+ panes.forEach((p,i)=>p.classList.toggle('d-none',i!==index));
+ tabs.forEach((b,i)=>{b.classList.toggle('active',i===index);b.setAttribute('aria-selected',String(i===index));});
+ window.scrollTo({top:0,behavior:'instant'});
+}
+const catalogStorageKey='corpoAtivoExerciseCatalogV2';
+const catalogDefaults=[
+ {id:1,name:'Supino reto',muscle:'Peito',equipment:'Barra e banco reto',variation:'Reto',instructions:'Manter as escápulas estáveis.'},
+ {id:2,name:'Supino inclinado',muscle:'Peito',equipment:'Halteres e banco inclinado',variation:'Inclinado',instructions:'Manter controle do movimento.'},
+ {id:3,name:'Crucifixo inclinado',muscle:'Peito',equipment:'Halteres',variation:'Inclinado',instructions:'Controlar amplitude.'},
+ {id:4,name:'Desenvolvimento',muscle:'Ombros',equipment:'Halteres',variation:'Sentado',instructions:'Evitar compensação lombar.'},
+ {id:5,name:'Elevação lateral',muscle:'Ombros',equipment:'Halteres',variation:'Lateral',instructions:'Controlar a descida.'},
+ {id:6,name:'Tríceps corda',muscle:'Braços',equipment:'Polia e corda',variation:'Polia alta',instructions:'Manter os cotovelos estáveis.'},
+ {id:7,name:'Agachamento livre',muscle:'Pernas',equipment:'Barra',variation:'Livre',instructions:'Manter postura e amplitude adequadas.'},
+ {id:8,name:'Leg press 45°',muscle:'Pernas',equipment:'Leg press',variation:'45 graus',instructions:'Controlar joelhos e amplitude.'},
+ {id:9,name:'Puxada frontal',muscle:'Costas',equipment:'Polia alta',variation:'Frontal',instructions:'Evitar balanço do tronco.'}
+];
+let catalogExercises;try{catalogExercises=JSON.parse(localStorage.getItem(catalogStorageKey))||catalogDefaults.map(x=>({...x}));if(!Array.isArray(catalogExercises))throw Error('invalid');}catch{catalogExercises=catalogDefaults.map(x=>({...x}));}
+function saveCatalog(){try{localStorage.setItem(catalogStorageKey,JSON.stringify(catalogExercises));}catch{toast('Dados mantidos apenas durante esta sessão.');}}
+function renderExerciseCatalog(){const term=(document.getElementById('exerciseSearch')?.value||'').toLowerCase();const rows=document.getElementById('exerciseCatalogRows');if(!rows)return;rows.innerHTML=catalogExercises.filter(x=>(x.name+' '+x.muscle).toLowerCase().includes(term)).map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.muscle)}</td><td>${esc(x.equipment)}</td><td>${esc(x.instructions)}</td><td><button class="action-btn red" onclick="editCatalogExercise(${x.id})">Editar</button><button class="action-btn" onclick="deleteCatalogExercise(${x.id})">Excluir</button></td></tr>`).join('')||'<tr><td colspan="5">Nenhum exercício encontrado.</td></tr>';}
+function newCatalogExercise(){['catalogExerciseId','catalogName','catalogEquipment','catalogVariation','catalogInstructions'].forEach(id=>document.getElementById(id).value='');document.getElementById('catalogMuscle').value='Peito';showSection('cadastro-exercicios');switchCustomTab('cadastro-exercicios',1);}
+function editCatalogExercise(id){const x=catalogExercises.find(v=>v.id===id);if(!x)return;for(const [key,val] of Object.entries({catalogExerciseId:x.id,catalogName:x.name,catalogMuscle:x.muscle,catalogEquipment:x.equipment,catalogVariation:x.variation,catalogInstructions:x.instructions})){document.getElementById(key).value=val||'';}showSection('cadastro-exercicios');switchCustomTab('cadastro-exercicios',1);}
+function saveCatalogExercise(){const id=Number(document.getElementById('catalogExerciseId').value);const x={id:id||Date.now(),name:document.getElementById('catalogName').value.trim(),muscle:document.getElementById('catalogMuscle').value,equipment:document.getElementById('catalogEquipment').value.trim(),variation:document.getElementById('catalogVariation').value.trim(),instructions:document.getElementById('catalogInstructions').value.trim()};if(!x.name){toast('Informe o nome do exercício.');return;}const index=catalogExercises.findIndex(v=>v.id===id);if(index>=0)catalogExercises[index]=x;else catalogExercises.push(x);saveCatalog();renderExerciseCatalog();switchCustomTab('cadastro-exercicios',0);toast('Exercício salvo no cadastro de parâmetros.');}
+function deleteCatalogExercise(id){if(!confirm('Excluir este exercício do catálogo?'))return;catalogExercises=catalogExercises.filter(x=>x.id!==id);saveCatalog();renderExerciseCatalog();toast('Exercício excluído do catálogo.');}
+const workoutKey='corpoAtivoWorkoutDraftV2';
+function appendStudentExercise(values){const tbody=document.getElementById('studentExerciseRows');const tr=document.createElement('tr');values.forEach((v,i)=>{const td=document.createElement('td');const input=document.createElement('input');input.className='input';input.value=v;input.setAttribute('aria-label',['Exercício','Séries','Repetições','Carga','Descanso'][i]);td.appendChild(input);tr.appendChild(td);});const td=document.createElement('td');const b=document.createElement('button');b.className='action-btn red';b.type='button';b.textContent='Remover';b.onclick=()=>removeStudentExercise(b);td.appendChild(b);tr.appendChild(td);tbody.appendChild(tr);}
+function removeStudentExercise(btn){btn.closest('tr').remove();}
+function addStudentExercise(){const select=document.getElementById('exercisePicker');select.innerHTML=catalogExercises.map(x=>`<option value="${x.id}">${esc(x.name)} — ${esc(x.muscle)}</option>`).join('');if(!catalogExercises.length){toast('Cadastre um exercício primeiro.');showSection('cadastro-exercicios');return;}openModal('studentExerciseModal');}
+function confirmStudentExercise(){const x=catalogExercises.find(v=>v.id===Number(document.getElementById('exercisePicker').value));if(!x)return;appendStudentExercise([x.name,document.getElementById('pickSets').value,document.getElementById('pickReps').value,document.getElementById('pickLoad').value,document.getElementById('pickRest').value]);closeModal('studentExerciseModal');toast('Exercício adicionado. Você pode editar qualquer campo da ficha.');}
+function saveStudentWorkout(){const sec=document.getElementById('treino-form');const identity=[...sec.querySelectorAll('#treino-form-pane-0 input,#treino-form-pane-0 select')].map(i=>i.value);const exercises=[...document.querySelectorAll('#studentExerciseRows tr')].map(tr=>[...tr.querySelectorAll('input')].map(i=>i.value.trim()));if(!exercises.length||exercises.some(r=>r.some(x=>!x))){toast('Preencha todos os campos de pelo menos um exercício.');return;}const notes=sec.querySelector('textarea').value;try{localStorage.setItem(workoutKey,JSON.stringify({identity,exercises,notes}));}catch{}toast('Ficha de treino salva com sucesso!');}
+function restoreStudentWorkout(){try{const data=JSON.parse(localStorage.getItem(workoutKey));if(!data)return;const sec=document.getElementById('treino-form');const inputs=[...sec.querySelectorAll('#treino-form-pane-0 input,#treino-form-pane-0 select')];data.identity.forEach((v,i)=>{if(inputs[i])inputs[i].value=v;});const tbody=document.getElementById('studentExerciseRows');tbody.innerHTML='';data.exercises.forEach(appendStudentExercise);sec.querySelector('textarea').value=data.notes;}catch{}}
+const evaluationKey='corpoAtivoRecordedEvaluationsV2';
+let registeredEvaluations;try{registeredEvaluations=JSON.parse(localStorage.getItem(evaluationKey))||[];}catch{registeredEvaluations=[];}
+if(!registeredEvaluations.length)registeredEvaluations=[{name:'Gabriela Santos',date:'2026-09-20',weight:'62.4',height:'1.65',bmi:'22.9',fat:'24.1',notes:'Avaliação demonstrativa'}];
+function renderRegisteredEvaluations(){const body=document.getElementById('registeredEvaluationRows');if(!body)return;body.innerHTML=registeredEvaluations.map((r,i)=>`<tr ondblclick="viewRegisteredEvaluation(${i})" title="Duplo clique para ver detalhes" style="cursor:pointer"><td>${esc(r.name)}</td><td>${dateBR(r.date)}</td><td>${esc(r.weight)} kg</td><td>${esc(r.height)} m</td><td>${esc(r.bmi)}</td><td><button class="action-btn red" onclick="viewRegisteredEvaluation(${i})">Visualizar ficha</button></td></tr>`).join('');}
+function viewRegisteredEvaluation(i){const r=registeredEvaluations[i];if(!r)return;document.getElementById('evaluationDetailBody').innerHTML=`<div class="form-grid two"><p><strong>Aluno:</strong> ${esc(r.name)}</p><p><strong>Data:</strong> ${dateBR(r.date)}</p><p><strong>Peso:</strong> ${esc(r.weight)} kg</p><p><strong>Altura:</strong> ${esc(r.height)} m</p><p><strong>IMC:</strong> ${esc(r.bmi)}</p><p><strong>Gordura corporal:</strong> ${esc(r.fat||'—')}%</p></div><p style="margin-top:20px"><strong>Observações:</strong> ${esc(r.notes||'Não informado')}</p>`;openModal('evaluationDetailModal');}
+function recordEvaluationFromForm(){const modal=document.getElementById('evaluationModal');const inputs=[...modal.querySelectorAll('input,select,textarea')];const get=(id)=>document.getElementById(id)?.value||'';const name=modal.querySelector('select')?.selectedOptions[0]?.text||'Aluno';const r={name,date:new Date().toLocaleDateString('en-CA'),weight:get('weight'),height:get('height'),bmi:get('bmi'),fat:'',notes:'Avaliação registrada no protótipo'};registeredEvaluations.push(r);try{localStorage.setItem(evaluationKey,JSON.stringify(registeredEvaluations));}catch{}renderRegisteredEvaluations();closeModal('evaluationModal');switchCustomTab('avaliacoes',1);toast('Avaliação registrada.');}
+document.addEventListener('DOMContentLoaded',()=>{renderExerciseCatalog();restoreStudentWorkout();renderRegisteredEvaluations();});
+</script></body>
 </html>
+
